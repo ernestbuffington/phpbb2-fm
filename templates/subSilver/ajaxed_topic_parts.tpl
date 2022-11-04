@@ -1,0 +1,1 @@
+<span class="nav"><a href="{NEW_TOPIC_URL}"><img src="{POST_IMG}" alt="{POST_ALT}" title="{POST_ALT}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a href="{REPLY_TOPIC_URL}"><img src="{REPLY_IMG}" alt="{REPLY_ALT}" title="{REPLY_ALT}" align="middle" /></a></span>

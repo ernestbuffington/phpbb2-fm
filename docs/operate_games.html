@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>How do I add Games?</u></h1>
+<p>This is a general overview of how to add games to your Fully Modded board.</p>
+
+<ol>
+
+	<li><b>I can see the games area but what games can I download?</b></li>
+	<p>Games can be downloaded from <a href="http://www.phpbb-amod.com/down_db.php?page=cat&amp;id=910" target="_blank">www.phpbb-amod.com</a>. There you will find a huge selection that you can install for your users.</p>
+
+	<li><b>Where should I put downloaded games?</b>
+	<p>Each game has it's own self-titled directory which contains a .swf and a .gif file. This directory needs to be placed inside the <u>mods/games/</u> directory. The directory name and the game name MUST match, and not contain any odd characters (*&^%$#!@+=\|?><,.':"~`) etc..</p></li>
+	
+	<li><b>How do I install downloaded games?</b>
+	<p>You need to visit your ACP, select the Games category, and click 'Add New'. Now we have a new page with various options. The first is a drop down menu, this menu will always display any uninstalled games which are in the <u>mods/games/</u> directory. Select the game you want to install from the dropdown menu.</p></li>
+	
+	<li><b>How do I install downloaded IPB games?</b>
+	<p>Most IPB games come packaged as a .tar file, although some are regular .zip files. You will need to make sure you are using an extraction utility that supports .tar files. Once unzipped, locate the game .swf and .jpg or .gif image. IPB games have a 1 and a 2 at the end of their image file names. Locate the "GameName1" file and edit out the 1. The GameName2 image is smaller in size and is not used. There is also a .php file, this may be discarded along with the GameName2 file. Once the two files have the same name they are uploaded in the same format as regular games.<br /><br />
+	<u>mods/games/GameName/(.swf)(.jpg or .gif)</u><br /><br />If these were the only files contained in the original archive, then your installation is complete. You may add your game through the ACP remembering to select IPB games from the "game type" drop down menu.<br /><br />
+	In the same way that some games use the <u>game_root/</u> directory, some IPB games come with a directory called <u>gamedata/</u>. This directory may be found inside the main directory, or contained in a directory called <u>arcade/</u> or <u>upload/</u>. A new directory must be made for the files located in the <u>gamedata/</u> directory. In your forum <u>root/</u> directory create a new directory called <u>arcade/</u>. Then, within your <u>arcade/</u> directory, make a directory <u>gamedata/</u>. You will then create individual directories for your games within <u>gamedata/</u>. It will look like this:<br /><br /> 
+	<u>root/arcade/gamedata/GameName/(files)</u><br /><br />If the original directory contains a <u>GameName_data/</u> directory (instead of a <u>gamedata/</u> directory) you will need to make a new directory in your <u>arcade/</u> directory for that game. It will look like this:<br /><br /> 
+	<u>root/arcade/GameName_data/(files)</u><br /><br />Note: All games that come with a <u>gamedata/</u> directory will have their game directory created within the <u>gamedata/</u> directory. Any game that comes with a <u>GameName_data/</u> directory will have its own directory created in the <u>arcade/</u> directory along with the <u>gamedata/</u> directory. Your <u>arcade/</u> directory will look like this:<br /><br />
+	<u>gamedata/</u><br /><u>GameName_data/</u><br /><u>GameName2_data/</u><br /><br />When these files are in place, you are able to add your game through the ACP. Remember to select IPB games from the drop down "game type" menu when configuring.</p></li>
+</ol>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

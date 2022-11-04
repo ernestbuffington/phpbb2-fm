@@ -1,0 +1,168 @@
+3.0.0MPAKÿüÌINFOÌüÿ
+# This file will contain the information about your module
+# for the statistics parser to use.
+#
+# You can make comments by using #
+# Note that the text must be on a single line for the parser
+# to read it!  Excluding the extra install info area and the condition area.
+#
+
+# Module Name
+[name]
+Top Shoutbox Poster
+[/name]
+
+# Module Directory Name
+[short_name]
+top_shoutbox_poster
+[/short_name]
+
+# your name
+[author]
+Nic Banister
+[/author]
+
+# your email
+[email]
+---
+[/email]
+
+# your webpage url
+[url]
+http://www.detecties.com/modforum
+[/url]
+
+# module version
+[version]
+3.0.2 
+[/version]
+
+# required minimum Statistics Mod Version
+[stats_mod_version]
+3.0.1beta3s 
+[/stats_mod_version]
+
+# default update time
+[update_time]
+360
+[/update_time]
+
+[check_update_site]
+http://www.detecties.com/modforum 
+[/check_update_site]
+
+# extra info for the user
+[extra_info]
+This Module displays the most active shoutbox poster on your board.
+Anonymous Poster are not counted.
+[/extra_info]
+
+ÌÌÿINFOÿÌÌÿüÌLANGÌüÿ<?php
+
+// [lang_english]
+$lang['module_name'] = 'Top Shoutbox Posters';
+$lang['Shouts'] = 'Shouts';
+// [/lang_english]
+
+// [lang_danish]
+$lang['module_name'] = 'Brugere med flest shoutbox indlæg';
+$lang['Shouts'] = 'Shoutbox indlæg';
+// [/lang_danish]
+
+// [lang_dutch] 
+$lang['module_name'] = 'Top Shoutbox Posters'; 
+$lang['Shouts'] = 'Shouts'; 
+// [/lang_dutch] 
+
+// [lang_german] 
+$lang['module_name'] = 'Top Shoutbox Posters'; 
+$lang['Shouts'] = 'Shouts'; 
+// [/lang_german] 
+
+// [lang_italian]
+$lang['module_name'] = 'Manifesti Superiori Di Shoutbox'; 
+$lang['Shouts'] = 'Grida'; 
+// [/lang_italian]
+
+// [lang_norwegian]
+$lang['module_name'] = 'Brukere med flest shoutbox innlegg';
+$lang['Shouts'] = 'Shoutbox innlegg';
+// [/lang_norwegian]
+
+// [lang_spanish]
+$lang['module_name'] = 'Carteles Superiores De Shoutbox'; 
+$lang['Shouts'] = 'Gritos'; 
+// [/lang_spanish]
+
+?>ÌÌÿLANGÿÌÌÿüÌMODÌüÿ<?php
+/***************************************************************************
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ ***************************************************************************/
+
+if ( !defined('IN_PHPBB') )
+{
+	die("Hacking attempt");
+}
+
+$core->start_module(true);
+$core->set_content('bars');
+
+$core->set_view('rows', $core->return_limit);
+$core->set_view('columns', 5);
+
+$core->define_view('set_columns', array(
+	$core->pre_defined('rank'),
+	'username' => $lang['Username'],
+	'user_shouts' => $lang['Shouts'],
+	$core->pre_defined('percent'),
+	$core->pre_defined('graph'))
+);
+
+$content->percentage_sign = TRUE;
+
+$core->set_header($lang['module_name']);
+
+$core->assign_defined_view('align_rows', array(
+	'left',
+	'left',
+	'center',
+	'center',
+	'left')
+);
+$sql = "SELECT COUNT(*) AS total_shouts 
+	FROM " . SHOUTBOX_TABLE . "
+	WHERE shout_user_id <> " . ANONYMOUS;
+$result = $core->sql_query($sql, 'Unable to retrieve total shoutbox data');
+$row = $core->sql_fetchrow($result);
+
+$total_shouts = $row['total_shouts'];
+
+$sql = "SELECT shout_user_id, username, COUNT(shout_id) as user_shouts 
+	FROM " . SHOUTBOX_TABLE . " , " . USERS_TABLE . "
+	WHERE shout_user_id <> " . ANONYMOUS . " 
+		AND shout_user_id = user_id
+	GROUP BY shout_user_id, username
+	ORDER BY user_shouts DESC 
+	LIMIT " . $core->return_limit;
+$result = $core->sql_query($sql, 'Unable to retrieve shoutbox data');
+$data = $core->sql_fetchrowset($result);
+
+$content->init_math('user_shouts', $data[0]['user_shouts'], $total_shouts);
+$core->set_data($data);
+
+$core->define_view('set_rows', array(
+	'$core->pre_defined()',
+	'$core->generate_link(append_sid($phpbb_root_path . \'profile.php?mode=viewprofile&u=\' . $core->data(\'shout_user_id\')), $core->data(\'username\'), \'target="_blank"\')',
+	'$core->data(\'user_shouts\')',
+	'$core->pre_defined()',
+	'$core->pre_defined()')
+);
+
+$core->run_module();
+
+?>ÌÌÿMODÿÌÌ

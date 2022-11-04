@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+Types for Radio Stations:
+wm for Windows Media (mms://, .asx),
+rm for Real Media and Winamp Playlists (.ram, .ra, .pls)
+-->
+<livestreamradio>
+<station>
+	<num>1</num>
+	<name>Radio 3 fm</name>
+	<url>http://www.omroep.nl/radio3/live20.asx</url>
+	<broadband>http://www.omroep.nl/radio3/live20.asx</broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>2</num>
+	<name>Radio 538</name>
+	<url>http://staging.radio538.nl/media/radio538.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>3</num>
+	<name>Radio 1</name>
+	<url>http://www.omroep.nl/radio1/live20.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>4</num>
+	<name>Noordzee FM</name>
+	<url>mms://hollywood.win2k.vuurwerk.nl/noordzee</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>5</num>
+	<name>Yorin FM</name>
+	<url>http://media.rtl.nl/yorinfm/on_air/yorin.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>6</num>
+	<name>Radio NRG</name>
+	<url>http://www.radionrg.com/listenlive.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>7</num>
+	<name>Radio NRG France</name>
+	<url>http://cache.yacast.fr/V4/nrj/nrj.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>8</num>
+	<name>Skyradio</name>
+	<url>http://www.skyradio.nl/player/skyradio.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>9</num>
+	<name>Hardradio</name>
+	<url>http://stream1.adsertion.com/Radio/Players/asx.asp?StationID=5</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>10</num>
+	<name>Knac Radio</name>
+	<url>http://www.knac.com/streams/knac_real.ram</url>
+	<broadband></broadband>
+	<type>rm</type>
+</station>
+
+<station>
+	<num>11</num>
+	<name>Flow 93.5</name>
+	<url>http://www.flow935.com/broadcast/flow935.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>12</num>
+	<name>WDKX</name>
+	<url>http://www.wdkx.com/main/wdkx.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+<station>
+	<num>13</num>
+	<name>Kiss 100 London</name>
+	<url>http://213.161.64.73/ramgen/stations/kiss100/woody.smil?mode=compact</url>
+	<broadband></broadband>
+	<type>rm</type>
+</station>
+
+<station>
+	<num>14</num>
+	<name>BBC Radio 1 London</name>
+	<url>http://www.bbc.co.uk/radio1/realaudio/media/r1livev5.ram</url>
+	<broadband>http://www.bbc.co.uk/radio1/realaudio/media/r1live.ram</broadband>
+	<type>rm</type>
+</station>
+
+<station>
+	<num>15</num>
+	<name>Ministry Of Sound Radio</name>
+	<url>http://www.ministryofsound.com/asx/radio/mosradio.asx</url>
+	<broadband></broadband>
+	<type>wm</type>
+</station>
+
+</livestreamradio>

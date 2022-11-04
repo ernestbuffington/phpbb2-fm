@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+<script language="JavaScript" type="text/javascript">
+function toggleHtml(strObjName)
+{
+	var current;
+	if (document.getElementById)
+	{
+		current = (document.getElementById(strObjName).style.display == 'block') ? 'none' : 'block';
+		document.getElementById(strObjName).style.display = current;
+	}
+	else if (document.all)
+	{
+		current = (document.all[strObjName].style.display == 'block') ? 'none' : 'block'
+		document.all[strObjName].style.display = current;
+	}
+	else alert ('This link does not work in your browser, time to update your browser!');
+}
+			
+function wstatus(strMsg)
+{
+	window.status = strMsg;
+}
+</script>
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>Update from Fully Modded version</u></h1>
+
+<p>Updating from a previous version of Fully Modded phpBB is generally quite easy if you follow the steps below. First you should make a copy of your existing <u>config.php</u> and keep it in a safe place!</p>
+<p>You can leave alternative templates in-place but you should note they <u>will not</u> function correctly with this new release. It is therefore recommended you switch back to subSilver if you are currently using a different style (Override all of your users too), then un-install any extra themes you may have added. More details about compatible themes is discussed <a href="install_post.html#themes">Here</a>.</p>  
+
+<h3 class="h3">i. Preparing the Directory Structure</h3>
+<p>You need to create and move some existing directories containing uploaded files to their new locations.</p>
+<p class="gensmall"><b>NOTE:</b> If you are updating from a version older than the last release click <a href="javascript:toggleHtml('old');" onMouseOver="wstatus(' ');return true;" onMouseOut="wstatus(' ');return true;">Here</a> for previous directory structure changes. Older structure changes <u>must</u> be made step-by-step to avoid losing any online file data.</p>
+
+<div id="old" name="old" style="display:none;">
+<p>
+<b style="color: #FF0000">i. From FM208.3.5 or older</b><br />
+	<ul>
+		 <li><b>RENAME</b> the <u>album/upload</u> directory to <u>album</u> and <b>MOVE</b> it (and all its contents) to the <u>images/</u> directory (e.g. images/album)</li>
+	</ul>
+<b style="color: #FF0000">ii. From any version from FM209.3.5 to FM2017.3.59</b><br />
+	<ul>
+		<li><b>CREATE</b> a new directory in your forum root directory named <u>uploads/</u></li>
+		<li><b>RENAME</b> the <u>files</u> directory to <u>attachments</u> and <b>MOVE</b> it (and all its contents) to the <u>uploads/</u> directory (e.g. uploads/attachments)</li>
+		<li><b>RENAME</b> the <u>pafiledb/uploads</u> directory to <u>pafiledb</u> and <b>MOVE</b> it (and all its contents) to the <u>uploads/</u> directory (e.g. uploads/pafiledb)</li>
+		<li><b>MOVE</b> the <u>pafiledb/images/screenshots</u> directory (and all its contents) to the <u>uploads/pafiledb/</u> directory (e.g. uploads/pafiledb/screenshots)</li>
+		<li><b>MOVE</b> the <u>images/album</u> directory (and all its contents) to the <u>uploads/</u> directory (e.g. uploads/album)</li>
+		<li><b>RENAME</b> the <u>images/photos</u> directory to <u>user_photos</u> and <b>MOVE</b> it (and all its contents) to the <u>uploads/</u> directory (e.g. uploads/user_photos)</li>
+		<li><b>RENAME</b> the <u>images/avatars/uploads</u> directory to <u>user_avatars</u> and <b>MOVE</b> it to the <u>uploads</u> directory (e.g. uploads/user_avatars)</li>
+		<li><b>MOVE</b> any avatar gallery directories in the <u>images/avatars/gallery</u> directory up to the <u>images/avatars/</u> directory, then <b>DELETE</b> the <u>images/avatars/gallery</u> directory</li>
+	</ul>
+<b style="color: #FF0000">iii. From FM2017.4.05 or newer</b><br />
+</p>
+</div>
+
+<ul>
+	<li><b>NO</b> structure changes</li>
+</ul>
+
+<h3 class="h3">ii. Preparing the File Structure</h3>
+<p>Next, delete <b>ALL</b> the existing Fully Modded phpBB files from your forum root directory, <b>EXCEPT</b> for the following directories listed below, do not leave any other directories or files on the server otherwise you may encounter errors later.</p>
+<ul>
+	<li>Keep the <u>cache/</u> directory <i>(<b>DO NOT</b> overwrite files in this directory with newer ones)</i></li>
+	<li>Keep the <u>game_root/</u> directory &nbsp; <i>(Only if you have added games)</i></li>
+	<li>Keep the <u>images/</u> directory</li>
+	<li>Keep the <u>mods/games/</u> directory &nbsp; <i>(Only if you have added games)</i></li> 
+	<li>Keep the <u>modules/</u> directory</li>
+	<li>Keep the <u>templates/subSilver/images/icons/</u> directory &nbsp; <i>(Only if you have added custom icon images)</i></li>
+	<li>Keep the <u>templates/subSilver/images/ranks/</u> directory &nbsp; <i>(Only if you have added custom rank images)</i></li>
+	<li>Keep the <u>templates/subSilver/images/themes/</u> directory</li>
+	<li>Keep the <u>uploads/</u> directory</li>
+</ul></p>
+<p>With this complete you can upload the new Fully Modded phpBB files (see <a href="install_new.html">New Installation</a> for details if necessary). Once complete copy back your saved <u>config.php</u>, replacing the new one.</p>
+
+<h3 class="h3">iii. Executing the Update</h3>
+<p>Your board will now be disabled.</p>
+<p>You should execute the file <u>install/update_to_latest.php</u> from your browser which will make a number of database changes. You may receive <u>FAILURES</u> during this procedure, they should not be a cause for concern unless you see an actual <u>ERROR</u>, in which case the script will stop.</p>
+<p>Once the update process has completed click <a href="install_post.html">Here</a> to complete the update.</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

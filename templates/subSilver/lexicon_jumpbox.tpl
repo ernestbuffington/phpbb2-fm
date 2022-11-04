@@ -1,0 +1,1 @@
+<form method="get" name="lexicon_cat_selector" action="{S_JUMPBOX_ACTION}" onSubmit="if(document.lexicon_cat_selector.f.value == -1){return false;}">{L_JUMP_TO}:&nbsp;{S_JUMPBOX_SELECT}

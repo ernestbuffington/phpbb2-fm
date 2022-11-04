@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>Change Registration Agreement text</u></h1> 
+<p>To change the Registration Agreement you will need to edit <u>language/lang_english/lang_main.php</u></p>
+<p>Find the line:</p>
+<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">$lang['Reg_agreement'] = 'While the administrators and moderators of this forum will attempt to remove or edit any generally objectionable material as quickly as possible, it is impossible to review every message. Therefore you acknowledge that all posts made to these forums express the views and opinions of the author and not the administrators, moderators or webmaster (except for posts by these people) and hence will not be held liable.&lt;br /&gt;&lt;br /&gt;You agree not to post any abusive, obscene, vulgar, slanderous, hateful, threatening, sexually-oriented or any other material that may violate any applicable laws. Doing so may lead to you being immediately and permanently banned (and your service provider being informed). The IP address of all posts is recorded to aid in enforcing these conditions. You agree that the webmaster, administrator and moderators of this forum have the right to remove, edit, move or close any topic at any time should they see fit. As a user you agree to any information you have entered above being stored in a database. While this information will not be disclosed to any third party without your consent the webmaster, administrator and moderators cannot be held responsible for any hacking attempt that may lead to the data being compromised.&lt;br /&gt;&lt;br /&gt;This forum system uses cookies to store information on your local computer. These cookies do not contain any of the information you have entered above; they serve only to improve your viewing pleasure. The e-mail address is used only for confirming your registration details and password (and for sending new passwords should you forget your current one).&lt;br /&gt;&lt;br /&gt;By clicking below you agree to be bound by these conditions.';		</td>
+</tr>
+</table><br />
+
+<a name="ii"></a><h1 class="h2"><u>Change Welcome PM message</u></h1> 
+<p>To change the Welcome PM that new users receive when they first register you will need to edit <u>language/lang_english/lang_main.php</u>. Use the code <b>%s</b> to show the sitename.</p>
+<p>Find the lines:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">$lang['register_pm_subject'] = 'Welcome to %s';<br />  
+$lang['register_pm'] = 'Hello!&lt;br /&gt;&lt;br /&gt;Welcome to %s.&lt;br /&gt;&lt;br /&gt;We hope you enjoy your time at this site!&lt;br /&gt;&lt;br /&gt;Feel free to join in and share with others or start your own discussion!&lt;br /&gt;&lt;br /&gt;~Enjoy!&lt;br /&gt;%s Staff';</td>
+</tr>
+</table><br />
+
+<a name="iii"></a><h1 class="h2"><u>Adding a Custom Portal block</u></h1> 
+<p>To add a hardcoded HTML Portal block to any side of your portal, edit the <u>templates/subSilver/portal_body.tpl</u> template, use the following code in green as your block template. This code should be added between any exising blocks as shown in the example.</p>
+<p>Example:</p>
+<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2"><span style="color: #FF0000">&lt;!-- ------------END OF ONE PACKAGED BLOCK------------- --&gt;</span><br /><br />&lt;table cellpadding="4" cellspacing="1" width="{COLUMN_WIDTH}" class="forumline"&gt;<br />&nbsp;&nbsp;&lt;tr><br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="catHead"&gt;&lt;span class="cattitle"&gt;CustomBlockTitle&lt;/span&gt;&lt;/td&gt;<br />&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="row1"&gt;&lt;span class="gensmall"&gt;CustomBlockText&lt;/span&gt;&lt;/td&gt;<br />&nbsp;&nbsp;&lt;/tr&gt;<br />&lt;/table&gt;<br />&lt;br /&gt;<br /><br /><span style="color: #FF0000">&lt;!-- ------------START OF ANOTHER PACKAGED BLOCK------------- --&gt;</span></td>
+</tr>
+</table><br />
+
+<a name="iv"></a><h1 class="h2"><u>Increasing File Upload Limit</u></h1> 
+<p>Most servers appear to have a 2MB upload limit set in php.ini (this has no affect on protocols like FTP) but does affect the pafiledb & attachment systems on Fully Modded phpBB.</p>
+<p>If you don't have access to your php.ini file (shared hosting, etc) then open your <u>.htaccess</u> file (found in your forum root directory) and add the following code:</p>
+<table width="90%" cellspacing="1" cellpadding="4" align="center">
+<tr>
+	<td class="code2">
+	php_flag "upload_max_filesize" 5M
+	</td>
+</tr>
+</table><br />
+<p>Change <b>5</b> to whatever you want, but remember, that http is not the best protocol for uploading large files so don't set it too high.</p>
+
+
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

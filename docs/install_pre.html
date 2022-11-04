@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>System Requirements</u></h1>
+
+<p>Installation of Fully Modded phpBB requires the following:</p>
+<ul>
+	<li>A webserver or web hosting account running on any major Operating System</li>
+	<li>PHP (4.4.1 or higher or preferably a recent 5.x) with support for a MySQL database
+	<ul>
+		<li>gd library (1.0 or higher or preferably a recent 2.x)</li>
+		<li>FreeType library</li>
+		<li>Register Globals & Safe Mode off/disabled</li>
+	</ul>
+	</li>
+	<li>A SQL database system:
+	<ul>
+		<li>MySQL (3.23.23 or higher)</li>
+	</ul>
+	</li>
+</ul>
+<p>If your server or hosting account does not meet the requirements above I am afraid Fully Modded phpBB is not for you.</p>
+
+<hr />
+
+<ol>
+	<li><b>How do I install this board on Lycos/coolfreepages/other free host?</b></li>
+	<p>The old adage "You get what you pay for" is particularly true for hosting services! However if you must use a free service (and recognise its limitations) you will find details on common pitfalls in the tutorials forum at <a href="http://www.phpbb.com/phpBB/" target="_new">www.phpbb.com</a>.</p>
+
+	<li><b>How do I enable the GD and FreeType Libraries on my localhost?</b></li>
+	<p>To enable gd support (2.x includes FreeType) open the php.ini file (in most instances located in your php/ or apache/bin/ directory), and look for the line below. Removing the semi-colon from the beginning of this line will enable the gd module:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2"><span style="color: #FF0000">;</span>extension=php_gd2.dll</td>
+	</tr>
+	</table><br />
+
+	<li><b>How do I turn off Register Globals on my localhost?</b></li>
+	<p>To switch off register_globals open the <u>php.ini</u> file (in most instances located in your php/ or apache/bin/ directory), and look for the line below. Changing to "Off" will switch off register_globals and make things more secure:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">register_globals = On</td>
+	</tr>
+	</table>
+	<p>An alternative method for those who do not have access to the php.ini. (ie, are on a paid hosting server), is to add one of the following lines to the top of the <u>.htaccess</u> file. One or the other should work, but it depends entirely on the host server configuration.</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">php_flag register_globals off</td>
+		<td class="code2">php_value register_globals 0</td>
+	</tr>
+	</table><br />
+	
+	<li><b>How do I turn off Safe Mode on my localhost?</b></li>
+	<p>To switch off safe_mode open the <u>php.ini</u> file (in most instances located in your php/ or apache/bin/ directory), and look for the line below. Changing to "Off" will switch off safe_mode:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">safe_mode = On</td>
+	</tr>
+	</table><br />
+	
+	<li><b>Is this board compatible with PHP 5.x?</b></li>
+	<p>It most certainly is! The Fully Modded development site is currently operating error-free on PHP 5.2.5.</p>
+
+</ol>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

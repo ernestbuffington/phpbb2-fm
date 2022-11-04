@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>New Installation</u></h1>
+<p>Installation of Fully Modded phpBB will vary according to your server and database. If you have <i>shell access</i> to your account (via telnet or ssh for example) you may want to upload the entire Fully Modded phpBB archive (in binary mode!) to a directory on your host and un-archive it there.</p>
+<p>If you do not have shell access or do not wish to use it you will need to decompress the Fully Modded phpBB archive to a local directory on your system using your favourite compression program, e.g. winzip, rar, zip, etc. From there you must FTP <b>ALL</b> the files it contains (being sure to retain the directory structure and filenames) to your host. Please ensure that the cases of filenames are retained, do <b>NOT</b> force filenames to all lower or upper case doing so will cause errors later.</p>
+<p>All .php, .inc, .sql, .cfg and .htm files should be uploaded in <b>ASCII</b> mode, while all graphics should be uploaded in <b>BINARY</b> mode. If you are unfamiliar with what this means please refer to your FTP client documentation. In most cases this is all handled transparantly by your ftp client but if you encounter problems later you should be sure the files where uploaded correctly as described here.</p>
+<p>Fully Modded phpBB comes supplied with English as its standard language. However a number of separate packs for different languages are available. If you are not a native English speaker you may wish to install one or more of these packages before continuing. The installation process below will allow you to select a default language from those available (you can of course change this default at a later stage).</p>
+<p>Once all the files have been uploaded to your site you should point your browser at this location with the addition of install/install.php (please note that if you <a href="#fileext">changed the extension from php</a> below, you should alter install.php appropriately). For example if your domain name is <i>www.yourdomain.com</i> and you placed Fully Modded phpBB in a directory /phpBB2 off your web root you would enter <i>http://www.yourdomain.com/phpBB2/install/install.php</i> into your browser. When you have done this you should see the Fully Modded phpBB Installation screen appear.</p>
+
+<a name="fileext"></a><h3 class="h3">Changing the file extension</h3>
+<p>If the file extension used to execute PHP scripts on your server is <b>NOT</b> .php but for example .php3 or .phtml you should first rename <b>ALL</b> files ending in .php and change the value of $phpEx in <u>extension.inc</u>. In the vast majority of cases this step will be unnecessary.</p>
+
+<h3 class="h3">i. Installing on MySQL</h3>
+<p><b>Before proceeding</b> with installation you should ensure you have a database available. Most good hosting accounts now come with at least one database as part of the basic package although it may need to be setup before first use. Ask your provider for details if you are unsure whether you do or not. If you are running your own server and are unsure how to create a database you should refer to your SQL servers documentation or website, e.g. <a href="http://www.mysql.com/doc/" target="_new">http://www.mysql.com/doc/</a>.</p>
+
+<h3 class="h3">ii. Entering required data</h3>
+<p>Once you have reached the installation page you need to fill out several fields. If you do not have or do not know the <u>database name</u>, <u>database server</u>, etc. please check with your hosting provider. For <b>non-ODBC</b> databases the database server is typically localhost but this is <b>NOT</b> universal!</p>
+<p>The <u>database prefix</u> allows you to enter a few characters, short name, etc. which all tables used by this installation will be prefixed with. The default (phpbb_) will usually be fine. However if you have more than one copy of Fully Modded phpBB using the same database be sure to alter it or you will receive errors during installation.</p>
+<p>The remaining information is personal to you and your site. You will need to enter a <u>username</u> and <u>password</u> for the initial administration account (more administrators can be created later). The <u>server name</u>, <u>server port</u> and <u>script path</u> are essential because all emails containing URLs will use these values. The installer will guess initial values, however they may not be correct so be sure to check them!</p>
+<p>Remember that a domain (or server) name does <b>NOT</b> include http://! Enter just the domain name, eg. <i>www.yourdomain.com</i> and <b>NOT</b> <i>http://www.yourdomain.com/</i>.</p>
+<p>The server port can, in the great majority of cases be left as 80, this is the standard http port. However if your web server listens to a different port because for example port 80 is blocked then alter this appropriately.</p>
+<p>The script path is the relative path from your webroot (/public_html/ directory) where Fully Modded is installed, e.g. if you install Fully Modded into a phpBB2/ directory in your webroot then enter <i>/phpBB2/</i> as the script path. However, if you install directly into the webroot directory then enter just a backslash (<i>/</i>) as the script path.</p>
+
+<h3 class="h3">iii. Completing installation</h3>
+<p>Once you have checked all the data press submit. The installation script will create and populate all the necessary tables. It will then attempt to write to the <u>config.php</u> file which will contain the basic configuration data used to run Fully Modded phpBB. If the installer cannot write <u>config.php</u> directly you will be given the option of either downloading the file or even FTPing it to the correct location. If you choose to download you should then re-upload the file to your server, overwriting the existing <u>config.php</u> in the process. If you attempt to FTP via the install script you should supply the requested information. Should FTP fail you will be able to download the file and then re-upload as described earlier.</p>
+<p>During the installation procedure Fully Modded phpBB will check to ensure the relevant PHP database module is available and will not proceed if it cannot be found. Should this happen be sure to check you have selected the correct database and/or ask your hosting provider for advice.</p>
+<p>Click <a href="install_post.html">Here</a> to complete the installation.</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

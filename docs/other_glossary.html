@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>Glossary</u></h1>
+
+<h3 class="h3">.htaccess file</h3> 
+<p>A document read by the Apache server that can contain certain server directives. The server administrator can control which available directives (if any) are allowed to be set in a <code>.htaccess</code> file on a directory-by-directory basis. If allowed, directives can affect the current directory and those below it. <code>.htaccess</code> files can contain PHP directives prefixed by <code>php_flag</code> or <code>php_value</code>. The <code>.htaccess</code> file can also be used to set an <code>AddType</code> directive that can change the extension associated by the server with PHP documents.</p>
+
+<h3 class="h3">abstract class</h3> 
+<p>A class that is partially implemented and explicitly declared as such. Unimplemented methods are declared abstract and consist of method signatures only. Classes that extend abstract classes must implement all abstract methods or be declared abstract themselves.</p>
+
+<h3 class="h3">anonymous function</h3> 
+<p>A function that is created on-the-fly during script execution and stored in a variable or passed to other functions.</p>
+
+<h3 class="h3">argument</h3> 
+<p>A value passed to a function or method. Arguments are included within the parentheses of a function call. User-defined functions include comma-separated argument names within the parentheses of the function definition. These arguments then become available to the function as local variables.</p>
+
+<h3 class="h3">array</h3> 
+<p>A list variable. That is, a variable that contains multiple elements indexed by numbers or strings. It enables you to store, order, and access many values under one name. An array is a data type.</p>
+
+<h3 class="h3">associative array</h3> 
+<p>An array indexed by strings.</p>
+
+<h3 class="h3">atom</h3> 
+<p>With reference to regular expressions an atom is a pattern enclosed in parentheses (often referred to as a subpattern). After you have defined an atom, you can treat it as if it were itself a character or character class.</p>
+
+<h3 class="h3">Boolean</h3> 
+<p>A data type. Booleans can contain one of the special values <code>true</code> or <code>false</code>.</p>
+
+<h3 class="h3">bounds</h3> 
+<p>The number of times a character or range of characters should be matched in a regular expression.</p>
+
+<h3 class="h3">break statement</h3> 
+<p>Consists of the keyword break. It forces the immediate end of a <code>for</code> or <code>while</code> loop iteration, and no further iterations of the loop take place.</p>
+
+<h3 class="h3">cast</h3> 
+<p>The process by which one data type is converted to another.</p>
+
+<h3 class="h3">class</h3> 
+<p>A collection of special functions called <i>methods</i> and special variables called <i>properties</i>. You can declare a class with the <code>class</code> keyword. Classes are the templates from which objects are created.</p>
+
+<h3 class="h3">color resource</h3> 
+<p>A special value of the data type <code>resource</code>. It is returned by the <code>imagecolorallocate()</code> function and passed to other image manipulation functions, which can then work with the specified color.</p>
+
+<h3 class="h3">comment</h3> 
+<p>Text in a script that is ignored by the interpreter. Comments can be used to make code more readable or to annotate a script.</p>
+
+<h3 class="h3">comparison operator</h3> 
+<p>In the form ==, this operator compares two operands and tests for equivalence. It resolves to the Boolean <code>true</code> value if the two operands are equivalent and <code>false</code> otherwise. In the form ===, the operator tests two object variables, returning <code>true</code> only if both variables are references to the same object.</p>
+
+<h3 class="h3">constant</h3> 
+<p>Outside of a class, a constant is a value that is set with the <code>define()</code> function and does not change throughout the execution of a script. A constant is global in scope and can be only a number or string. In the context of a class, a constant is a special property declared with the <code>const</code> keyword. A constant property cannot be changed at runtime and is available via the class rather than a class instance.</p>
+
+<h3 class="h3">constructor</h3> 
+<p>A special method that is automatically called when an object is instantiated.</p>
+
+<h3 class="h3">continue statement</h3> 
+<p>Consists of the keyword <code>continue</code>. It forces the immediate end of the current <code>for</code> or <code>while</code> loop iteration. Execution begins again from the test expression (in <code>for</code> loops the modification expression is executed first) and the next loop iteration is begun if the expression resolves to <code>true</code>.</p>
+
+<h3 class="h3">conversion specification</h3> 
+<p>Contained within a format control string, a conversion specification begins with a percent (%) symbol and defines how to treat the corresponding argument to <code>printf()</code> or <code>sprintf()</code>. You can include as many conversion specifications as you want within the format control string, as long as you send an equivalent number of arguments to <code>printf()</code>.</p>
+
+<h3 class="h3">cookie</h3> 
+<p>A small amount of data stored by the user's browser in compliance with a request from a server or script.</p>
+
+<h3 class="h3">data type</h3> 
+<p>Different types of data take up different amounts of memory and behave in different ways when operated on. A data type is the named means by which these different kinds of data are distinguished. PHP has eight data types: integer, double, string, Boolean, object, array, resource, and NULL.</p>
+
+<h3 class="h3">DBA</h3> 
+<p>Database abstraction layer. These functions are designed to provide a common interface to a range of file-based database systems.</p>
+
+<h3 class="h3">DBA resource</h3> 
+<p>A special value of the data type <code>resource</code>. It is returned by the <code>dba_open()</code> function and passed to other DBA functions, which can then work with the open database.</p>
+
+<h3 class="h3">DBM</h3> 
+<p>Database manager. DBM and DBM-like systems enable you to store and manipulate name/value pairs on your system.</p>
+
+<h3 class="h3">destructor</h3> 
+<p>A special method automatically invoked just before an object is removed from memory.</p>
+
+<h3 class="h3">document object model (DOM)</h3> 
+<p>A means of accessing an XML document that involves the generation of a tree of nodes organized as parents, children, and siblings.</p>
+
+<h3 class="h3">document type definition (DTD)</h3> 
+<p>A set of rules that determines which XML elements can be used in which order for an XML document. A validating XML parser reads a DTD and enforces the rules it describes.</p>
+
+<h3 class="h3">double</h3> 
+<p>A data type. Also known as a float, a floating-point number, or a real number, a double is defined by <i>The Free On-line Dictionary of Computing</i> as "a number representation consisting of a mantissa [the part after the decimal point], ... an exponent, ... and an (assumed) radix (or "base")." For the purposes of this book, you can think of a double as a number that can contain a fraction of a whole number—that is, a number with a decimal point.</p>
+
+<h3 class="h3">else statement</h3> 
+<p>It can be used only in the context of an <code>if</code> statement. The <code>else</code> statement consists of the keyword <code>else</code> and a statement (or series of statements). These statements are executed only if the test expression of the associated <code>if</code> statement evaluates to <code>false</code>.</p>
+
+<h3 class="h3">entity body</h3> 
+<p>The substance of a document returned by a server to a client. An entity body can also be sent by a client to a server as part of a <code>POST request</code>.</p>
+
+<h3 class="h3">escape</h3> 
+<p>The practice of removing special significance from characters within strings or regular expressions by preceding them with a backslash character (\).</p>
+
+<h3 class="h3">exception</h3> 
+<p>A special object that can be thrown by a method with the throw keyword. An exception object must be of type <code>Exception</code> and includes a message and other error information. Throwing an exception causes a method's execution to end. The calling code is then responsible for handling the exception using the <code>catch</code> keyword.</p>
+
+<h3 class="h3">expression</h3> 
+<p>Any combination of functions, values, and operators that resolves to a value. As a rule of thumb, if you can use it as if it were a value, it is an expression.</p>
+
+<h3 class="h3">field width specifier</h3> 
+<p>Contained within a conversion specification, a field width specifier determines the space within which output should be formatted.</p>
+
+<h3 class="h3">file resource</h3> 
+<p>A special value of the data type <code>resource</code>. It is returned by the <code>fopen()</code> function and passed to other file functions, which can then work with the open file.</p>
+
+<h3 class="h3">float</h3> 
+<p>A data type. It is a synonym for double.</p>
+
+<h3 class="h3">for statement</h3> 
+<p>A loop that can initialize a counter variable (initialization expression), test a counter variable (test expression), and modify a counter variable (modification expression) on a single line. As long as the test expression evaluates to <code>true</code>, the loop statement continues to be executed.</p>
+
+<h3 class="h3">foreach statement</h3> 
+<p>A loop used to iterate through every element in an array. The loop automatically populates temporary variables with the next array key and values for each iteration.</p>
+
+<h3 class="h3">format control string</h3> 
+<p>The first argument to <code>printf()</code> or <code>sprintf()</code>. It contains conversion specifications that determine the way in which additional arguments to these functions are formatted.</p>
+
+<h3 class="h3">Freetype</h3> 
+<p>An open-source library providing functionality for working with TrueType fonts. The two versions are FreeType 1 and FreeType 2. Both libraries can be used by PHP's image functions to render text in images.</p>
+
+<h3 class="h3">function</h3> 
+<p>A block of code that is not immediately executed but can be called by your scripts when needed. Functions can be built-in or user-defined. They can require information to be passed to them and usually return a value.</p>
+
+<h3 class="h3">GET request</h3> 
+<p>A request made to a server by a client in which additional information can be sent appended to the URL.</p>
+
+<h3 class="h3">global</h3> 
+<p>Consists of the keyword <code>global</code> followed by a variable(s). It causes the associated variables to be accessed in global rather than local scope.</p>
+
+<h3 class="h3">header section</h3> 
+<p>Part of an HTTP request or response (it follows the request line or response line). It consists of name/value pairs on separate lines. Names are separated from values by colons.</p>
+
+<h3 class="h3">hint</h3> 
+<p>The name of an object type used to qualify an argument in a method declaration. When the method is invoked, it must be passed an object of the defined type for that argument; otherwise, the script fails.</p>
+
+<h3 class="h3">Hypertext Transfer Protocol (HTTP)</h3> 
+<p>A set of rules that defines the process by which a client sends a request and a server returns a response.</p>
+
+<h3 class="h3">if statement</h3> 
+<p>Consists of a test expression and a statement or series of statements. The statement is executed only if the test expression evaluates to <code>true</code>.</p>
+
+<h3 class="h3">image resource</h3> 
+<p>A special value of the data type <code>resource</code>. It is returned by the <code>imagecreate()</code> function and passed to other image manipulation functions, which can then work with the dynamic image.</p>
+
+<h3 class="h3">inheritance</h3> 
+<p>A term used in the context of object-oriented programming. It is used to describe the process by which one class is set up to include the member variables and methods of another. This is achieved using the <code>extends</code> keyword when the child class is declared.</p>
+
+<h3 class="h3">integer</h3> 
+<p>A data type. Integers include all whole negative and positive numbers and zero.</p>
+
+<h3 class="h3">iteration</h3> 
+<p>A single execution of a statement (or series of statements) associated with a loop. A loop that executes five times has five iterations.</p>
+
+<h3 class="h3">interface</h3> 
+<p>A special class that contains only method signatures. An interface must contain no implementation at all. Classes that implement an interface must implement every method it defines. A class can implement any number of interfaces and takes on the type of any interface it implements.</p>
+
+<h3 class="h3">link resource</h3> 
+<p>A special value of the data type <code>resource</code>. It is returned by the <code>mysql_connect()</code> function and passed to other MySQL functions, which can then work with the open database.</p>
+
+<h3 class="h3">method</h3> 
+<p>A special function, available only in the context of a class or object.</p>
+
+<h3 class="h3">multidimensional array</h3> 
+<p>An array that contains another array as one of its elements.</p>
+
+<h3 class="h3">NULL</h3> 
+<p>A special data type. It consists of the value NULL and represents an uninitialized variable—that is, a variable that holds no value.</p>
+
+<h3 class="h3">object</h3> 
+<p>Existing in memory rather than as code, an object is an instance of a class, meaning it's the working embodiment of the functionality laid down in a class. An object is instantiated with the new statement in conjunction with the name of the class of which it is to be a member. When an object is instantiated, you can access all its properties and all its methods. An object is a data type.</p>
+
+<h3 class="h3">operand</h3> 
+<p>A value used in conjunction with an operator. There are usually two operands to one operator.</p>
+
+<h3 class="h3">operator</h3> 
+<p>A symbol or series of symbols that, when used in conjunction with values, performs an action and usually produces a new value.</p>
+
+<h3 class="h3">padding specifier</h3> 
+<p>Contained within a conversion specification, a padding specifier determines the number of characters that output should occupy and the characters to add otherwise.</p>
+
+<h3 class="h3">pattern modifier</h3> 
+<p>A letter placed after the final delimiter in Perlcompatible regular expressions to refine their behavior.</p>
+
+<h3 class="h3">PEAR</h3> 
+<p>The PHP Extension and Application Repository. A qualitycontrolled library of PHP packages designed to extend the usefulness of PHP.</p>
+
+<h3 class="h3">PEAR::Auth</h3> 
+<p>A PEAR package that provides methods for authenticating visitors using usernames and passwords.</p>
+
+<h3 class="h3">PEAR::Config</h3> 
+<p>A PEAR package for writing to and reading from configuration files.</p>
+
+<h3 class="h3">PEAR::DB</h3> 
+<p>A PEAR package that provides a common interface for talking to many databases.</p>
+
+<h3 class="h3">php.ini</h3> 
+<p>The configuration file that determines the way in which PHP runs. The file contains directives that specify a wide range of rules and behaviors.</p>
+
+<h3 class="h3">phpDocumentor</h3> 
+<p>A package for producing documentation using comments embedded in source code. It's part of PEAR.</p>
+
+<h3 class="h3">POST request</h3> 
+<p>A request made to a server by a client in which additional information can be sent within the request entity body.</p>
+
+<h3 class="h3">precision specifier</h3> 
+<p>Contained within a conversion specification, a precision specifier determines the number of decimal places to which a double should be rounded.</p>
+
+<h3 class="h3">private</h3> 
+<p>This keyword limits the availability of a method or property to the enclosing class only.</p>
+
+<h3 class="h3">property</h3> 
+<p>A special variable, available only in the context of an object or a class.</p>
+
+<h3 class="h3">protected</h3> 
+<p>This keyword limits the availability of a method or property to the enclosing class and to any child classes.</p>
+
+<h3 class="h3">public</h3> 
+<p>This keyword makes a property or method available to any client code.</p>
+
+<h3 class="h3">query string</h3> 
+<p>A set of name/value pairs appended to a URL as part of a GET request. Names are separated from values by equal signs, and pairs are separated from each other by ampersand (&) characters. The query string is separated from the rest of the URL by a question mark (?). Both names and values are encoded so characters with significance to the server are not present.</p>
+
+<h3 class="h3">reference</h3> 
+<p>The means by which multiple variables can point to the same value. By default, nonobject arguments are passed and assignments are made by value in PHP. This means that copies of values are passed around. As of PHP 5, objects are assigned and passed by reference. Therefore, when you pass an object variable to a method, you pass a handle to a single object, as opposed to a copy of the object.</p>
+
+<h3 class="h3">regular expression</h3> 
+<p>A powerful way of examining and modifying text.</p>
+
+<h3 class="h3">request headers</h3> 
+<p>Key value pairs sent to the server by a client providing information about the client itself and the nature of the request.</p>
+
+<h3 class="h3">request line</h3> 
+<p>The first line of a client request to a server. It consists of a request method, typically <code>GET</code>, <code>HEAD</code>, or <code>POST</code>; the address of the document required; and the HTTP version to be used (HTTP/1.0 or HTTP/1.1).</p>
+
+<h3 class="h3">resource</h3> 
+<p>A special data type. Resources represent handles used to work with external entities (databases and files are good examples of this).</p>
+
+<h3 class="h3">response headers</h3> 
+<p>Key value pairs sent to the client in response to a request. They provide information about the server environment and the data that is being served.</p>
+
+<h3 class="h3">scope</h3> 
+<p>The range of code for which a variable holds a particular value. For example, the value of a variable declared inside a function is unavailable outside that function. The variable is said to be local to the scope of the function.</p>
+
+<h3 class="h3">server variables</h3> 
+<p>Predefined elements that PHP makes available for you in conjunction with your server. You can access these elements via the superglobal <code>$_SERVER</code> array. Which elements are made available is server dependent, but they are likely to include common variables such as <code>$_SERVER['HTTP_USER_AGENT']</code> and <code>$_SERVER['REMOTE_ADDR']</code>.</p>
+
+<h3 class="h3">statement</h3> 
+<p>Represents an instruction to the interpreter. Broadly, it is to PHP what a sentence is to written or spoken English. A sentence should end with a period; a statement should usually end with a semicolon. Exceptions to this include statements that enclose other statements and statements that end a block of code. In most cases, however, failure to end a statement with a semicolon confuses the interpreter and results in an error.</p>
+
+<h3 class="h3">static</h3> 
+<p>Used within the context of a function, the <code>static</code> keyword ensures that an associated variable maintains the same value across function calls. In the context of a class, a <code>static</code> property is available via a class rather than through individual class instances (objects).</p>
+
+<h3 class="h3">status line</h3> 
+<p>The first server response to a client request. The status line consists of the HTTP version the server is using (HTTP/1.0 or HTTP/1.1), a response code, and a text message that clarifies the meaning of the response code.</p>
+
+<h3 class="h3">stream</h3> 
+<p>A flow of data that can be read from and written to. Streams are a new mechanism in PHP that provide a common interface for working with data across a range of contexts.</p>
+
+<h3 class="h3">string</h3> 
+<p>A data type. It is a series of characters.</p>
+
+<h3 class="h3">Structured Query Language (SQL)</h3> 
+<p>A standardized syntax by which different types of database can be queried.</p>
+
+<h3 class="h3">subclass</h3> 
+<p>A class that inherits member variables and methods from another (parent) class.</p>
+
+<h3 class="h3">superclass</h3> 
+<p>A parent class.</p>
+
+<h3 class="h3">superglobal</h3> 
+<p>A variable available in any scope. Superglobals are always built-in and include <code>$_REQUEST</code>, <code>$_GET</code>, <code>$_POST</code>, and <code>$_SERVER</code>, among others.</p>
+
+<h3 class="h3">switch</h3> 
+<p>A statement that compares the result of an operation against any number of different values in turn, executing a particular block of code if a match is found for the test value.</p>
+
+<h3 class="h3">ternary operator</h3> 
+<p>Returns a value derived from one of two expressions separated by a colon. Which expression is used to generate the value returned depends on the result of an initial test expression that precedes the return expressions and is separated from them by a question mark (?).</p>
+
+<h3 class="h3">timestamp</h3> 
+<p>The number of seconds that have elapsed since midnight GMT on January 1, 1970. This number is used in date arithmetic.</p>
+
+<h3 class="h3">type specifier</h3> 
+<p>Contained within a conversion specification, a type specifier determines the data type that should be output.</p>
+
+<h3 class="h3">variable</h3> 
+<p>A holder for a type of data. It can hold numbers, strings of characters, objects, arrays, or booleans. The contents of a variable can be changed at any time.</p>
+
+<h3 class="h3">while statement</h3> 
+<p>A loop that consists of a test expression and a statement (or series of statements). The statements are repeatedly executed as long as the test expression evaluates to <code>true</code>.</p>
+
+<h3 class="h3">XML (Extensible Markup Language)</h3> 
+<p>A set of rules for defining and parsing markup languages. Such languages are often constructed to structure data for sharing, format data for display, or send instructions to an interpreter.</p>
+
+<h3 class="h3">XSLT (Extensible Stylesheet Language Transformations)</h3> 
+<p>A template system for XML documents that makes converting from XML to other formats, such as HTML or WML, easy.</p>
+
+<h3 class="h3">Zend</h3>
+<p>The scripting engine that lies at the heart of the PHP interpreter. Zend was released with the advent of PHP 4, and Zend 2 was released with the advent of PHP 5.</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

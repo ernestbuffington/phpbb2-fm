@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>File Edits &amp; Directory Permissions</u></h1>
+<h3 class="h3">iv. Securing &amp; Enabling the Board</h3>
+<p>Once you have successfully installed/updated you <b>MUST DELETE</b> the entire <u>install/</u> directory. Leaving this in place is a <u>very serious potential security issue</u> which may lead to deletion or alteration of files, etc. Please note that until this directory is removed your board will not operate and the board disabled message will be displayed.</p>
+<p>With this directory deleted you should proceed to the administration panel. Depending on how the installation/upgrade completed you may have been directed there automatically. If not, login as the administrator you specified during install/upgrade and click the "<b>Administration Control Panel</b>" link at the top/bottom of any page. Ensure that details specified in General -> Configuration settings are correct!</p>
+
+<h3 class="h3">v. Directory permissions</h3>
+<p>Fully Modded phpBB 2 requires some file and directories to have read/write permissions to allow on the server editing, users to upload avatars, photos, attach files, etc. These file and directories permissions must be set manually.</p>
+<p><table width="100%">
+<tr>
+	<td>- admin/backup/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- cache/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- cache/config_page_perms.php</td>
+	<td>0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td class="row1">- cache/reflog.txt</td>
+	<td class="row1">0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td>- cache/semaphore.ref</td>
+	<td>0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td class="row1">- cache/backup/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- cache/tpls/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- images/smiles/</td>
+	<td class="row1">0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td>- language/*/lang_bbcode.php</td>
+	<td>0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td class="row1">- language/*/lang_faq.php</td>
+	<td class="row1">0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td>- language/*/lang_faq_moderator.php 	</td>
+	<td>0666 or -rw-rw-rw-</td>
+</tr>
+<tr>
+	<td class="row1">- modules/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- modules/pakfiles/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- uploads/album/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/album/thumbs/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- uploads/attachments/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/attachments/thumbs/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- uploads/backups/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/pafiledb/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- uploads/pafiledb/screenshots/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/user_avatars/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td>- uploads/user_avatars/tmp/</td>
+	<td>0777 or -rwx-rwx-rwx-</td>
+</tr>
+<tr>
+	<td class="row1">- uploads/user_photos/</td>
+	<td class="row1">0777 or -rwx-rwx-rwx-</td>
+</tr>
+</table>
+</p>
+<p>On UNIX systems for example you set the directory to a+rwx (or ugo+rwx or even 0777). This can be done from a command line on your server using chmod or via your FTP client (using the Change Permissions, chmod or other Permissions dialogue box, see your FTP clients documentation for help). Most FTP clients list permissions in the form of User (Read, Write, Execute), Group (Read, Write, Execute) and Other (Read, Write, Execute). You need to tick all of these boxes to set correct permissions.</p>
+<p>On Windows system you need to ensure the directory is not write-protected and that it has global write permissions (see your servers documentation or contact your hosting provider if you are unsure on how to achieve this).</p>
+<p>Please be aware that setting a directories permissions to global write access is a potential security issue. While it is unlikely that anything nasty will occur (such as all the avatars or photos being deleted) there are always people out there out to cause trouble. Therefore you should monitor all these directories and if possible make regular backups of the files contained in them.</p>
+
+<h3 class="h3">vi. Required file edit</h3>
+<p>Fully Modded phpBB 2 requires one file to be manually edited. You <b>MUST</b> do the following edit if you wish to enable the mobile device browsing feature. You only have to change the coding that is in <b style="color: #FF0000">red</b>, <b>DO NOT</b> change any other coding. Some file editors will corrupt PHP files so we recommend you use Wordpad, <a href="http://www.phpide.com/go/downloads.htm#PHP%20Coder" target="_new">PHP Coder</a> or <a href="http://www.emeditor.com/download.htm" target="_new">EmEditor</a>.</p>
+<ul>
+<h1 class="h3">i. phpBBToGo</h1>
+<p>Edit the file <u>mods/mobile/phpbbtogo.php</u> (Line 291), find and change to the forum_IDs on your board that can be browsed via a mobile device:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">// The array of forum_IDs to show<br />$CFG['mobile_forums'] = array(<span style="color: #FF0000">18,24</span>);</td>
+	</tr>
+	</table><br />
+</ul>
+
+<h3 class="h3">Google Sitemap Setup</h3>
+<p>To setup your board with the Google Sitemap you will need a Google account. If you already have a GMail account, then simply use that username & password. If you don't have a GMail account, then get with the times, there's plenty of people out there with invites to spare.</p>
+<p>Once you have a valid Google username & password, go to <a href="https://www.google.com/webmasters/sitemaps/" target="_blank">Google Sitemaps</a> and submit your board URL to <u>google_sitemap.xml</u>.</p>
+<p><b>Note:</b> The filename is <u>google_sitemap.php</u>, but a forum root <u>.htaccess</u> file will make <u>google_sitemap.xml</u> load the <u>google_sitemap.php</u> file. e.g. http://www.yourdomain.com/google_sitemap.php is submitted as <b>http://www.yourdomain.com/google_sitemap.xml</b></p>
+<p>You can load the .xml URL in your browser to check the .htaccess directives are working. Remember though, Google will crawl your site, even if it has a sitemap (apparently), so don't worry if not all of your custom URLs are included in the XML files.</p>
+
+<h3 class="h3">Uploadable avatars</h3>
+<p>Fully Modded phpBB 2 supports several methods for allowing users to select their own <i>avatar</i> (an avatar is a small image generally unique to a user and displayed just below their username in posts).</p>
+<p>Two of these options allow users to upload an avatar from their machine or a remote location (via a URL). If you wish to enable this function you should first ensure the correct paths for uploadable avatars is set in Admin -> Avatars -> Configuration. By default this is <u>uploads/user_avatars</u> but you can set it to whatever you like, just ensure the configuration setting is updated. You must also ensure this directory can be written to by the webserver. Usually this means you have to alter its permissions to allow anyone to read and write to. Exactly how you should do this depends on your FTP client or server operating system.</p>
+
+<a name="themes"></a><h3 class="h3">Changes in language pack format and templates</h3>
+<p>Please note that changes have been made to the format of language, image localisations and templates from the previous phpBB/Fully Modded version. If you were running a prior release you <u>will need</u> to download new language and image localisation packs from <a href="http://phpbb-fm.com" target="_blank">www.phpbb-fm.com</a>. A number of missing strings have been added which are essential for the new features and functions this new version provides. Please note that at this time not all language packs have been updated so you should be prepared to periodically check for updates.</p>
+<p>If you are using or have installed any 3rd party template set you must either remove it or update it. Changes have been made to a number of template variables which will result in these not working unless they have been updated to meet the latest Fully Modded phpBB version standards.</p>
+
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

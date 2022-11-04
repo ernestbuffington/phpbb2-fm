@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>How does the Lottery work?</u></h1>
+<p>With the lottery a member can buy a ticket and earn points if they win. You can set this up from Admin -> Points System -> Lottery: Configuration. You can switch the lottery on or off, give it a name, set up the price of a ticket (entry cost), the base amount, how long it takes to the next draw (lottery draw period), how many tickets a member can buy and if the process is supposed to restart or not.</p>
+
+<ol>
+	<li><b>I'm getting an error about rand not being seeded or something like that, what is this?</b>
+	<p>It means the version of PHP on your webserver is out of date. Either update it or you can't use this modification, sorry.</p></li>
+	
+	<li><b>How is it drawn?</b>
+	<p>Each visit to the lottery page it will check the time to see if it's over, if it is it will draw it and either reset it or turn it off depending on your settings. The new countdown will begin from then. Not from when the original timer ran out. This is because it's built in PHP and there's no such thing as timers. </p></li>
+	
+	<li><b>How do I set the time periods for it to be drawn? </b>
+	<p>The "Lottery Draw Periods" is how long it will take for it to be drawn, in seconds. </p></li>
+		
+	<li><b>What is Auto-Restart? </b>
+	<p>It means once the lottery has finished its current run, it will automatically reset itself and begin a new lot.</p></li>
+	
+	<li><b>What is Lottery Base Amount? </b>
+	<p>It's what will be given no matter how many people enter. It's a base sum from which the total will begin. Basically, if you make it 500 and 1 person enters for 25 currency it will give them 525. </p></li>
+	
+	<li><b>What is Entry Cost? </b>
+	<p>It's how much each entry into the lottery will cost.</p></li>
+	
+	<li><b>What is the Tickets field for in the admin panel control for the lottery? </b>
+	<p>It will allow people to either enter once or as many times as they like into the lottery. </p></li>
+	
+	<li><b>Is it possible to stop the lottery? </b>
+	<p>Yes, just turn it off, however if you do this and turn it back on the timer will restart. </p></li>
+		
+	<li><b>How do I get it to start? </b>
+	<p>Turn it on in the admin panel, under lottery status, each time you turn it on it will restart the timer. </p></li>
+		
+	<li><b>Will updating the lottery settings reset the lottery? </b>
+	<p>No, not unless you turn it off then back on. </p></li>
+	
+	<li><b>Can I force it to end? </b>
+	<p>Yes, just change the period in which it's drawn. If you set it to 1 it will draw it instantly.</p></li>
+	
+	<li><b>Can I view who's entered the lottery? </b>
+	<p>No, you can't. Not without going into your database and looking at the table.</p></li>
+</ol>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

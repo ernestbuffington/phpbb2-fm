@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>How do the Jobs work?</u></h1>
+<ol>
+	<li><b>What is "Index Display"?</b>
+	<p>Index display is how the main jobs page will be viewed by everyone else.</p>
+	<p>When in compact mode, it will display the basic statistics plus a drop down containing the current jobs of a user and jobs they can take.</p>
+	<p>When in extended mode, it will display the basic statistics and give a listing of all the jobs a user currently has, with various information such as pay and the job length. It will also do the same for available jobs.</p></li>
+	
+	<li><b>What is "Payout Type"?</b>
+	<p>Payout type is basically how it sounds. It will allow you to set the way wages are paid out to your users.</p>
+	<p>When set to Pay Person, it will only pay that user when it does it's checks. This means that they will need to visit the forum regularly to keep up their payments.</p>
+	<p>When it's set to Pay All, it will check everyone's current jobs when a person sets off the pay script and if they are needing to be paid, do so. This means users can take up a job and not visit regularly, but still get paid.</p></li>
+	
+	<li><b>How does the pay script work?</b>
+	<p>Everytime a user visits the forum, if it hasn't checked their jobs within the past 2 hours, it will do so. It will then attempt to update any jobs that need to be paid. Whether it does everyone or just one person is dependant on your Payout Type, see question above.</p></li>
+		
+	<li><b>What are Job Positions?</b>
+	<p>Fairly simple, this is how many people may have the job at any one time.</p></li>
+	
+	<li><b>What is Job Length?</b>
+	<p>This is how long it will take for the person to recieve payment for their particular job. The time is in seconds (the default of 500000 seconds is approximately six (6) days).</p></li>
+	
+	<li><b>What is Job Type?</b>
+	<p>This allows you to set whether the job is available to the public or only able to be given out through the Admin Control Panel.Good examples of what this could be used for are perhaps if you want to pay your moderators a set fee each week. You can make a job called Moderator and set it to private. Give it to all your moderators and they'll get paid weekly.</p></li>
+	
+	<li><b>What are Requirements?</b>
+	<p>Requirements are not an easy thing to comprehend, but once you understand them they allow you massive customization with your forums. It will allow you to make a job require specific items from the shop before someone can apply for it.</p></li>
+	
+	<li><b>How do Requirements work?</b>
+	<p>You can put up to 255 characters in length of requirements on any item through the ACP. Each requirement needs to be seperated with a semi-colon (<b>;</b>) character. I'll give examples showing how this works.<p>
+	<ul>
+		<li><p><b>Administrator &amp; Moderator Requirements:</b><br />If you wish to restrict by Admins or Moderators, simply add <b>mod</b> or <b>admin</b> as a requirement. Just <b>mod</b> will make it so unless you're an Admin/Moderator you can't take the job, <b>admin</b>, the same, must be an Admin to take the job.</p></li>
+		<li><p><b>Sex Requirements:</b><br />Sex Requirements are different from Administrator &amp; Moderator Requirements. They work as follows: <b>sex=male</b> or <b>sex!male</b>. The first means you must be Male, the second must not be Male. Same for Female, <b>sex=female</b>, <b>sex!female</b>. Now an example of how to combine this with a Moderator would be, <b>mod;sex=female</b>. This would mean you need to be a Moderator and Female to take the job.</p></li>
+		<li><p><b>Points Requirements:</b><br />Much like the Sex Requirements, these are only slightly more complicated.These work like this, <b>gil&gt;10</b> would mean you need more than 10 of your currency. <b>gil&lt;10;gil&gt;1</b> means you would need less than 10 gil, more than 1 gil to take the job. <b>gil!500</b> means you would have to not have 500 gil to take the job. <b>gil=500</b> means you need exactly 500 gil to take the job. <b>NOTE:</b> The word <b>gil MUST</b> be used as the specifier for currency requirements. However, this will be displayed as your correct currency in the output.</p></li>
+		<li><p><b>Post Requirements:</b><br />Exactly like gil, but it uses posts in replace of the word gil, e.g. <b>posts&gt;200</b>. Again, all these requirements can be stacked. <b>gil&gt;500;posts&lt;500;sex=female</b>.</p></li>
+		<li><p><b>Shop Item Requirements:</b><br />Last, but definitely not least. Shop Item Requirements are basically like the Sex Requirements. You simply use <b>item=flower</b> or <b>item!flower</b>. These mean must have a flower in their inventory and not have a flower in their inventory, respectively.</p></li>
+	</ul>
+	<p>All these requirement types can be combined in any order, with no limit on how many restrictions you put on an item. Keep in mind that item requirements are not displayed in the shop, unless you add them to the description of the item.</p>
+</ol>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>How do E-mail Digests work?</u></h1>
+<p>This digest feature depends on having a batch scheduling system that you can use. You will need to figure out a way to program your batch scheduling system to call the mail_digests.php program once an hour every hour of the day, every day of the week. If you cannot do that then there is no point using this feature!</p>
+<p>How easy it is to do this step depends on whether you own your web server or it is hosted externally for you and how easily you can access the web server. If you own the server then presumably you are already familiar with the server operating system and the commands needed.</p>
+<p>If you contract with a web host, access it remotely and you have never ventured beyond FTP to transmit files then you will have to connect via a terminal mode to issue the operating system commands to interact with your batch scheduling system.</p>
+<p>If you do not have access to your server, or cannot setup some kind of local scheduling, see the method at the bottom of this page.</p>
+<p>If your server is brought down you may have to go in manually and reprogram the crontab, so make a note of what you did, or store the commands in a file.</p>
+
+
+<h3 class="h3">Usage notes</h3>
+<p>Most users who receive HTML digests using web based email programs like Yahoo! Mail will likely not see cascading style sheets applied to the HTML email unless frames are enabled, with a frame for the content of the email message. In the case of Yahoo! Mail, the message is displayed inside of a table &lt;td&gt; tag. Yahoo! Mail strips out &lt;link&gt; and related tags and appears to shove whatever content is between the &lt;body&gt; and the &lt;/body&gt; tags of the email into the cell where the message appears. It all still works, just may not look as fancy (but still better than text).</p>
+<p>You can use any theme you have installed on your board to theme the digest. By default it will use whatever theme the user has set (unless you have an overriding theme set in the ACP). If you want to overide both the board default and the user default (say you always want it to use subSilver, and your boards default is someething else) then you can set OVERIDE_THEME to true, and then set DIGEST_THEME to the theme (from the database) of the theme you want to use. Any images will be striped out of the theme, but colors sill stick and if the theme is well put together the colors will be at least close to the images that should be covering them. Note that the digest pulls the theme data from the database, NOT a css file.</p>
+<p>Test to see if the digest user interface is working correctly. Via URL invoke <u>digests.php</u> in your phpBB root folder. Set it up so you receive a digest every hour.</p>
+<p>Next, test to see if you can receive an email digest. Via ACP, run the "Mail Digests". You should see a text output indicating who received a digest, how many messages were sent and other information, that may or may not be usefull, along with a total count of the digests sent and some server date and time information. This will help in testing and resolving potential issues. Since this program is normally run automatically this information is not seen seen, but you can redirect output to a file if you wish (depending on how your server is configured). It may be an idea to turn logging on at this stage so that you have a record of what has been happening. If the digest was successfully sent it should appear in your email.</p>
+<p>Next, follow the instructions below to setup batch scheduling and test it. Schedule yourself to receive a digest every hour. Hopefully it will pop into your mailbox in an hour of setting up your digest.</p>
+<p>If you get errors when you run <u>mail_digests.php</u> you may need to change line 40 to show the absolute path to phpBB on your server (e.g. '/subfolder/local/home/mysite/mysite.com/') It is dependant on how the server is configured. On some servers it will work with the relative path set but on others it needs the absolute path (not sure why!)</li>
+
+
+<h3 class="h3">Instructions for setting up a crontab (for Linux/Unix systems)</h3>
+<ol>
+	<li>If your web host allows straight telnet access, great. Log in. Skip to step 3.</li>
+	<li>Most web hosts require that if you want a telnet access you have to use a secure telnet program, such as Secure Shell (SSH). Find out from your web host what you need to do to use SSH. My web host (successfulhosting.com) made me go through the following procedures:
+	<ol type="a">
+		<li>I had to provide identification by faxing them my driver's license. They then configured something on the server side giving me SSH permissions.</li>
+		<li>I then had to download and configure SSH client software (I used Putty, which is free and available at <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/" target="_blank">www.chiark.greenend.org.uk</a>).</li>
+		<li>Using my SSH client I created an encryption key. I then used my host's Control Panel to provide the key to my web host.</li> 
+		<li>After some wailing and gnashing of teeth I got the thing to work. Eventually I connected successfully, entered my ID and password and got a server operating system prompt. From there I could issue operating system commands.</li>
+	</ol>
+	This was not a trivial process. Elapsed time may take a day or two if you have not done it before.</li>
+	<li>You will need a passing ability to use the Unix "vi" text editor to program your crontab job. Here is how I did it (do not send the quotes as part of the commands). Note that you need to first figure out the path to the PHP interpreter. I found it in /usr/local/bin but it may be somewhere else. You may have to ask your host's technical support department for the information. You also need the absolute path to the location where the mail_digests.php program is stored.
+	<ol type="a">
+		<li>From the command prompt, I entered the command "crontab -e" then Enter, which took me into a "vi" environment</li>
+		<li>Typing "i" put me in the vi insert mode</li>
+		<li>Very carefully I typed the following: 00 * * * * wget --delete-after http://yoursomain.com/phpBB2/mail_digests.php --http-user=??? --http-passwd=???</li>
+		<li>I pressed the Escape key to get out of vi insert mode</li>
+		<li>Typed ":wq" then Enter to get out of vi.</li>
+		<li>To verify the job was scheduled I entered the command "crontab -l" then Enter.</li>
+		<li>Logged out.</li>
+	</ol>
+	</li>
+</ol>
+<p><b>Note:</b> If you want to set up an "Urgent" digest then follow the instructions above to add another crontab job but at point c. enter the following: */2 * * * * wget --delete-after http://yourdomain.com/phpBB2/mail_digests.php urgent --http-user=??? --http-passwd=??? This will have the effect of running this crontab job every two minutes (change the value 2 to whatever you consider appropriate).</p>
+<p>Where the '???' parts at the end of the line you typed into vi are the username and password for the protected folder. If you want to do this without any protection, simply remove the last two paramaters completely.</p>
+<p>For this feature to work a crontab must be programmed to run mail_digests.php once an hour for every hour of the day for every day of the week. The way I programmed this crontab, it will start every hour on the hour (the 00 above is the minute).</p>
+
+
+<h3 class="h3">Guidance on setting up scheduled tasks for Windows 2000 and XP Servers</h3>
+<p>I don't have a Windows server, but it looks like if you download the phpAdsNew software at <a href="http://phpadsnew.com" target="_blank">www.phpadsnew.com</a> and read the Administrator's manual, pages 24-27 you should be able to figure it out. You will need to download wget for Windows, free software provided by GNU (<a href="http://www.gnu.org/software/wget/wget.html" target="_blank">www.gnu.org</a>), and create a batch file, and learn about how to tweak the Windows Task Manager. One user said that after wget was installed they created a batch file that looked like this:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">
+		wget -q -O - http://yourdomain.com/phpBB2/mail_digests.php?mode=direct&pass=????<br />
+		exit
+</td>
+	</tr>
+	</table><br />
+<p>In the above where pass=???? replace the ???? with the password entered in Digests Configuration.</p>
+
+
+<h3 class="h3">Quick & easy solution for those who do not have cron enabled</h3> 
+<p>I am sure there are many out there who really wish to have a email digest working but the only barrier to overcome is the CRON nonsense. To save yourself all the trouble of setting up cron, simply follow what I have done.</p>
+<ol>
+	<li>We all know by now that the trigger for sending out the digests is <u>mail_digests.php</u>, so as long as we can access this script at a fixed interval, the digest will work.</li>
+	<li>One of the ways to do the above would be to set up cron or pseudocron or anything along that line. Heck, you could even reload that script manually every hour if you wanted to. But why not get others to do it for you?</li>
+	<li>Sign up for any web-based uptime/site monitoring service and make them poll <u>http://yourdomain.com/phpBB2/mail_digests.php</u> EVERY HOUR (the fixed setting for this feature) to check for uptime. Upon trigger, your webhost will send out the digests. VOILA!</li>
+	<li>Ok, I know there are security concerns over this but well, it works so those who are not that particular, go ahead and do so.</li>
+	<li>For a list of free/paid uptime monitors, try <a href="http://www.vivante.com/search.php?input1=website%20and%20operations%20monitoring&input2=&input3=&geoterm=&p=2" target="_blank">www.vivante.com</a></li>
+	<li>This method has been tested and proven to work, and in fact, it doubles up as a site monitor for you. Cool Stuff!</li>
+</ol>
+
+<!--
+<ol>
+	<li><b>I just cant get item images to appear!</b>
+	<p>This can be caused by a few things. First, the shop only allows .gif and .jpg images at the moment, all images must be placed in the <u>images/shop/</u> directory. Next, make sure if they're not showing in profiles or on threads, that you have the options set to images and not links from Admin -> Points System -> Shop: Configuration.</p>
+	<p>Lastly, one of the more common mistakes, make sure the images are named <b>EXACTLY</b> the same as the item (this is case sensitive). For example, apple must have an apple.jpg image (or .gif). Apple will not work with apple.gif.</p></li>
+		
+	<li><b>How do you add an item? </b>
+	<p>From Admin -> Points System -> Shop: Configuration update the Shop you wish to add the Item to.</p></li>
+	
+	<li><b>Does removing a shop delete all the items from the users who own them? </b>
+	<p>Yes, if your forum is rather large, it's probably not a good idea to do this while it's busy as it does take quite a few large loops to complete. </p></li>
+	
+	<li><b>What does Restocking do? </b>
+	<p>This setting increases the Item stock until it reaches the maximum amount, every amount of time specified by an Admin. </p></li>
+
+	<li><b>What does Multiple Item Buying do? </b>
+	<p>This setting allows your users to buy more than one of each Item. </p></li>
+	
+	<li><b>What does Viewtopic Type do? </b>
+	<p>This is a setting to allow you to disable images while viewing topics. It's mainly there so users with huge amounts of items don't flood your forum's screens. 'Link' just leaves the link to their "Inventory", 'Images' leaves the link and images.</p></li>
+
+	<li><b>What does Selling Rate do? </b>
+	<p>This setting changes the amount users are given back when returning/selling an Item. This is in percent. 100% is a full refund. </p></li>
+	
+	<li><b>How do I make the Effects Shop work? </b>
+	<p>From Admin -> Points System -> Shop: Configuration, click on the Edit button next to Special Shop and enable it.</p></li>
+	
+	<li><b>What is the Access Forum field for? </b>
+	<p>It allows you to set up private forums that can only be accessed when a user owns a certain item. Make sure view/post/read/edit are all set to PRIVATE if you want to make use of this feature. </p></li>
+</ol>
+-->
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

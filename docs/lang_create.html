@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>Create a New Language</u></h1>
+<p>You may think something magical happens -- we wave a pretty wand -- we chant and sacrifice chickens -- we just wiggle our noses to make a new language pack for Fully Modded phpBB. Unfortunately this isn't the case. It's not that making a language pack is difficult, it's actually amazingly easy. So here's how you can translate Fully Modded phpBB into your native language.</p>
+<p>Follow the steps below and you'll have a new language on your board before you know it. This tutorial will help you create your own languages so that it is compatible with Fully Modded phpBB 2. Each section is split in to sub sections. To make an existing language you will need a few tools to make the job easier, we recommend the following:</p>
+<ul>
+	<li>Text Editor - e.g. WordPad, <a href="http://www.emeditor.com/download.htm" target="_new">EmEditor</a>, or <a href="http://www.phpide.com/go/downloads.htm#PHP%20Coder" target="_new">PHP Coder</a>.</li>
+    <li>Graphics Program - e.g. <a href="http://www.adobe.com/support/downloads/main.html" target="_new">Adobe Photoshop</a>, <a href="http://www.jasc.com" target="_new">Paintshop Pro</a>, <a href="http://www.gimp.org" target="_new">Gimp</a>, or <a href="http://www.macromedia.com/software/fireworks/" target="_new">Fireworks</a> (Photoshop is highly recommended).</li>
+</ul>
+
+<h3 class="h3">i. Editing Language Strings</h3>
+<p>The <u>language/</u> directory of your phpBB install hosts a <u>lang_english/</u> directory. All you need to do to translate it into French, Dutch, Portuguese, or Somalian is to copy all the files in that folder (including the <u>emails/</u> directory located in it), rename the copy lang_xxxx (whatever your language is, e.g. lang_french), and then translate away.</p>
+<p>Example, in your newly created <u>language/lang_xxxx/lang_main.php file</u> you might find:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">$lang['Thankyou'] = 'Thank you';</td>
+</tr>
+</table><br />
+<p>Edit with your text editor to read:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">$lang['Thankyou'] = 'Merci beaucoup';</td>
+</tr>
+</table><br />
+<p>It's very important <b>not</b> to change the '$lang['Thankyou']' value! But go ahead and translate everything else into your own language, unless you are specified not to in the file itself.</p>
+
+<h3 class="h3">ii. Language Standards</h3>
+<p>All language strings must be enclosed with single quotes/apostrophes ('), do not use double quotes/apostrophes ("), just don't!</p>
+<p>Example:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">/* wrong */<br />
+	$lang['who_is'] = "Who is there?";<br /><br />
+	/* right */<br />
+	$lang['who_is'] = 'Who is there?';</td>
+</tr>
+</table><br />
+<p>All words containing single quotes/apostrophes must be character backslashed (\) to avoid parse errors</p>
+<p>Example:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">/* wrong */<br />
+	$lang['who_is'] = 'Who's there?';<br /><br />
+	/* right */<br />
+	$lang['who_is'] = 'Who\'s there?';</td>
+</tr>
+</table><br />
+
+<h3 class="h3">iii. Spellchecker Dictionary</h3>
+<p>Translating the spellchecker dictionary into your language is as simple as two easy steps (once complete you will never have to translate this again!)</p>
+<ul>
+	<li>Open the file <u>mods/spellchecker/ENGLISH.txt</u> with a text editor, follow the format of this file and translate it to your language, adding all the words from your language that you would like to see checked by the spellchecker. Once complete save with your language as the filename, e.g. FRENCH.txt, GERMAN.txt.</li>
+	<li></li>
+</ul>
+
+<h3 class="h3">iv. Adding your copyright</h3>
+<p>To add a short copyright message into the footer indicating you are the translator, open the lang_main.php file and add your name. If you are using link urls, please adhere to the default footer <code>copyright</code> text class.</p>
+<p>Example:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">// This is optional, if you would like a _SHORT_ message output along with our copyright message indicating you are the translator please add it here.<br />
+	$lang['TRANSLATION_INFO'] = 'XXX Translation by &lt;a href="http://yourdomain.com" target="_blank" class="copyright"&gt;Name&lt;/a&gt;';</td>
+</tr>
+</table><br />
+<h3 class="h3">v. Image Creation</h3>
+<p>Once that's done, you'll need to make sure you have images in your language. Creating any new/extra images for your new language can be an easy process providing you have the right software. The <u>images/</u> directory of every theme in your phpBB install hosts a <u>lang_english/</u> directory containing english images.</p>
+<p>All you need to do to translate it into French, Dutch, Portuguese, or Somalian is to copy all the files in that folder, rename the copy lang_xxxx (whatever your language is, e.g. lang_french), and then translate away. To translate/create your images you can either:</p>
+<ul>
+	<li>Download the <a href="http://www.phpbb.com/files/GDK/subSilver.zip">subSilver SDK</a> from phpBB and change the text of the images to suit your language.</li>
+    <li>Use a software package such as Adobe Photoshop and make you own images based on your language.</li>
+</ul> 
+
+<h3 class="h3">vi. Viewing Finished Products</h3>
+<p>To install your new language upload it to the languages/ directory of your board, either change the overall board language setting, or the language as a user in your profile. Or, you could install both an Apache server and Fully Modded phpBB locally on your machine and have a live view of you language.</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

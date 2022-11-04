@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+<h1 class="h2"><u>Create a New Theme</u></h1>
+<p>Creating a style for Fully Modded phpBB 2 based on the default is very easy. Follow the steps below and you'll have a new theme on your board within minutes. This tutorial will help you create your own styles so that they are compatible with Fully Modded phpBB 2. Each section is split in to sub sections. To make a new style you will need a few tools to make the job easier, we recommend the following:</p>
+<ul>
+	<li>Text Editor - e.g. WordPad, <a href="http://www.emeditor.com/download.htm" target="_new">EmEditor</a>, or <a href="http://www.phpide.com/go/downloads.htm#PHP%20Coder" target="_new">PHP Coder</a>.</li>
+    <li>Graphics Program - e.g. <a href="http://www.adobe.com/support/downloads/main.html" target="_new">Adobe Photoshop</a>, <a href="http://www.jasc.com" target="_new">Paintshop Pro</a>, <a href="http://www.gimp.org" target="_new">Gimp</a>, or <a href="http://www.macromedia.com/software/fireworks/" target="_new">Fireworks</a> (Photoshop is highly recommended).</li>
+</ul>
+
+<h3 class="h3">i. Renaming &amp; Editing Files</h3>
+<p>First, make a copy of the <u>subSilver/</u> directory located in the <u>templates/</u> directory. Make sure the subSilver directory that you copy is in its' original state and has not been modified or altered at all. If you are not sure of this, then I suggest downloading it again to be safe.</p>
+<p>Copy the <u>subSilver/</u> directory into the <u>templates/</u> directory creating a duplicate (it should be called 'Copy of subSilver'). Rename the copied directory to whatever your new template name is going to be, for this example our theme will be named <b>FullyModded</b>.</p>
+<p>Next, we need to rename the two (2) main style files, the stylesheet and the image configuration file.</p>
+<ul>
+	<li>subSilver.cfg <u>rename to</u> FullyModded.cfg</li>
+    <li>subSilver.css <u>rename to</u> FullyModded.css</li>
+</ul>
+
+<p>Next, we need to edit four (4) files in the new FullyModded/ directory and find all references of 'subSilver', changing them all to our new template name, 'FullyModded'. If you have a find and replace tool this is a good time to use it; you must replace 'subSilver' with your new template name, e.g. FullyModded.</p>
+<ul>
+    <li>prillian/prefs_tabs.tpl</li>
+    <li>FullyModded.css</li>
+    <li>radio.php</li>
+	<li>theme_info.cfg</li>
+</ul>
+
+<p><b>Note:</b> Replace the word 'FullyModded' with <u>your</u> actual template name. Directory name and all filenames are case sensitive, so 'FullyModded', 'Fullymodded', 'fullyModded', and 'fullymodded' are not the same and when following the renaming instructions above you should make sure you have correct filename case everywhere.</p>
+
+<h3 class="h3">ii. Image Creation</h3>
+<p>Creating any extra images for your new style can be an easy process providing you have the right software. To create images you can either:</p>
+<ul>
+	<li>Download the <a href="http://www.phpbb.com/files/GDK/subSilver.zip">subSilver SDK</a> from phpBB and change the colours of the images.</li>
+    <li>Use a software package such as Adobe Photoshop and make you own images based on what you want your style to look like.</li>
+</ul> 
+
+<h3 class="h3">iii. Changing the Layout</h3>
+<p>Changing the layout of your style can be very complex or very easy depending on how much you know about HTML and css.</p>
+<p>You could seperate the categories which are shown here or you could make your own header. The best way to this is in Dreamweaver by using these steps:</p>
+<ul>
+	<li>Open a blank HTML document and erase everything in the code section.</li>
+    <li>Open 'templates/FullyModded/overall_header.tpl' and copy what's in it and paste it in the code section on the blank HTML document.</li>
+    <li>Open 'templates/FullyModded/index_body.tpl' and copy what's in it and paste it below the overall_header code in the code section on the blank HTML document.</li>
+    <li>Open 'templates/FullyModded/overall_footer.tpl' and copy what's in it and paste it below the index_body code in the code section on the blank HTML document.</li>
+    <li>Go back to the HTML document and right-click on the design view, then goto CSS Styles, then Attach Style Sheet, then find your-new-template-name.css and attach it to your document, then find formIE.css and attach that to your document. Now you should be able to see how your style looks like now it has the css on it.</li>
+</ul>
+
+<h3 class="h3">iv. Viewing Finished Products</h3>
+<p>Login as an Administrator, go to Admin -> Styles &amp; Templates -> Add New. If you see your new style in the list of available styles to install then you did everything correctly. You can install the style and edit it. If you don't see your new style in that list then you did something incorrectly (probably forgot to edit <u>theme_info.cfg</u> or forgot to rename <u>subSilver.cfg</u>)</p>
+<p>Or, you could install both an Apache server and Fully Modded phpBB locally on your machine and have a live view of you style or you could view it the Dreamweaver way which is stated above.</p>
+
+<h2 class="h2"><u>Disclaimer</u></h2>
+<p>This theme tutorial is complied from tutorials from <a href="http://www.limitdesigns.com" target="_new">LimitDesigns</a>, and <a href="http://www.phpbb.com/kb/article.php?article_id=197" target="_new">CyberAlien</a>, and has been modified and adapted to Fully Modded phpBB (FM2017.4.05+).</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

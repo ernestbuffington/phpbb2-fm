@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^google_sitemap.xml$ google_sitemap.php [L]
+RewriteRule ^forum-([0-9]+).xml$ google_sitemap.php?fid=$1 [L]
+DirectoryIndex portal.php index.php index.htm and index.html

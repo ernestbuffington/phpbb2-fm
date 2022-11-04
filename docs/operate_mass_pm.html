@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>How do Custom Mass PMs work?</u></h1>
+<p>The Mass PM function allows PMs to be sent to group members (or all forums members) for authorized users. It also allows all users to send ordinary PMs to multiple users at once (usernames must be separated by a semi-colon (<b>;</b>)).</p>
+
+<ol>
+	<li><b>Who can receive Mass PMs?</b>
+	<p>Administrators can choose to "force" users to receive mass PMs or not. By default, users can choose. If you want to change this, open <u>includes/usercp_register.php</u>.</p>
+	<p>Find and change the variable value:</p>
+	<table width="90%" cellspacing="1" cellpadding="4" align="center">
+	<tr>
+		<td class="code2">//<br />
+// Who can disable receiving mass PM ?<br />
+// Set 'A' for Admins, 'M' for Admins/SuperMods/Mods, or 'U' for all Users<br />
+//<br />
+$can_disable_mass_pm = 'U';
+</td>
+	</tr>
+	</table><br />
+	<p></p>
+	<li><b>Who can send Mass PMs?</b>
+	<p>You can decide which users can mass PM specific usergroups from Admin -> Usergroups -> Management. You will find an option to set who may mass PM a specific group when editing the Usergroup.</p></li>
+
+	<li><b>PM Personalization</b>
+	<p>It is also posible to "personalize" the PM, use the tag <b>[USERNAME]</b> (capital letters). This will be replaced with the users username. Alternatively you could use the BBCode [username].</p></li>
+</ol>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>

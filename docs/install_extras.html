@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FULLY MODDED PHPBB 2 OFFICIAL DOCUMENTATION</title>
+<link rel="stylesheet" href="docs.css" type="text/css">
+</head>
+<body>
+
+<!-- BEGIN DOCUMENT -->
+<table width="100%" cellspacing="0" cellpadding="10" align="center">
+<tr>
+	<td>
+<!-- BEGIN DOCUMENT -->
+
+<h1 class="h2"><u>Optional Extras</u></h1>
+<p>Included with the Fully Modded phpBB 2 package are a few extra (optional) files, you will find them in the <u>docs/scripts/</u> directory. These extras include:</p>
+<ul>
+	<li><a href="#7">config.php/config_backup.php</a></li>
+	<li><a href="#1">desktop.php &amp; desktop_body.tpl (Desktop Plus)</a></li>
+	<li><a href="#2">root_redirect_to_directory_portal.html</a></li>
+	<li><a href="#3">.htaccess</a></li>
+	<li><a href="#6">erc.php (Emergency Recovery Console)</a></li>
+	<li><a href="#4">login.php</a></li>
+</ul>
+
+<a name="7"></a><h3 class="h3">config.php/config_backup.php</h3>
+<p>Spare configuration files are included in case of accidents. <u>config_backup.php</u> is a standard phpBB configuration file that just requires database name, user, and password data added to restore a deleted or misplaced original.</p>
+<ul type="i">
+	<li>Open <u>config_backup.php</u> and edit the database details to suit your site.</li>
+	<li>Rename the file to <u>config.php</u> and move it to the root directory of your forum, e.g. http://www.yourdomain.com/phpBB2/config.php</li>
+</ul>
+
+<a name="1"></a><h3 class="h3">desktop.php/desktop_body.tpl (Desktop Plus)</h3>
+<p>Desktop Plus allows your users to add a "latest posts window" to your forums that loads on their desktop without having to open up a browser. It will scroll the latest posts as if the user was logged in, providing the user hasn't cleared their cookies. They can click on any topic and be linked directly to it.
+<ul>
+	<li><b>Admin Instructions for Setup</b>
+	<ol type="i">
+		<li>Move <u>desktop.php</u> to forum root directory.</li>
+		<li>Move <u>desktop_body.tpl</u> to <b>ALL</b> style directories (make duplicate copies for extra styles).</li>
+		<li>Post instructions for your users (see below).</li>
+	</ol>
+	</li>
+	<p></p>
+	<li><b>User Instructions for Setup</b>
+	<ol type="i">
+		<li>Right-click on your desktop.</li>
+		<li>Select 'Properties'.</li>
+		<li>Click on the 'Customize Desktop' button.</li>
+		<li>Click on the 'Web' tab.</li>
+		<li>Click on where it says 'new' (next to a list of webpages).</li>
+		<li>Add the following location <u>http://yourdomain.com/phpBB2/desktop.php</u> (make sure you click on the checkbox next to the address after you add it to the list).</li>
+		<li>Click 'OK' on all windows.</li>
+		<li>Resize desktop window to suit your preference.</li>
+	</ol>
+	</li>
+</ul>
+</p>
+
+<a name="2"></a><h3 class="h3">root_redirect_to_directory_portal.html</h3>
+<p>This file enables Fully Modded phpBB to detect whether visitors are browsing using browsing agents or mobile devices, and will redirect them accordingly.
+<ul type="i">
+	<li>Open <u>root_redirect_to_directory_portal.html</u> and edit the domain names to suit your site.</li>
+	<li>Rename the file to <u>index.html</u> and move it to the root directory of your server, e.g. http://www.yourdomain.com/index.html</li>
+</ul>
+</p>
+
+<a name="3"></a><h3 class="h3">.htaccess</h3>
+<p>This file enables Fully Modded phpBB to detect and redirect visitors (on arrival) to the portal before the forum index.
+<ul type="i">
+	<li>Move <u>.htaccess</u> to your forum root directory.</li>
+</ul>
+</p>
+
+<a name="4"></a><h3 class="h3">login.php</h3>
+<p>This file allows your users to be redirected back to the portal after logging in/out instead of the forum index.
+<ul type="i">
+	<li>Move <u>login.php</u> to your forum root directory, overwriting the existing login.php file.</li>
+</ul>
+</p>
+
+<a name="6"></a><h3 class="h3">erc.php (Emergency Recovery Console)</h3>
+<p>This script is an Emergency Recovery Console (ERC), which can be used to access the board even when the normal methods of phpBB fail. You can clear the session table, reset path, cookie, language or template data, clear the ban list, remove administrator accounts, grant a user admin privileges or recreate the config.php. Thus, the ERC can be helpful when you have problems with the session handling, removed a template in error or your board was hacked.
+<ul type="i">
+	<li>Move <u>erc.php</u> to the admin/ directory.</li>
+</ul>
+<b>SECURITY NOTE:</b> You can gain access to the complete board by using the ERC. Although you need at least the password of the database to do so, it is recommended to use this file only when necessary or to secure the admin directory with a password at least if you decide to leave this file in the admin directory.</p>
+
+<!-- END DOCUMENT -->
+	<br />
+	</td>
+</tr>
+</table>
+<!-- END DOCUMENT -->
+
+</body>
+</html>
