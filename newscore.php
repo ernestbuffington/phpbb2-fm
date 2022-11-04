@@ -118,7 +118,7 @@ if ( ($score > "0") && ($name) && ($game_info['game_type'] != 2) )
 
 	// Start Bonus
 	$sql = "SELECT *
-		FROM " . $table_prefix ."ina_top_scores
+		FROM " . $prefix ."ina_top_scores
 		WHERE game_name = '" . $game_name . "'";
 	if (!$result = $db->sql_query($sql))
 	{
@@ -167,7 +167,7 @@ if ( ($score > "0") && ($name) && ($game_info['game_type'] != 2) )
 
 	// Start Trophies
 	$sql = "SELECT *
-		FROM " . $table_prefix . "ina_top_scores
+		FROM " . $prefix . "ina_top_scores
 		WHERE game_name = '" . $game_name . "'";
 	if (!$result = $db->sql_query($sql))
 	{
@@ -209,7 +209,7 @@ if ( ($score > "0") && ($name) && ($game_info['game_type'] != 2) )
 
 		$db->sql_freeresult($result);
 							
-		$sql = "UPDATE " . $table_prefix . "ina_top_scores
+		$sql = "UPDATE " . $prefix . "ina_top_scores
 			SET player = '" . $name_id . "', score = '" . $score . "', date = '" . time() . "'
 			WHERE game_name = '" . $game_name . "'";
 		if (!$result = $db->sql_query($sql))
@@ -254,7 +254,7 @@ if ( ($score > "0") && ($name) && ($game_info['game_type'] != 2) )
 		
 		$name_id = $row['user_id'];
 							
-		$q1 = "UPDATE " . $table_prefix . "ina_top_scores
+		$q1 = "UPDATE " . $prefix . "ina_top_scores
 			SET player = '" . $name_id . "', score = '" . $score . "', date = '" . time() . "'
 			WHERE game_name = '" . $game_name . "'";
 		if (!$r1 = $db->sql_query($q1))

@@ -12,7 +12,7 @@ $dbname = 'database'; // Enter your database name
 $dbuname = 'username'; // Enter your database username
 $dbpasswd = 'password'; // Enter your database password
 
-$table_prefix = 'phpbb_'; // Enter your database table prefix
+$prefix = 'phpbb_'; // Enter your database table prefix
 
 define('PHPBB_INSTALLED', true);
 

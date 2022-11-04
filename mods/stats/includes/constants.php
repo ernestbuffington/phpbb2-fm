@@ -14,14 +14,14 @@ if ( !defined('IN_PHPBB') )
 }
 
 // Define Table Constants
-define('MODULES_TABLE', $table_prefix . 'modules');
-define('MODULE_INFO_TABLE', $table_prefix . 'module_info');
-define('STATS_CONFIG_TABLE', $table_prefix . 'stats_config');
-define('CACHE_TABLE', $table_prefix . 'module_cache');
-define('MODULE_ADMIN_TABLE', $table_prefix . 'module_admin_panel');
+define('MODULES_TABLE', $prefix . 'modules');
+define('MODULE_INFO_TABLE', $prefix . 'module_info');
+define('STATS_CONFIG_TABLE', $prefix . 'stats_config');
+define('CACHE_TABLE', $prefix . 'module_cache');
+define('MODULE_ADMIN_TABLE', $prefix . 'module_admin_panel');
 define('SMILIE_INDEX_TABLE', 'stats_smilies_index');
 define('SMILIE_INFO_TABLE', 'stats_smilies_info');
-define('MODULE_GROUP_AUTH_TABLE', $table_prefix . 'module_group_auth');
+define('MODULE_GROUP_AUTH_TABLE', $prefix . 'module_group_auth');
 
 define('STATS_DEBUG', true); // Debug Mode
 // define('STATS_DEBUG', false); // Disable Debug Mode

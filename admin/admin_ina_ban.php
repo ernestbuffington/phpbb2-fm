@@ -34,7 +34,7 @@ else
 	$mode = '';
 }
 
-define('INA_BAN', $table_prefix .'ina_ban');
+define('INA_BAN', $prefix .'ina_ban');
 $link = append_sid("admin_ina_ban.". $phpEx);
 	
 if($mode == "main" || !$mode)

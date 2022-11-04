@@ -35,10 +35,10 @@ else
 	$mode = '';
 }
 
-define('INA_CATEGORY', $table_prefix .'ina_categories');
-define('INA_CATEGORY_DATA', $table_prefix .'ina_categories_data');
-define('INA_CATEGORY_MAIN', $table_prefix .'ina_main_categories');
-define('INA_TROPHY', $table_prefix .'ina_top_scores');		
+define('INA_CATEGORY', $prefix .'ina_categories');
+define('INA_CATEGORY_DATA', $prefix .'ina_categories_data');
+define('INA_CATEGORY_MAIN', $prefix .'ina_main_categories');
+define('INA_TROPHY', $prefix .'ina_top_scores');		
 $link = append_sid("admin_ina_scores_edit.". $phpEx);
 	
 echo $game_menu . "

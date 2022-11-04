@@ -8,37 +8,37 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-schema
 //
-$sql = 'ALTER TABLE '. $table_prefix .'groups ADD COLUMN `group_colored` TINYINT(1) NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'groups ADD COLUMN `group_colored` TINYINT(1) NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'groups ADD COLUMN `group_colors` TEXT NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'groups ADD COLUMN `group_colors` TEXT NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'groups ADD COLUMN `group_order` INTEGER(255) NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'groups ADD COLUMN `group_order` INTEGER(255) NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'users ADD COLUMN `group_priority` INTEGER(255) NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'users ADD COLUMN `group_priority` INTEGER(255) NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Create new Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'posts_ignore_sigav';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'posts_ignore_sigav';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'posts_ignore_sigav (`user_id` mediumint(8) UNSIGNED DEFAULT "0" NOT NULL, `hid_id` mediumint(8) UNSIGNED DEFAULT "0" NOT NULL) TYPE=MyISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'CREATE TABLE IF NOT EXISTS ' . $table_prefix . 'avatartoplist (`avatar_filename` TEXT NOT NULL, `avatar_type` tinyint(4) NOT NULL default "0", `voter_id` mediumint(8) NOT NULL, `voting` mediumint(8) NOT NULL, `comment` text NOT NULL, INDEX `voter_id` (`voter_id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'posts_ignore_sigav (`user_id` mediumint(8) UNSIGNED DEFAULT "0" NOT NULL, `hid_id` mediumint(8) UNSIGNED DEFAULT "0" NOT NULL) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'CREATE TABLE IF NOT EXISTS  ' . $table_prefix . 'privmsgs_archive (privmsgs_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT, privmsgs_type tinyint(4) NOT NULL default "0", privmsgs_subject varchar(255) NOT NULL default "0", privmsgs_from_userid mediumint(8) NOT NULL default "0", privmsgs_to_userid mediumint(8) NOT NULL default "0", privmsgs_date int(11) NOT NULL default "0", privmsgs_ip varchar(8) NOT NULL default "", privmsgs_enable_bbcode tinyint(1) NOT NULL default "1", privmsgs_enable_html tinyint(1) NOT NULL default "0", privmsgs_enable_smilies tinyint(1) NOT NULL default "1", privmsgs_attach_sig tinyint(1) NOT NULL default "1", PRIMARY KEY (privmsgs_id), KEY privmsgs_from_userid (privmsgs_from_userid), KEY privmsgs_to_userid (privmsgs_to_userid)) TYPE=MyISAM';
+$sql = 'CREATE TABLE IF NOT EXISTS ' . $prefix . 'avatartoplist (`avatar_filename` TEXT NOT NULL, `avatar_type` tinyint(4) NOT NULL default "0", `voter_id` mediumint(8) NOT NULL, `voting` mediumint(8) NOT NULL, `comment` text NOT NULL, INDEX `voter_id` (`voter_id`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'CREATE TABLE IF NOT EXISTS  ' . $prefix . 'privmsgs_archive (privmsgs_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT, privmsgs_type tinyint(4) NOT NULL default "0", privmsgs_subject varchar(255) NOT NULL default "0", privmsgs_from_userid mediumint(8) NOT NULL default "0", privmsgs_to_userid mediumint(8) NOT NULL default "0", privmsgs_date int(11) NOT NULL default "0", privmsgs_ip varchar(8) NOT NULL default "", privmsgs_enable_bbcode tinyint(1) NOT NULL default "1", privmsgs_enable_html tinyint(1) NOT NULL default "0", privmsgs_enable_smilies tinyint(1) NOT NULL default "1", privmsgs_attach_sig tinyint(1) NOT NULL default "1", PRIMARY KEY (privmsgs_id), KEY privmsgs_from_userid (privmsgs_from_userid), KEY privmsgs_to_userid (privmsgs_to_userid)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Modify Fully Modded core-schema
 //
-$sql = 'ALTER TABLE '. $table_prefix .'lottery_history DROP COLUMN `currency`';
+$sql = 'ALTER TABLE '. $prefix .'lottery_history DROP COLUMN `currency`';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'portal ADD `portal_iframe_height` VARCHAR(4) NOT NULL DEFAULT "600"';
+$sql = 'ALTER TABLE '. $prefix .'portal ADD `portal_iframe_height` VARCHAR(4) NOT NULL DEFAULT "600"';
 _sql($sql, $errored, $error_ary);
 
 
@@ -74,7 +74,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -87,7 +87,7 @@ $rconfig_data = array(
 	
 for ( $i = 0; $i < sizeof($rconfig_data); $i++ )
 {
-	$sql = "DELETE FROM " . $table_prefix . "config 
+	$sql = "DELETE FROM " . $prefix . "config 
 		WHERE `config_name` = '" . $rconfig_data[$i] . "'";
 	_sql($sql, $errored, $error_ary);
 }
@@ -98,13 +98,13 @@ for ( $i = 0; $i < sizeof($rconfig_data); $i++ )
 //
 // phpbb_config_nav data
 // lets get this right... phpBB updaters missed out last build
-$sql = 'DELETE FROM ' . $table_prefix . 'config_nav WHERE `url` = "members.php"';
+$sql = 'DELETE FROM ' . $prefix . 'config_nav WHERE `url` = "members.php"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'config_nav WHERE `url` = "memberlist.php"';
+$sql = 'DELETE FROM ' . $prefix . 'config_nav WHERE `url` = "memberlist.php"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'config_nav WHERE `url` = "kb.php"';
+$sql = 'DELETE FROM ' . $prefix . 'config_nav WHERE `url` = "kb.php"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'config_nav WHERE `url` = "lexicon.php"';
+$sql = 'DELETE FROM ' . $prefix . 'config_nav WHERE `url` = "lexicon.php"';
 _sql($sql, $errored, $error_ary);
 
 $config_nav_data = array( 
@@ -116,30 +116,30 @@ for ( $row = 0; $row < sizeof($config_nav_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '1', '" . $config_nav_data[$row]['Url'] . "', '300', '0')";
+		$sql = "INSERT INTO " . $prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '1', '" . $config_nav_data[$row]['Url'] . "', '300', '0')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
 
 // phpbb_im_sites data
-$sql = "DELETE FROM " . $table_prefix . "im_sites WHERE `site_name` = 'Fully Modded phpBB'";
+$sql = "DELETE FROM " . $prefix . "im_sites WHERE `site_name` = 'Fully Modded phpBB'";
 _sql($sql, $errored, $error_ary);
 
 // Move phpbb_logs_config data to phpbb_config
-$sql = "INSERT INTO " . $table_prefix . "config SELECT * FROM " . $table_prefix . "logs_config";
+$sql = "INSERT INTO " . $prefix . "config SELECT * FROM " . $prefix . "logs_config";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'logs_config';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'logs_config';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Change default values to sync with FullyModded setup
 //
-$sql = "UPDATE " . $table_prefix . "config SET `config_value` = 'cache' WHERE `config_name` = 'newsfeed_cache'";
+$sql = "UPDATE " . $prefix . "config SET `config_value` = 'cache' WHERE `config_name` = 'newsfeed_cache'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "pa_config SET `config_value` = 'file_time' WHERE `config_name` = 'sort_method'";
+$sql = "UPDATE " . $prefix . "pa_config SET `config_value` = 'file_time' WHERE `config_name` = 'sort_method'";
 _sql($sql, $errored, $error_ary);
 	
 @rename($phpbb_root_path . 'cache/page_perms.'.$phpEx, $phpbb_root_path . 'cache/config_page_perms.'.$phpEx);	

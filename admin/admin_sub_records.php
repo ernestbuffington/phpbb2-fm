@@ -188,7 +188,7 @@ if ( $mode == 'lookup' )
 	while ( $row = $db->sql_fetchrow($result) ) 
 	{
 		$canviewpost = 0;
-		if(strnatcasecmp($row['lw_site'], $table_prefix) == 0)
+		if(strnatcasecmp($row['lw_site'], $prefix) == 0)
 		{
 			$canviewpost = 1;
 		}

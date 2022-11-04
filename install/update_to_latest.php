@@ -47,7 +47,7 @@ function _sql($sql, &$errored, &$error_ary, $echo_dot = true)
 //
 function _update_fm($old_ver, $new_ver, $update_file)
 {
-	global $db, $board_config, $phpbb_root_path, $phpEx, $table_prefix;
+	global $db, $board_config, $phpbb_root_path, $phpEx, $prefix;
 
 	$sql = $error_ary = array(); 
 	$errored = false;
@@ -566,7 +566,7 @@ else if ($mode == 'phpbb')
 	echo "<h1>Disabling the board</h1>\n";
 	echo "<p>Result :: <b>";
 	
-	$sql2 = 'UPDATE ' . $table_prefix . "config SET `config_value` = 1 WHERE `config_name` = 'board_disable'";
+	$sql2 = 'UPDATE ' . $prefix . "config SET `config_value` = 1 WHERE `config_name` = 'board_disable'";
 	_sql($sql2, $errored, $error_ary, '');
 	
 	@unlink($phpbb_root_path . 'cache/config_board.'.$phpEx);
@@ -582,28 +582,28 @@ else if ($mode == 'phpbb')
 	switch ($board_config['version'])
 	{
 		case '':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users DROP COLUMN `user_autologin_key`';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'ranks DROP COLUMN `rank_max`';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_session_time` int(11) DEFAULT "0" NOT NULL, ADD COLUMN `user_session_page` smallint(5) DEFAULT "0" NOT NULL, ADD INDEX (user_session_time)';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'search_results MODIFY COLUMN `search_id` int(11) NOT NULL';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'topics MODIFY COLUMN `topic_moved_id` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL, ADD COLUMN `topic_first_post_id` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL, ADD INDEX (topic_first_post_id)';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'themes_name ADD COLUMN `tr_class1_name` VARCHAR(50) NULL, ADD COLUMN `tr_class2_name` VARCHAR(50) NULL, ADD COLUMN `tr_class3_name` VARCHAR(50) NULL, ADD COLUMN `th_class1_name` VARCHAR(50) NULL, ADD COLUMN `th_class2_name` VARCHAR(50) NULL, ADD COLUMN `th_class3_name` VARCHAR(50) NULL, ADD COLUMN `td_class1_name` VARCHAR(50) NULL, ADD COLUMN `td_class2_name` VARCHAR(50) NULL, ADD COLUMN `td_class3_name` VARCHAR(50) NULL, ADD COLUMN `span_class1_name` VARCHAR(50) NULL, ADD COLUMN `span_class2_name` VARCHAR(50) NULL, ADD COLUMN `span_class3_name` VARCHAR(50) NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users DROP COLUMN `user_autologin_key`';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'ranks DROP COLUMN `rank_max`';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_session_time` int(11) DEFAULT "0" NOT NULL, ADD COLUMN `user_session_page` smallint(5) DEFAULT "0" NOT NULL, ADD INDEX (user_session_time)';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'search_results MODIFY COLUMN `search_id` int(11) NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'topics MODIFY COLUMN `topic_moved_id` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL, ADD COLUMN `topic_first_post_id` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL, ADD INDEX (topic_first_post_id)';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'themes_name ADD COLUMN `tr_class1_name` VARCHAR(50) NULL, ADD COLUMN `tr_class2_name` VARCHAR(50) NULL, ADD COLUMN `tr_class3_name` VARCHAR(50) NULL, ADD COLUMN `th_class1_name` VARCHAR(50) NULL, ADD COLUMN `th_class2_name` VARCHAR(50) NULL, ADD COLUMN `th_class3_name` VARCHAR(50) NULL, ADD COLUMN `td_class1_name` VARCHAR(50) NULL, ADD COLUMN `td_class2_name` VARCHAR(50) NULL, ADD COLUMN `td_class3_name` VARCHAR(50) NULL, ADD COLUMN `span_class1_name` VARCHAR(50) NULL, ADD COLUMN `span_class2_name` VARCHAR(50) NULL, ADD COLUMN `span_class3_name` VARCHAR(50) NULL';
 
 		case 'RC-3':
 		case 'RC-4':
 		case '.0.0':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users MODIFY COLUMN `user_id` MEDIUMINT(8) NOT NULL, MODIFY COLUMN `user_timezone` decimal(5,2) DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users MODIFY COLUMN `user_id` MEDIUMINT(8) NOT NULL, MODIFY COLUMN `user_timezone` decimal(5,2) DEFAULT "0" NOT NULL';
 
 		case '.0.1':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'groups MODIFY COLUMN `group_id` MEDIUMINT(8) NOT NULL auto_increment';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'groups MODIFY COLUMN `group_id` MEDIUMINT(8) NOT NULL auto_increment';
 
 		case '.0.3':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'search_wordmatch ADD INDEX post_id (post_id)';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users MODIFY COLUMN `user_timezone` decimal(5,2) DEFAULT "0" NOT NULL, MODIFY COLUMN `user_notify` tinyint(1) DEFAULT "0" NOT NULL';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'forum_prune MODIFY COLUMN `prune_days` smallint(5) UNSIGNED NOT NULL, MODIFY COLUMN `prune_freq` smallint(5) UNSIGNED NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'search_wordmatch ADD INDEX post_id (post_id)';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users MODIFY COLUMN `user_timezone` decimal(5,2) DEFAULT "0" NOT NULL, MODIFY COLUMN `user_notify` tinyint(1) DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'forum_prune MODIFY COLUMN `prune_days` smallint(5) UNSIGNED NOT NULL, MODIFY COLUMN `prune_freq` smallint(5) UNSIGNED NOT NULL';
 
 		case '.0.4':
-			$sql[] = 'CREATE TABLE ' . $table_prefix . 'confirm (`confirm_id` char(32) DEFAULT "" NOT NULL, `session_id` char(32) DEFAULT "" NOT NULL, `code` char(6) DEFAULT "" NOT NULL, PRIMARY KEY (session_id, confirm_id))';
+			$sql[] = 'CREATE TABLE ' . $prefix . 'confirm (`confirm_id` char(32) DEFAULT "" NOT NULL, `session_id` char(32) DEFAULT "" NOT NULL, `code` char(6) DEFAULT "" NOT NULL, PRIMARY KEY (session_id, confirm_id))';
 
 		case '.0.5':
 		case '.0.6':
@@ -615,18 +615,18 @@ else if ($mode == 'phpbb')
 		case '.0.12':
 		case '.0.13':
 		case '.0.14':
-			$sql[] = 'ALTER TABLE '. $table_prefix .'sessions ADD COLUMN session_admin tinyint(2) DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE '. $prefix .'sessions ADD COLUMN session_admin tinyint(2) DEFAULT "0" NOT NULL';
 		case '.0.15':
 		case '.0.16':
 		case '.0.17':
-			$sql[] = 'CREATE TABLE ' . $table_prefix . 'sessions_keys (`key_id` varchar(32) DEFAULT "0" NOT NULL, `user_id` mediumint(8) DEFAULT "0" NOT NULL, `last_ip` varchar(8) DEFAULT "0" NOT NULL, `last_login` int(11) DEFAULT "0" NOT NULL, PRIMARY KEY (`key_id`, `user_id`), KEY last_login (`last_login`))';
+			$sql[] = 'CREATE TABLE ' . $prefix . 'sessions_keys (`key_id` varchar(32) DEFAULT "0" NOT NULL, `user_id` mediumint(8) DEFAULT "0" NOT NULL, `last_ip` varchar(8) DEFAULT "0" NOT NULL, `last_login` int(11) DEFAULT "0" NOT NULL, PRIMARY KEY (`key_id`, `user_id`), KEY last_login (`last_login`))';
 		case '.0.18':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN user_login_tries smallint(5) UNSIGNED DEFAULT "0" NOT NULL';
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN user_last_login_try int(11) DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN user_login_tries smallint(5) UNSIGNED DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN user_last_login_try int(11) DEFAULT "0" NOT NULL';
 		case '.0.19':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'search_results ADD COLUMN search_time int(11) DEFAULT "0" NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'search_results ADD COLUMN search_time int(11) DEFAULT "0" NOT NULL';
 		case '.0.21':
-			$sql[] = 'ALTER TABLE ' . $table_prefix . 'search_results MODIFY COLUMN search_array MEDIUMTEXT NOT NULL';
+			$sql[] = 'ALTER TABLE ' . $prefix . 'search_results MODIFY COLUMN search_array MEDIUMTEXT NOT NULL';
 		break;
 	}
 
@@ -692,38 +692,38 @@ else if ($mode == 'phpbb')
 	switch ($board_config['version'])
 	{
 		case '':
-			$sql = "SELECT themes_id FROM " . $table_prefix . "themes WHERE `template_name` = 'subSilver'";
+			$sql = "SELECT themes_id FROM " . $prefix . "themes WHERE `template_name` = 'subSilver'";
 			$result = _sql($sql, $errored, $error_ary);
 
 			if ($row = $db->sql_fetchrow($result))
 			{
 				$theme_id = $row['themes_id'];
-				$sql = 'UPDATE ' . $table_prefix . 'themes SET `head_stylesheet` = "subSilver.css", `body_background` = "", `body_bgcolor` = "E5E5E5", `body_text` = "323D4F", `body_link` = "006699", `body_vlink` = "5493B4", `body_alink` = "", `body_hlink` = "DD6900", `tr_color1` = "EFEFEF", `tr_color2` = "DEE3E7", `tr_color3` = "D1D7DC", `tr_class1` = "", `tr_class2` = "", `tr_class3` = "", `th_color1` = "98AAB1", `th_color2` = "006699", `th_color3` = "FFFFFF", `th_class1` = "cellpic1.gif", `th_class2` = "cellpic3.gif", `th_class3` = "cellpic2.jpg", `td_color1` = "FAFAFA", `td_color2` = "FFFFFF", `td_color3` = "", `td_class1` = "row1", `td_class2` = "row2", `td_class3` = "", `fontface1` = "Verdana, Helvetica, Arial, sans-serif", `fontface2` = "Trebuchet MS", `fontface3` = "Courier, \'Courier New\', sans-serif", `fontsize1` = "10", `fontsize2` = "11", `fontsize3` = "12", `fontcolor1` = "444444", `fontcolor2` = "006600", `fontcolor3` = "FFA34F", `span_class1` = "", `span_class2` = "", `span_class3` = "" WHERE `themes_id` = ' . $theme_id;
+				$sql = 'UPDATE ' . $prefix . 'themes SET `head_stylesheet` = "subSilver.css", `body_background` = "", `body_bgcolor` = "E5E5E5", `body_text` = "323D4F", `body_link` = "006699", `body_vlink` = "5493B4", `body_alink` = "", `body_hlink` = "DD6900", `tr_color1` = "EFEFEF", `tr_color2` = "DEE3E7", `tr_color3` = "D1D7DC", `tr_class1` = "", `tr_class2` = "", `tr_class3` = "", `th_color1` = "98AAB1", `th_color2` = "006699", `th_color3` = "FFFFFF", `th_class1` = "cellpic1.gif", `th_class2` = "cellpic3.gif", `th_class3` = "cellpic2.jpg", `td_color1` = "FAFAFA", `td_color2` = "FFFFFF", `td_color3` = "", `td_class1` = "row1", `td_class2` = "row2", `td_class3` = "", `fontface1` = "Verdana, Helvetica, Arial, sans-serif", `fontface2` = "Trebuchet MS", `fontface3` = "Courier, \'Courier New\', sans-serif", `fontsize1` = "10", `fontsize2` = "11", `fontsize3` = "12", `fontcolor1` = "444444", `fontcolor2` = "006600", `fontcolor3` = "FFA34F", `span_class1` = "", `span_class2` = "", `span_class3` = "" WHERE `themes_id` = ' . $theme_id;
 				_sql($sql, $errored, $error_ary);
 
-				$sql = 'DELETE FROM ' . $table_prefix . 'themes_name WHERE `themes_id` = ' . $theme_id;
+				$sql = 'DELETE FROM ' . $prefix . 'themes_name WHERE `themes_id` = ' . $theme_id;
 				_sql($sql, $errored, $error_ary);
 
-				$sql = 'INSERT INTO ' . $table_prefix . 'themes_name (`themes_id`, `tr_color1_name`, `tr_color2_name`, `tr_color3_name`, `tr_class1_name`, `tr_class2_name`, `tr_class3_name`, `th_color1_name`, `th_color2_name`, `th_color3_name`, `th_class1_name`, `th_class2_name`, `th_class3_name`, `td_color1_name`, `td_color2_name`, `td_color3_name`, `td_class1_name`, `td_class2_name`, `td_class3_name`, `fontface1_name`, `fontface2_name`, `fontface3_name`, `fontsize1_name`, `fontsize2_name`, `fontsize3_name`, `fontcolor1_name`, `fontcolor2_name`, `fontcolor3_name`, `span_class1_name`, `span_class2_name`, `span_class3_name`) VALUES ("' . $theme_id . '", "The lightest row colour", "The medium row color", "The darkest row colour", "", "", "", "Border round the whole page", "Outer table border", "Inner table border", "Silver gradient picture", "Blue gradient picture", "Fade-out gradient on index", "Background for quote boxes", "All white areas", "", "Background for topic posts", "2nd background for topic posts", "", "Main fonts", "Additional topic title font", "Form fonts", "Smallest font size", "Medium font size", "Normal font size (post body etc)", "Quote & copyright text", "Code text colour", "Main table header text colour", "", "", "")';
+				$sql = 'INSERT INTO ' . $prefix . 'themes_name (`themes_id`, `tr_color1_name`, `tr_color2_name`, `tr_color3_name`, `tr_class1_name`, `tr_class2_name`, `tr_class3_name`, `th_color1_name`, `th_color2_name`, `th_color3_name`, `th_class1_name`, `th_class2_name`, `th_class3_name`, `td_color1_name`, `td_color2_name`, `td_color3_name`, `td_class1_name`, `td_class2_name`, `td_class3_name`, `fontface1_name`, `fontface2_name`, `fontface3_name`, `fontsize1_name`, `fontsize2_name`, `fontsize3_name`, `fontcolor1_name`, `fontcolor2_name`, `fontcolor3_name`, `span_class1_name`, `span_class2_name`, `span_class3_name`) VALUES ("' . $theme_id . '", "The lightest row colour", "The medium row color", "The darkest row colour", "", "", "", "Border round the whole page", "Outer table border", "Inner table border", "Silver gradient picture", "Blue gradient picture", "Fade-out gradient on index", "Background for quote boxes", "All white areas", "", "Background for topic posts", "2nd background for topic posts", "", "Main fonts", "Additional topic title font", "Form fonts", "Smallest font size", "Medium font size", "Normal font size (post body etc)", "Quote & copyright text", "Code text colour", "Main table header text colour", "", "", "")';
 				_sql($sql, $errored, $error_ary);
 			}
 			$db->sql_freeresult($result);
 
-			$sql = 'SELECT MIN(post_id) AS first_post_id, topic_id FROM ' . $table_prefix . 'posts GROUP BY `topic_id` ORDER BY `topic_id` ASC';
+			$sql = 'SELECT MIN(post_id) AS first_post_id, topic_id FROM ' . $prefix . 'posts GROUP BY `topic_id` ORDER BY `topic_id` ASC';
 			$result = _sql($sql, $errored, $error_ary);
 	
 			if ($row = $db->sql_fetchrow($result))
 			{
 				do
 				{
-					$sql = 'UPDATE ' . $table_prefix . 'topics SET `topic_first_post_id` = ' . $row['first_post_id'] . ' WHERE `topic_id` = ' . $row['topic_id'];
+					$sql = 'UPDATE ' . $prefix . 'topics SET `topic_first_post_id` = ' . $row['first_post_id'] . ' WHERE `topic_id` = ' . $row['topic_id'];
 					_sql($sql, $errored, $error_ary);
 				}
 				while ($row = $db->sql_fetchrow($result));
 			}
 			$db->sql_freeresult($result);
 	
-			$sql = "SELECT DISTINCT u.user_id FROM " . $table_prefix . "users u, " . $table_prefix . "user_group ug, " . $table_prefix . "auth_access aa WHERE `aa.auth_mod` = 1 AND `ug.group_id` = aa.group_id AND `u.user_id` = ug.user_id AND `u.user_level` <> " . ADMIN;
+			$sql = "SELECT DISTINCT u.user_id FROM " . $prefix . "users u, " . $prefix . "user_group ug, " . $prefix . "auth_access aa WHERE `aa.auth_mod` = 1 AND `ug.group_id` = aa.group_id AND `u.user_id` = ug.user_id AND `u.user_level` <> " . ADMIN;
 			$result = _sql($sql, $errored, $error_ary);
 	
 			$mod_user = array();
@@ -735,30 +735,30 @@ else if ($mode == 'phpbb')
 	
 			if (sizeof($mod_user))
 			{
-				$sql = 'UPDATE ' . $table_prefix . 'users SET `user_level` = "' . MOD . '" WHERE `user_id` IN ("' . implode(', ', $mod_user) . '")';
+				$sql = 'UPDATE ' . $prefix . 'users SET `user_level` = "' . MOD . '" WHERE `user_id` IN ("' . implode(', ', $mod_user) . '")';
 				_sql($sql, $errored, $error_ary);
 			}
 	
-			$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("server_name", "www.yourdomain.com")';
+			$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("server_name", "www.yourdomain.com")';
 			_sql($sql, $errored, $error_ary);
 			
-			$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("script_path", "/phpBB2/")';
+			$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("script_path", "/phpBB2/")';
 			_sql($sql, $errored, $error_ary);
 			
-			$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("server_port", "80")';
+			$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("server_port", "80")';
 			_sql($sql, $errored, $error_ary);
 			
-			$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("record_online_users", "1")';
+			$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("record_online_users", "1")';
 			_sql($sql, $errored, $error_ary);	
 			
-			$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("record_online_date", "' . time() . '")';
+			$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("record_online_date", "' . time() . '")';
 			_sql($sql, $errored, $error_ary);
 	
 		case 'RC-3':
 		case 'RC-4':
 		case '.0.0':
 		case '.0.1':
-			$sql = 'SELECT topic_id, topic_moved_id FROM ' . $table_prefix . 'topics WHERE `topic_moved_id` <> 0 AND `topic_status` = ' . TOPIC_MOVED; 
+			$sql = 'SELECT topic_id, topic_moved_id FROM ' . $prefix . 'topics WHERE `topic_moved_id` <> 0 AND `topic_status` = ' . TOPIC_MOVED; 
 			$result = _sql($sql, $errored, $error_ary);
 	
 			$topic_ary = array();
@@ -770,10 +770,10 @@ else if ($mode == 'phpbb')
 	
 			while (list($topic_id, $topic_moved_id) = each($topic_ary))
 			{
-				$sql = "SELECT MAX(post_id) AS last_post, MIN(post_id) AS first_post, COUNT(post_id) AS total_posts FROM " . $table_prefix . "posts WHERE `topic_id` = $topic_moved_id";
+				$sql = "SELECT MAX(post_id) AS last_post, MIN(post_id) AS first_post, COUNT(post_id) AS total_posts FROM " . $prefix . "posts WHERE `topic_id` = $topic_moved_id";
 				$result = _sql($sql, $errored, $error_ary);
 	
-				$sql = ($row = $db->sql_fetchrow($result)) ? "UPDATE " . $table_prefix . "topics SET topic_replies = " . ($row['total_posts'] - 1) . ", topic_first_post_id = " . $row['first_post'] . ", topic_last_post_id = " . $row['last_post'] . " WHERE topic_id = $topic_id" : "DELETE FROM " . $table_prefix . "topics WHERE topic_id = " . $row['topic_id'];
+				$sql = ($row = $db->sql_fetchrow($result)) ? "UPDATE " . $prefix . "topics SET topic_replies = " . ($row['total_posts'] - 1) . ", topic_first_post_id = " . $row['first_post'] . ", topic_last_post_id = " . $row['last_post'] . " WHERE topic_id = $topic_id" : "DELETE FROM " . $prefix . "topics WHERE topic_id = " . $row['topic_id'];
 				_sql($sql, $errored, $error_ary);
 			}
 	
@@ -794,7 +794,7 @@ else if ($mode == 'phpbb')
 				{
 					$stopword_list = trim(preg_replace('#([\w\.\-_\+\'-\\\]+?)[ \n\r]*?(,|$)#', '\'\1\'\2', str_replace("'", "\'", implode(', ', file($phpbb_root_path . $dirname . "/" . $file . '/search_stopwords.txt')))));
 					
-					$sql = "SELECT word_id FROM " . $table_prefix . "search_wordlist WHERE `word_text` IN ($stopword_list)";
+					$sql = "SELECT word_id FROM " . $prefix . "search_wordlist WHERE `word_text` IN ($stopword_list)";
 					$result = _sql($sql, $errored, $error_ary);
 	
 					$word_id_sql = '';
@@ -806,10 +806,10 @@ else if ($mode == 'phpbb')
 						}
 						while ($row = $db->sql_fetchrow($result));
 	
-						$sql = "DELETE FROM " . $table_prefix . "search_wordlist WHERE `word_id` IN ($word_id_sql)";
+						$sql = "DELETE FROM " . $prefix . "search_wordlist WHERE `word_id` IN ($word_id_sql)";
 						_sql($sql, $errored, $error_ary);
 	
-						$sql = "DELETE FROM " . $table_prefix . "search_wordmatch WHERE `word_id` IN ($word_id_sql)";
+						$sql = "DELETE FROM " . $prefix . "search_wordmatch WHERE `word_id` IN ($word_id_sql)";
 						_sql($sql, $errored, $error_ary);
 					}
 					$db->sql_freeresult($result);
@@ -821,7 +821,7 @@ else if ($mode == 'phpbb')
 			remove_common('global', 4/10);
 	
 			// Remove superfluous polls ... grab polls with topics then delete polls not in that list
-			$sql = "SELECT v.vote_id  FROM " . $table_prefix . "topics t, " . $table_prefix . "vote_desc v WHERE `v.topic_id` = t.topic_id";
+			$sql = "SELECT v.vote_id  FROM " . $prefix . "topics t, " . $prefix . "vote_desc v WHERE `v.topic_id` = t.topic_id";
 			$result = _sql($sql, $errored, $error_ary);	
 
 			$vote_id_sql = '';
@@ -833,19 +833,19 @@ else if ($mode == 'phpbb')
 				}
 				while ($row = $db->sql_fetchrow($result));
 	
-				$sql = "DELETE FROM " . $table_prefix . "vote_desc WHERE `vote_id` NOT IN ($vote_id_sql)";
+				$sql = "DELETE FROM " . $prefix . "vote_desc WHERE `vote_id` NOT IN ($vote_id_sql)";
 				_sql($sql, $errored, $error_ary);
 	
-				$sql = "DELETE FROM " . $table_prefix . "vote_results WHERE `vote_id` NOT IN ($vote_id_sql)";
+				$sql = "DELETE FROM " . $prefix . "vote_results WHERE `vote_id` NOT IN ($vote_id_sql)";
 				_sql($sql, $errored, $error_ary);
 	
-				$sql = "DELETE FROM " . $table_prefix . "vote_voters WHERE `vote_id` NOT IN ($vote_id_sql)";
+				$sql = "DELETE FROM " . $prefix . "vote_voters WHERE `vote_id` NOT IN ($vote_id_sql)";
 				_sql($sql, $errored, $error_ary);
 			}
 			$db->sql_freeresult($result);
 	
 			// Update PM counters
-			$sql = "SELECT privmsgs_to_userid, COUNT(privmsgs_id) AS unread_count FROM " . $table_prefix . "privmsgs WHERE `privmsgs_type` = " . PRIVMSGS_UNREAD_MAIL . " GROUP BY `privmsgs_to_userid`";
+			$sql = "SELECT privmsgs_to_userid, COUNT(privmsgs_id) AS unread_count FROM " . $prefix . "privmsgs WHERE `privmsgs_type` = " . PRIVMSGS_UNREAD_MAIL . " GROUP BY `privmsgs_to_userid`";
 			$result = _sql($sql, $errored, $error_ary);
 	
 			if ($row = $db->sql_fetchrow($result))
@@ -861,14 +861,14 @@ else if ($mode == 'phpbb')
 				{
 					$user_ids = implode(', ', $user_ary);
 	
-					$sql = "UPDATE " . $table_prefix . "users SET `user_unread_privmsg` = $num WHERE `user_id` IN ($user_ids)";
+					$sql = "UPDATE " . $prefix . "users SET `user_unread_privmsg` = $num WHERE `user_id` IN ($user_ids)";
 					_sql($sql, $errored, $error_ary);
 				}
 				unset($update_list);
 			}
 			$db->sql_freeresult($result);
 
-			$sql = "SELECT privmsgs_to_userid, COUNT(privmsgs_id) AS new_count FROM " . $table_prefix . "privmsgs WHERE `privmsgs_type` = " . PRIVMSGS_NEW_MAIL . " GROUP BY `privmsgs_to_userid`";
+			$sql = "SELECT privmsgs_to_userid, COUNT(privmsgs_id) AS new_count FROM " . $prefix . "privmsgs WHERE `privmsgs_type` = " . PRIVMSGS_NEW_MAIL . " GROUP BY `privmsgs_to_userid`";
 			$result = _sql($sql, $errored, $error_ary);
 	
 			if ($row = $db->sql_fetchrow($result))
@@ -884,7 +884,7 @@ else if ($mode == 'phpbb')
 				{
 					$user_ids = implode(', ', $user_ary);
 	
-					$sql = 'UPDATE ' . $table_prefix . 'users SET `user_new_privmsg` = ' . $num . ' WHERE `user_id` IN (' . $user_ids . ')';
+					$sql = 'UPDATE ' . $prefix . 'users SET `user_new_privmsg` = ' . $num . ' WHERE `user_id` IN (' . $user_ids . ')';
 					_sql($sql, $errored, $error_ary);
 				}
 				unset($update_list);	
@@ -892,7 +892,7 @@ else if ($mode == 'phpbb')
 			$db->sql_freeresult($result);		
 
 			// Remove superfluous watched topics	
-			$sql = 'SELECT t.topic_id FROM ' . $table_prefix . 'topics t, ' . $table_prefix . 'topics_watch w WHERE `w.topic_id` = ' . t.topic_id;
+			$sql = 'SELECT t.topic_id FROM ' . $prefix . 'topics t, ' . $prefix . 'topics_watch w WHERE `w.topic_id` = ' . t.topic_id;
 			$result = _sql($sql, $errored, $error_ary);
 	
 			$topic_id_sql = '';
@@ -904,26 +904,26 @@ else if ($mode == 'phpbb')
 				}
 				while ($row = $db->sql_fetchrow($result));
 	
-				$sql = "DELETE FROM " . $table_prefix . "topics_watch WHERE `topic_id` NOT IN ($topic_id_sql)";
+				$sql = "DELETE FROM " . $prefix . "topics_watch WHERE `topic_id` NOT IN ($topic_id_sql)";
 				_sql($sql, $errored, $error_ary);
 			}
 			$db->sql_freeresult($result);
 	
 			// Reset any email addresses which are non-compliant ... something not 
 			// done in the upgrade script and thus which may affect some mysql users
-			$sql = "UPDATE " . $table_prefix . "users SET `user_email` = '' WHERE `user_email` NOT REGEXP '^[a-zA-Z0-9_\+\.\-]+@.*[a-zA-Z0-9_\-]+\.[a-zA-Z]{2,}$'";
+			$sql = "UPDATE " . $prefix . "users SET `user_email` = '' WHERE `user_email` NOT REGEXP '^[a-zA-Z0-9_\+\.\-]+@.*[a-zA-Z0-9_\-]+\.[a-zA-Z]{2,}$'";
 			_sql($sql, $errored, $error_ary);
 	
 		case '.0.4':
 			// Add the confirmation code switch ... save time and trouble elsewhere
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('enable_confirm', '1')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('enable_confirm', '1')";
 			_sql($sql, $errored, $error_ary);
 	
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('sendmail_fix', '0')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('sendmail_fix', '0')";
 			_sql($sql, $errored, $error_ary);
 	
 		case '.0.5':
-			$sql = "SELECT user_id, username FROM " . $table_prefix . "users";
+			$sql = "SELECT user_id, username FROM " . $prefix . "users";
 			$result = _sql($sql, $errored, $error_ary);
 	
 			while ($row = $db->sql_fetchrow($result))
@@ -932,7 +932,7 @@ else if ($mode == 'phpbb')
 				{
 					if ($row['username'] != htmlspecialchars($row['username']))
 					{
-						$sql = "UPDATE " . $table_prefix . "users SET `username` = '" . str_replace("'", "''", htmlspecialchars($row['username'])) . "' WHERE `user_id` = " . $row['user_id'];
+						$sql = "UPDATE " . $prefix . "users SET `username` = '" . str_replace("'", "''", htmlspecialchars($row['username'])) . "' WHERE `user_id` = " . $row['user_id'];
 						_sql($sql, $errored, $error_ary);
 					}
 				}
@@ -948,41 +948,41 @@ else if ($mode == 'phpbb')
 		case '.0.12':
 		case '.0.13':
 		case '.0.14':
-			$sql = "UPDATE " . $table_prefix . "users SET user_allowhtml = 1 WHERE user_id = " . ANONYMOUS;
+			$sql = "UPDATE " . $prefix . "users SET user_allowhtml = 1 WHERE user_id = " . ANONYMOUS;
 			_sql($sql, $errored, $error_ary);
 
 			// We reset those having autologin enabled and forcing the re-assignment of a session id
-			$sql = "DELETE FROM " . $table_prefix . "sessions";
+			$sql = "DELETE FROM " . $prefix . "sessions";
 			_sql($sql, $errored, $error_ary);
 
 		case '.0.15':
 		case '.0.16':
 		case '.0.17':
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('allow_autologin', '1')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('allow_autologin', '1')";
 			_sql($sql, $errored, $error_ary);
 
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('max_autologin_time', '0')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('max_autologin_time', '0')";
 			_sql($sql, $errored, $error_ary);
 
-			$sql = "UPDATE " . $table_prefix . "users SET user_active = 0 WHERE user_id = " . ANONYMOUS;
+			$sql = "UPDATE " . $prefix . "users SET user_active = 0 WHERE user_id = " . ANONYMOUS;
 			_sql($sql, $errored, $error_ary);
 
 		case '.0.18':
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('max_login_attempts', '5')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('max_login_attempts', '5')";
 			_sql($sql, $errored, $error_ary);
 
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('login_reset_time', '30')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('login_reset_time', '30')";
 			_sql($sql, $errored, $error_ary);
 
 		case '.0.19':
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('search_flood_interval', '15')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('search_flood_interval', '15')";
 			_sql($sql, $errored, $error_ary);
 
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('rand_seed', '0')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('rand_seed', '0')";
 			_sql($sql, $errored, $error_ary);
 
 		case '.0.20':
-			$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('search_min_chars', '3')";
+			$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('search_min_chars', '3')";
 			_sql($sql, $errored, $error_ary);
 		
 			break;
@@ -1025,7 +1025,7 @@ else if ($mode == 'phpbb')
 	echo "<p>Progress :: ";
 	flush();
 
-	$sql = "SELECT user_id FROM " . $table_prefix . "users WHERE `user_id` != " . ANONYMOUS;
+	$sql = "SELECT user_id FROM " . $prefix . "users WHERE `user_id` != " . ANONYMOUS;
 	$result = _sql($sql, $errored, $error_ary, '');
 
 	$users = $db->sql_fetchrowset($result);
@@ -1039,12 +1039,12 @@ else if ($mode == 'phpbb')
 
 		$user_id = $users[$i]['user_id'];
 	
-		$sql = "SELECT COUNT(*) AS all_posts FROM " . $table_prefix . "posts WHERE `poster_id` = $user_id";
+		$sql = "SELECT COUNT(*) AS all_posts FROM " . $prefix . "posts WHERE `poster_id` = $user_id";
 		$result = _sql($sql, $errored, $error_ary, '');
 	
 		$all_posts = $db->sql_fetchrow($result);
 	
-		$sql = "SELECT COUNT(*) AS total_topics FROM " . $table_prefix . "topics WHERE `topic_poster` = $user_id";
+		$sql = "SELECT COUNT(*) AS total_topics FROM " . $prefix . "topics WHERE `topic_poster` = $user_id";
 		$result = _sql($sql, $errored, $error_ary, '');
 
 		$total_topics = $db->sql_fetchrow($result);
@@ -1055,7 +1055,7 @@ else if ($mode == 'phpbb')
 		$points = $points + ($total_posts * 1); // 1 Point per post
 		$points = $points + ($total_topics * 2); // 2 Points per topic
 
-		$sql = "UPDATE " . $table_prefix . "users SET `user_points` = '$points' WHERE `user_id` = '$user_id'";
+		$sql = "UPDATE " . $prefix . "users SET `user_points` = '$points' WHERE `user_id` = '$user_id'";
 		_sql($sql, $errored, $error_ary);
 		
 		$b++;
@@ -1109,7 +1109,7 @@ else if ($mode == 'uninstall')
 	echo "<h1>Disabling the board</h1>\n";
 	echo "<p>Result :: ";
 	
-	$sql = 'UPDATE ' . $table_prefix . 'config SET config_value = 1 WHERE `config_name` = "board_disable"';
+	$sql = 'UPDATE ' . $prefix . 'config SET config_value = 1 WHERE `config_name` = "board_disable"';
 	_sql($sql, $errored, $error_ary, '');
 
 	@unlink($phpbb_root_path . 'cache/config_board.'.$phpEx);
@@ -1373,213 +1373,213 @@ if ( $mode == 'phpbbfm' || $mode == 'phpbb' || $mode == 'uninstall')
 	echo "<h1>Optimizing database</h1>\n";
 	echo "<p>Result :: ";
 		
-	$sql = "UPDATE " . $table_prefix . "posts_text SET `bbcode_uid` = '' WHERE `post_text` NOT LIKE '%[%]%[/%]%'";
+	$sql = "UPDATE " . $prefix . "posts_text SET `bbcode_uid` = '' WHERE `post_text` NOT LIKE '%[%]%[/%]%'";
 	_sql($sql, $errored, $error_ary, '');
 
-	$sql = "UPDATE " . $table_prefix . "users SET `user_sig_bbcode_uid` = '' WHERE `user_sig` NOT LIKE '%[%]%[/%]%'";
+	$sql = "UPDATE " . $prefix . "users SET `user_sig_bbcode_uid` = '' WHERE `user_sig` NOT LIKE '%[%]%[/%]%'";
 	_sql($sql, $errored, $error_ary, '');
 	
 	$sql = 'OPTIMIZE TABLE 
-		' . $table_prefix . 'account_hist,
-		' . $table_prefix . 'advance_html, 
-		' . $table_prefix . 'album, 
-		' . $table_prefix . 'album_cat, 
-		' . $table_prefix . 'album_comment, 
-		' . $table_prefix . 'album_config, 
-		' . $table_prefix . 'album_rate, 
-		' . $table_prefix . 'attachments, 
-		' . $table_prefix . 'attachments_config, 
-		' . $table_prefix . 'attachments_desc, 
-		' . $table_prefix . 'attach_quota, 
-		' . $table_prefix . 'auth_access, 
-		' . $table_prefix . 'avatartoplist, 
-		' . $table_prefix . 'backup, 
-		' . $table_prefix . 'bank, 
-		' . $table_prefix . 'banlist, 
-		' . $table_prefix . 'banned_sites, 
-		' . $table_prefix . 'banned_visitors, 
-		' . $table_prefix . 'banner, 
-		' . $table_prefix . 'banner_stats, 
-		' . $table_prefix . 'banvote_voters, 
-		' . $table_prefix . 'bookie_admin_bets, 
-		' . $table_prefix . 'bookie_bets, 
-		' . $table_prefix . 'bookie_bet_setter, 
-		' . $table_prefix . 'bookie_categories, 
-		' . $table_prefix . 'bookie_meetings, 
-		' . $table_prefix . 'bookie_selections, 
-		' . $table_prefix . 'bookie_selections_data, 
-		' . $table_prefix . 'bookie_stats, 
-		' . $table_prefix . 'bots, 
-		' . $table_prefix . 'bots_archive, 
-		' . $table_prefix . 'categories, 
-		' . $table_prefix . 'cat_rel_cat_parents, 
-		' . $table_prefix . 'cat_rel_forum_parents, 
-		' . $table_prefix . 'charts, 
-		' . $table_prefix . 'charts_voters, 
-		' . $table_prefix . 'chatbox, 
-		' . $table_prefix . 'chatbox_session, 
-		' . $table_prefix . 'config, 
-		' . $table_prefix . 'config_nav, 
-		' . $table_prefix . 'confirm, 
-		' . $table_prefix . 'digests, 
-		' . $table_prefix . 'digests_config, 
-		' . $table_prefix . 'digests_forums, 
-		' . $table_prefix . 'digests_log, 
-		' . $table_prefix . 'disallow, 
-		' . $table_prefix . 'extensions, 
-		' . $table_prefix . 'extension_groups, 
-		' . $table_prefix . 'flags, 
-		' . $table_prefix . 'forbidden_extensions, 
-		' . $table_prefix . 'forums, 
-		' . $table_prefix . 'forums_descrip, 
-		' . $table_prefix . 'forums_watch, 
-		' . $table_prefix . 'forum_move, 
-		' . $table_prefix . 'forum_prune, 
-		' . $table_prefix . 'forum_tour, 
-		' . $table_prefix . 'groups, 
-		' . $table_prefix . 'guestbook,
-		' . $table_prefix . 'guestbook_config,
-		' . $table_prefix . 'helpdesk_emails, 
-		' . $table_prefix . 'helpdesk_importance, 
-		' . $table_prefix . 'helpdesk_msgs, 
-		' . $table_prefix . 'helpdesk_reply, 
-		' . $table_prefix . 'im_buddy_list, 
-		' . $table_prefix . 'im_config, 
-		' . $table_prefix . 'im_prefs, 
-		' . $table_prefix . 'im_sessions, 
-		' . $table_prefix . 'im_sites, 
-		' . $table_prefix . 'ina_ban, 
-		' . $table_prefix . 'ina_categories, 
-		' . $table_prefix . 'ina_challenge_tracker, 
-		' . $table_prefix . 'ina_challenge_users, 
-		' . $table_prefix . 'ina_chat, 
-		' . $table_prefix . 'ina_cheat_fix, 
-		' . $table_prefix . 'ina_data, 
-		' . $table_prefix . 'ina_favorites, 
-		' . $table_prefix . 'ina_gamble, 
-		' . $table_prefix . 'ina_gamble_in_progress, 
-		' . $table_prefix . 'ina_games, 
-		' . $table_prefix . 'ina_hall_of_fame, 
-		' . $table_prefix . 'ina_last_game_played, 
-		' . $table_prefix . 'ina_rating_votes, 
-		' . $table_prefix . 'ina_scores, 
-		' . $table_prefix . 'ina_sessions, 
-		' . $table_prefix . 'ina_top_scores, 
-		' . $table_prefix . 'ina_trophy_comments, 
-		' . $table_prefix . 'inline_ads, 
-		' . $table_prefix . 'ip, 
-		' . $table_prefix . 'jobs,
-		' . $table_prefix . 'jobs_employed,
-		' . $table_prefix . 'kb_articles, 
-		' . $table_prefix . 'kb_categories, 
-		' . $table_prefix . 'kb_results, 
-		' . $table_prefix . 'kb_types, 
-		' . $table_prefix . 'kb_wordlist, 
-		' . $table_prefix . 'kb_wordmatch, 
-		' . $table_prefix . 'lexicon, 
-		' . $table_prefix . 'lexicon_cat, 
-		' . $table_prefix . 'links, 
-		' . $table_prefix . 'link_categories, 
-		' . $table_prefix . 'link_comments, 
-		' . $table_prefix . 'link_config, 
-		' . $table_prefix . 'link_custom, 
-		' . $table_prefix . 'link_customdata, 
-		' . $table_prefix . 'link_votes, 
-		' . $table_prefix . 'logs, 
-		' . $table_prefix . 'lottery, 
-		' . $table_prefix . 'lottery_history, 
-		' . $table_prefix . 'medal, 
-		' . $table_prefix . 'medal_cat, 
-		' . $table_prefix . 'medal_mod, 
-		' . $table_prefix . 'medal_user, 
-		' . $table_prefix . 'meeting_comment, 
-		' . $table_prefix . 'meeting_config, 
-		' . $table_prefix . 'meeting_data, 
-		' . $table_prefix . 'meeting_guestnames,
-		' . $table_prefix . 'meeting_user, 
-		' . $table_prefix . 'meeting_usergroup, 
-		' . $table_prefix . 'modules, 
-		' . $table_prefix . 'module_admin_panel, 
-		' . $table_prefix . 'module_cache, 
-		' . $table_prefix . 'module_group_auth, 
-		' . $table_prefix . 'module_info, 
-		' . $table_prefix . 'mycalendar, 
-		' . $table_prefix . 'mycalendar_event_types, 
-		' . $table_prefix . 'optimize_db, 
-		' . $table_prefix . 'pages,
-		' . $table_prefix . 'pa_auth, 
-		' . $table_prefix . 'pa_cat, 
-		' . $table_prefix . 'pa_comments, 
-		' . $table_prefix . 'pa_config, 
-		' . $table_prefix . 'pa_custom, 
-		' . $table_prefix . 'pa_customdata, 
-		' . $table_prefix . 'pa_download_info, 
-		' . $table_prefix . 'pa_files, 
-		' . $table_prefix . 'pa_license, 
-		' . $table_prefix . 'pa_mirrors, 
-		' . $table_prefix . 'pa_votes, 
-		' . $table_prefix . 'pjirc, 
-		' . $table_prefix . 'points_logger, 
-		' . $table_prefix . 'portal, 
-		' . $table_prefix . 'posts, 
-		' . $table_prefix . 'posts_edit, 
-		' . $table_prefix . 'posts_ignore_sigav, 
-		' . $table_prefix . 'posts_text, 
-		' . $table_prefix . 'privmsgs, 
-		' . $table_prefix . 'privmsgs_archive, 
-		' . $table_prefix . 'privmsgs_text, 
-		' . $table_prefix . 'profile_view, 
-		' . $table_prefix . 'quota_limits, 
-		' . $table_prefix . 'ranks, 
-		' . $table_prefix . 'rating, 
-		' . $table_prefix . 'rating_bias, 
-		' . $table_prefix . 'rating_config, 
-		' . $table_prefix . 'rating_option, 
-		' . $table_prefix . 'rating_rank, 
-		' . $table_prefix . 'rating_temp, 
-		' . $table_prefix . 'referers, 
-		' . $table_prefix . 'referral, 
-		' . $table_prefix . 'search_results, 
-		' . $table_prefix . 'search_wordlist, 
-		' . $table_prefix . 'search_wordmatch, 
-		' . $table_prefix . 'serverload, 
-		' . $table_prefix . 'sessions, 
-		' . $table_prefix . 'sessions_keys, 
-		' . $table_prefix . 'shops, 
-		' . $table_prefix . 'shop_items, 
-		' . $table_prefix . 'shop_transactions, 
-		' . $table_prefix . 'shout, 
-		' . $table_prefix . 'smilies, 
-		' . $table_prefix . 'smilies_cat,
-		' . $table_prefix . 'spelling_words, 
-		' . $table_prefix . 'stats_smilies_index, 
-		' . $table_prefix . 'stats_smilies_info, 
-		' . $table_prefix . 'subscriptions_list, 
-		' . $table_prefix . 'thanks, 
-		' . $table_prefix . 'themes, 
-		' . $table_prefix . 'themes_name, 
-		' . $table_prefix . 'thread_kicker, 
-		' . $table_prefix . 'title_infos, 
-		' . $table_prefix . 'topics, 
-		' . $table_prefix . 'topics_viewdata, 
-		' . $table_prefix . 'topics_watch,
-		' . $table_prefix . 'toplist, 
-		' . $table_prefix . 'toplist_anti_flood, 
-		' . $table_prefix . 'transactions, 
-		' . $table_prefix . 'unique_hits, 
-		' . $table_prefix . 'users, 
-		' . $table_prefix . 'users_comments, 
-		' . $table_prefix . 'user_group, 
-		' . $table_prefix . 'user_notes, 
-		' . $table_prefix . 'user_shops, 
-		' . $table_prefix . 'user_shops_items, 
-		' . $table_prefix . 'vote_desc, 
-		' . $table_prefix . 'vote_results, 
-		' . $table_prefix . 'vote_voters, 
-		' . $table_prefix . 'words,
-		' . $table_prefix . 'xdata_auth,
-		' . $table_prefix . 'xdata_data,
-		' . $table_prefix . 'xdata_fields
+		' . $prefix . 'account_hist,
+		' . $prefix . 'advance_html, 
+		' . $prefix . 'album, 
+		' . $prefix . 'album_cat, 
+		' . $prefix . 'album_comment, 
+		' . $prefix . 'album_config, 
+		' . $prefix . 'album_rate, 
+		' . $prefix . 'attachments, 
+		' . $prefix . 'attachments_config, 
+		' . $prefix . 'attachments_desc, 
+		' . $prefix . 'attach_quota, 
+		' . $prefix . 'auth_access, 
+		' . $prefix . 'avatartoplist, 
+		' . $prefix . 'backup, 
+		' . $prefix . 'bank, 
+		' . $prefix . 'banlist, 
+		' . $prefix . 'banned_sites, 
+		' . $prefix . 'banned_visitors, 
+		' . $prefix . 'banner, 
+		' . $prefix . 'banner_stats, 
+		' . $prefix . 'banvote_voters, 
+		' . $prefix . 'bookie_admin_bets, 
+		' . $prefix . 'bookie_bets, 
+		' . $prefix . 'bookie_bet_setter, 
+		' . $prefix . 'bookie_categories, 
+		' . $prefix . 'bookie_meetings, 
+		' . $prefix . 'bookie_selections, 
+		' . $prefix . 'bookie_selections_data, 
+		' . $prefix . 'bookie_stats, 
+		' . $prefix . 'bots, 
+		' . $prefix . 'bots_archive, 
+		' . $prefix . 'categories, 
+		' . $prefix . 'cat_rel_cat_parents, 
+		' . $prefix . 'cat_rel_forum_parents, 
+		' . $prefix . 'charts, 
+		' . $prefix . 'charts_voters, 
+		' . $prefix . 'chatbox, 
+		' . $prefix . 'chatbox_session, 
+		' . $prefix . 'config, 
+		' . $prefix . 'config_nav, 
+		' . $prefix . 'confirm, 
+		' . $prefix . 'digests, 
+		' . $prefix . 'digests_config, 
+		' . $prefix . 'digests_forums, 
+		' . $prefix . 'digests_log, 
+		' . $prefix . 'disallow, 
+		' . $prefix . 'extensions, 
+		' . $prefix . 'extension_groups, 
+		' . $prefix . 'flags, 
+		' . $prefix . 'forbidden_extensions, 
+		' . $prefix . 'forums, 
+		' . $prefix . 'forums_descrip, 
+		' . $prefix . 'forums_watch, 
+		' . $prefix . 'forum_move, 
+		' . $prefix . 'forum_prune, 
+		' . $prefix . 'forum_tour, 
+		' . $prefix . 'groups, 
+		' . $prefix . 'guestbook,
+		' . $prefix . 'guestbook_config,
+		' . $prefix . 'helpdesk_emails, 
+		' . $prefix . 'helpdesk_importance, 
+		' . $prefix . 'helpdesk_msgs, 
+		' . $prefix . 'helpdesk_reply, 
+		' . $prefix . 'im_buddy_list, 
+		' . $prefix . 'im_config, 
+		' . $prefix . 'im_prefs, 
+		' . $prefix . 'im_sessions, 
+		' . $prefix . 'im_sites, 
+		' . $prefix . 'ina_ban, 
+		' . $prefix . 'ina_categories, 
+		' . $prefix . 'ina_challenge_tracker, 
+		' . $prefix . 'ina_challenge_users, 
+		' . $prefix . 'ina_chat, 
+		' . $prefix . 'ina_cheat_fix, 
+		' . $prefix . 'ina_data, 
+		' . $prefix . 'ina_favorites, 
+		' . $prefix . 'ina_gamble, 
+		' . $prefix . 'ina_gamble_in_progress, 
+		' . $prefix . 'ina_games, 
+		' . $prefix . 'ina_hall_of_fame, 
+		' . $prefix . 'ina_last_game_played, 
+		' . $prefix . 'ina_rating_votes, 
+		' . $prefix . 'ina_scores, 
+		' . $prefix . 'ina_sessions, 
+		' . $prefix . 'ina_top_scores, 
+		' . $prefix . 'ina_trophy_comments, 
+		' . $prefix . 'inline_ads, 
+		' . $prefix . 'ip, 
+		' . $prefix . 'jobs,
+		' . $prefix . 'jobs_employed,
+		' . $prefix . 'kb_articles, 
+		' . $prefix . 'kb_categories, 
+		' . $prefix . 'kb_results, 
+		' . $prefix . 'kb_types, 
+		' . $prefix . 'kb_wordlist, 
+		' . $prefix . 'kb_wordmatch, 
+		' . $prefix . 'lexicon, 
+		' . $prefix . 'lexicon_cat, 
+		' . $prefix . 'links, 
+		' . $prefix . 'link_categories, 
+		' . $prefix . 'link_comments, 
+		' . $prefix . 'link_config, 
+		' . $prefix . 'link_custom, 
+		' . $prefix . 'link_customdata, 
+		' . $prefix . 'link_votes, 
+		' . $prefix . 'logs, 
+		' . $prefix . 'lottery, 
+		' . $prefix . 'lottery_history, 
+		' . $prefix . 'medal, 
+		' . $prefix . 'medal_cat, 
+		' . $prefix . 'medal_mod, 
+		' . $prefix . 'medal_user, 
+		' . $prefix . 'meeting_comment, 
+		' . $prefix . 'meeting_config, 
+		' . $prefix . 'meeting_data, 
+		' . $prefix . 'meeting_guestnames,
+		' . $prefix . 'meeting_user, 
+		' . $prefix . 'meeting_usergroup, 
+		' . $prefix . 'modules, 
+		' . $prefix . 'module_admin_panel, 
+		' . $prefix . 'module_cache, 
+		' . $prefix . 'module_group_auth, 
+		' . $prefix . 'module_info, 
+		' . $prefix . 'mycalendar, 
+		' . $prefix . 'mycalendar_event_types, 
+		' . $prefix . 'optimize_db, 
+		' . $prefix . 'pages,
+		' . $prefix . 'pa_auth, 
+		' . $prefix . 'pa_cat, 
+		' . $prefix . 'pa_comments, 
+		' . $prefix . 'pa_config, 
+		' . $prefix . 'pa_custom, 
+		' . $prefix . 'pa_customdata, 
+		' . $prefix . 'pa_download_info, 
+		' . $prefix . 'pa_files, 
+		' . $prefix . 'pa_license, 
+		' . $prefix . 'pa_mirrors, 
+		' . $prefix . 'pa_votes, 
+		' . $prefix . 'pjirc, 
+		' . $prefix . 'points_logger, 
+		' . $prefix . 'portal, 
+		' . $prefix . 'posts, 
+		' . $prefix . 'posts_edit, 
+		' . $prefix . 'posts_ignore_sigav, 
+		' . $prefix . 'posts_text, 
+		' . $prefix . 'privmsgs, 
+		' . $prefix . 'privmsgs_archive, 
+		' . $prefix . 'privmsgs_text, 
+		' . $prefix . 'profile_view, 
+		' . $prefix . 'quota_limits, 
+		' . $prefix . 'ranks, 
+		' . $prefix . 'rating, 
+		' . $prefix . 'rating_bias, 
+		' . $prefix . 'rating_config, 
+		' . $prefix . 'rating_option, 
+		' . $prefix . 'rating_rank, 
+		' . $prefix . 'rating_temp, 
+		' . $prefix . 'referers, 
+		' . $prefix . 'referral, 
+		' . $prefix . 'search_results, 
+		' . $prefix . 'search_wordlist, 
+		' . $prefix . 'search_wordmatch, 
+		' . $prefix . 'serverload, 
+		' . $prefix . 'sessions, 
+		' . $prefix . 'sessions_keys, 
+		' . $prefix . 'shops, 
+		' . $prefix . 'shop_items, 
+		' . $prefix . 'shop_transactions, 
+		' . $prefix . 'shout, 
+		' . $prefix . 'smilies, 
+		' . $prefix . 'smilies_cat,
+		' . $prefix . 'spelling_words, 
+		' . $prefix . 'stats_smilies_index, 
+		' . $prefix . 'stats_smilies_info, 
+		' . $prefix . 'subscriptions_list, 
+		' . $prefix . 'thanks, 
+		' . $prefix . 'themes, 
+		' . $prefix . 'themes_name, 
+		' . $prefix . 'thread_kicker, 
+		' . $prefix . 'title_infos, 
+		' . $prefix . 'topics, 
+		' . $prefix . 'topics_viewdata, 
+		' . $prefix . 'topics_watch,
+		' . $prefix . 'toplist, 
+		' . $prefix . 'toplist_anti_flood, 
+		' . $prefix . 'transactions, 
+		' . $prefix . 'unique_hits, 
+		' . $prefix . 'users, 
+		' . $prefix . 'users_comments, 
+		' . $prefix . 'user_group, 
+		' . $prefix . 'user_notes, 
+		' . $prefix . 'user_shops, 
+		' . $prefix . 'user_shops_items, 
+		' . $prefix . 'vote_desc, 
+		' . $prefix . 'vote_results, 
+		' . $prefix . 'vote_voters, 
+		' . $prefix . 'words,
+		' . $prefix . 'xdata_auth,
+		' . $prefix . 'xdata_data,
+		' . $prefix . 'xdata_fields
 		';		
 
 	_sql($sql, $errored, $error_ary, '');
@@ -1687,26 +1687,26 @@ if ( $mode == 'phpbbfm' || $mode == 'phpbb' || $mode == 'uninstall')
 	echo "<h1>Enabling the board</h1>\n";
 	echo "<p>Result :: ";
 
-	$sql = "UPDATE " . $table_prefix . "config SET `config_value` = '$updates_to_version' WHERE `config_name` = 'version'";
+	$sql = "UPDATE " . $prefix . "config SET `config_value` = '$updates_to_version' WHERE `config_name` = 'version'";
 	_sql($sql, $errored, $error_ary, '');
 	
 	if ( $mode != 'uninstall' )
 	{
-		$sql = "UPDATE " . $table_prefix . "config SET `config_value` = '$updates_to_fm_version' WHERE `config_name` = 'fm_version'";
+		$sql = "UPDATE " . $prefix . "config SET `config_value` = '$updates_to_fm_version' WHERE `config_name` = 'fm_version'";
 		_sql($sql, $errored, $error_ary, '');
 	}
 	
-	$sql = 'UPDATE ' . $table_prefix . "config SET `config_value` = 0 WHERE `config_name` = 'board_disable'";
+	$sql = 'UPDATE ' . $prefix . "config SET `config_value` = 0 WHERE `config_name` = 'board_disable'";
 	_sql($sql, $errored, $error_ary, '');
 
 	//
 	// We reset those having autologin enabled and forcing the re-assignment of a session id
 	// since there have been changes to the way these are handled from previous builds
 	//
-	$sql = "DELETE FROM " . $table_prefix . "sessions";
+	$sql = "DELETE FROM " . $prefix . "sessions";
 	_sql($sql, $errored, $error_ary);
 	
-	$sql = "DELETE FROM " . $table_prefix . "sessions_keys";
+	$sql = "DELETE FROM " . $prefix . "sessions_keys";
 	_sql($sql, $errored, $error_ary);
 
 	//

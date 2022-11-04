@@ -13,7 +13,7 @@ if (!defined('IN_PHPBB'))
 	die('Hack Attempt');
 }
 	
-global $table_prefix, $phpbb_root_path, $phpEx, $board_config;
+global $prefix, $phpbb_root_path, $phpEx, $board_config;
  
 // include language files
 $language = $board_config['default_lang'];
@@ -22,22 +22,22 @@ if( !file_exists($phpbb_root_path . 'language/lang_' . $language . '/lang_activi
 
 include_once($phpbb_root_path . 'includes/functions_amod_plus_char.'.$phpEx);
 
-define('INA_BAN', $table_prefix .'ina_ban');
-define('INA_CATEGORY', $table_prefix .'ina_categories');
-define('INA_CHALLENGE', $table_prefix .'ina_challenge_tracker');
-define('INA_CHALLENGE_USERS', $table_prefix .'ina_challenge_users');
-define('INA_CHEAT', $table_prefix .'ina_cheat_fix');
-define('INA_DISABLE', $table_prefix .'ina_hidden');
-define('INA_GAMBLE', $table_prefix .'ina_gamble');
-define('INA_GAMBLE_GAMES', $table_prefix .'ina_gamble_in_progress');
-define('INA_LAST_GAME', $table_prefix .'ina_last_game_played');
-define('INA_SESSIONS', $table_prefix ."ina_sessions");
-define('INA_TROPHY', $table_prefix .'ina_top_scores');
-define('INA_TROPHY_COMMENTS', $table_prefix .'ina_trophy_comments');
-define('INA_RATINGS', $table_prefix .'ina_rating_votes');
-define('INA_FAVORITES', $table_prefix .'ina_favorites');
-define('INA_HOF', $table_prefix .'ina_hall_of_fame');
-define('INA_CHAT', $table_prefix .'ina_chat');
+define('INA_BAN', $prefix .'ina_ban');
+define('INA_CATEGORY', $prefix .'ina_categories');
+define('INA_CHALLENGE', $prefix .'ina_challenge_tracker');
+define('INA_CHALLENGE_USERS', $prefix .'ina_challenge_users');
+define('INA_CHEAT', $prefix .'ina_cheat_fix');
+define('INA_DISABLE', $prefix .'ina_hidden');
+define('INA_GAMBLE', $prefix .'ina_gamble');
+define('INA_GAMBLE_GAMES', $prefix .'ina_gamble_in_progress');
+define('INA_LAST_GAME', $prefix .'ina_last_game_played');
+define('INA_SESSIONS', $prefix ."ina_sessions");
+define('INA_TROPHY', $prefix .'ina_top_scores');
+define('INA_TROPHY_COMMENTS', $prefix .'ina_trophy_comments');
+define('INA_RATINGS', $prefix .'ina_rating_votes');
+define('INA_FAVORITES', $prefix .'ina_favorites');
+define('INA_HOF', $prefix .'ina_hall_of_fame');
+define('INA_CHAT', $prefix .'ina_chat');
 
 function UpdateSessions()
 {
@@ -291,7 +291,7 @@ function send_challenge_pm($dest_user, $subject, $message)
 
 function CheckGambles()
 {
-	global $table_prefix, $db, $lang;		
+	global $prefix, $db, $lang;		
 		
 	$q = "SELECT *
 		FROM ". INA_GAMBLE_GAMES ."
@@ -402,7 +402,7 @@ function CheckGambles()
 		
 function UpdateGamblePoints()
 {
-	global $table_prefix, $db, $board_config;
+	global $prefix, $db, $board_config;
 		
 	$q = "SELECT *
 		FROM ". INA_GAMBLE ."
@@ -435,7 +435,7 @@ function UpdateGamblePoints()
 		
 function UpdateActivitySession()
 {
-	global $table_prefix, $db, $userdata;
+	global $prefix, $db, $userdata;
 				
 	$q =  "UPDATE ". SESSIONS_TABLE ." s, ". USERS_TABLE ." u
 		SET s.session_page = '". PAGE_ACTIVITY ."', u.user_session_page = '". PAGE_ACTIVITY ."'
@@ -448,7 +448,7 @@ function UpdateActivitySession()
 		
 function ChallengeSelected($who, $game)
 {
-	global $db, $userdata, $table_prefix, $phpbb_root_path;
+	global $db, $userdata, $prefix, $phpbb_root_path;
 		
 	$sql = "UPDATE ". CONFIG_TABLE ."
 		SET config_value = config_value + 1
@@ -704,7 +704,7 @@ function TrophyKingRankCheck()
 		
 function Gamble($score, $id)
 {
-	global $table_prefix, $db, $userdata;
+	global $prefix, $db, $userdata;
 			
 	$q = "SELECT *
 		FROM ". INA_GAMBLE_GAMES ."
@@ -766,7 +766,7 @@ function UpdateUsersPage($user, $page)
 		
 function CheckGamesPerDayMax($user, $username)		
 {
-	global $board_config, $db, $lang, $table_prefix, $phpbb_root_path;
+	global $board_config, $db, $lang, $prefix, $phpbb_root_path;
 		
 	if (!$board_config['ina_use_max_games_per_day'])
 	{
@@ -846,7 +846,7 @@ function RemovePlayingGame($user)
 		
 function CleanInaSessions($expired)
 {
-	global $table_prefix, $db;
+	global $prefix, $db;
 		
 	$q = "DELETE FROM ". INA_SESSIONS ."
 		WHERE playing_time < '". $expired ."'";
@@ -875,7 +875,7 @@ function FormatScores($score)
 		
 function PopupImages($game_name)
 {
-	global $lang, $board_config, $db, $userdata, $table_prefix;
+	global $lang, $board_config, $db, $userdata, $prefix;
 
 	$q =  "SELECT proper_name
 		FROM ". iNA_GAMES ."
@@ -1045,7 +1045,7 @@ function DeletedAMPUser($user_id, $username)
 		
 function HallOfFamePass($user, $score, $game, $order)
 {
-	global $db, $table_prefix;
+	global $db, $prefix;
 		
 	$q = "SELECT *
 		FROM ". INA_HOF ."

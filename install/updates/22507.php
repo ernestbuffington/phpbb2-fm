@@ -8,23 +8,23 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-schema	
 //
-$sql = 'INSERT INTO ' . $table_prefix . 'pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) VALUES ("profile.php", "profile.php?mode=email", "mode", "email")';
+$sql = 'INSERT INTO ' . $prefix . 'pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) VALUES ("profile.php", "profile.php?mode=email", "mode", "email")';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'profile_view DROP COLUMN `viewername`';
+$sql = 'ALTER TABLE ' . $prefix . 'profile_view DROP COLUMN `viewername`';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'config WHERE `config_name` = "enable_sig_editor"';
+$sql = 'DELETE FROM ' . $prefix . 'config WHERE `config_name` = "enable_sig_editor"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE ' . $table_prefix . 'subscriptions_list';
+$sql = 'DROP TABLE ' . $prefix . 'subscriptions_list';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'pa_votes WHERE `user_id` = "-1"';
+$sql = 'DELETE FROM ' . $prefix . 'pa_votes WHERE `user_id` = "-1"';
 _sql($sql, $errored, $error_ary);
 
 // phpBB updaters missing this field
-$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('mods_viewips', '0')";
+$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('mods_viewips', '0')";
 _sql($sql, $errored, $error_ary);
 
 ?>

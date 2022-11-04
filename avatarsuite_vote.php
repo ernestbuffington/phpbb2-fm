@@ -135,7 +135,7 @@ if ($avatarisusedbynonvoter == 0)
 
 // OK, from here on is clear that the voter is allowed to vote for this avatar AND this avatar exists
 $sql = "SELECT *
-	FROM " . $table_prefix . "avatartoplist
+	FROM " . $prefix . "avatartoplist
 	WHERE avatar_filename = '" . $avatarfilename . "'
 		AND avatar_type = '" . $avatartype . "'
 		AND voter_id  = " . $userid;
@@ -165,7 +165,7 @@ else
 $addcomment = FALSE;
 	
 // General creation of a table for this mod
-$sqlct = "CREATE TABLE IF NOT EXISTS " . $table_prefix . "avatartoplist (`avatar_filename` TEXT NOT NULL, `avatar_type` tinyint(4) NOT NULL default '0', `voter_id` mediumint(8) NOT NULL, `voting` mediumint(8) NOT NULL, `comment` text NOT NULL, INDEX `voter_id` (`voter_id`))";
+$sqlct = "CREATE TABLE IF NOT EXISTS " . $prefix . "avatartoplist (`avatar_filename` TEXT NOT NULL, `avatar_type` tinyint(4) NOT NULL default '0', `voter_id` mediumint(8) NOT NULL, `voting` mediumint(8) NOT NULL, `comment` text NOT NULL, INDEX `voter_id` (`voter_id`))";
 if (!$result = $db->sql_query($sqlct))
 {
 	// Sever error.
@@ -175,7 +175,7 @@ if (!$result = $db->sql_query($sqlct))
 // User never voted for this avatar before -> Insert a new row
 if ($formervoting == -10)
 {
-	$sql = "INSERT INTO " . $table_prefix . "avatartoplist 
+	$sql = "INSERT INTO " . $prefix . "avatartoplist 
 		SET	voting = '" . $avatarvoting . "', avatar_type = '" . $avatartype . "', avatar_filename = '" . $avatarfilename . "', voter_id = " . $userid . ", comment = '" . ($comment) . "'";
 	$resultmessage = (sprintf($lang['avatarsuite_vote_accepted'], $lang['avatarsuite_vote_value'][$avatarvoting]));
 	$addcomment = TRUE;
@@ -183,7 +183,7 @@ if ($formervoting == -10)
 // User already voted for this avatar -> Only update his new vote
 else 
 {
-	$sql = " UPDATE " . $table_prefix . "avatartoplist
+	$sql = " UPDATE " . $prefix . "avatartoplist
 		SET	voting = '" . $avatarvoting . "', comment = '" . ($comment) . "'
 		WHERE avatar_type = '" . $avatartype . "'
 			AND avatar_filename = '" . $avatarfilename . "'

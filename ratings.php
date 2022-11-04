@@ -175,12 +175,12 @@ switch ($type)
 		if ( $rating_config[9] == 3 )
 		{
 			// TOTAL (1 PER USER)
-			$d_sql = 'DELETE FROM ' . $table_prefix . 'rating_temp';
+			$d_sql = 'DELETE FROM ' . $prefix . 'rating_temp';
 			if( !($d_result = $db->sql_query($d_sql)) ) 
 			{ 
 				message_die(GENERAL_ERROR, "Couldn't delete temporary rating information", '', __LINE__, __FILE__, $d_sql); 
 			}
-			$sql_select = 'INSERT INTO ' . $table_prefix . 'rating_temp (topic_id, points) SELECT t.topic_id, MAX(ro.points) AS points';
+			$sql_select = 'INSERT INTO ' . $prefix . 'rating_temp (topic_id, points) SELECT t.topic_id, MAX(ro.points) AS points';
 			$l_column4 = $lang['Total_points'];
 			$sql_group = 't.topic_id, r.user_id';
 			$sql_order = 't.topic_id';
@@ -328,7 +328,7 @@ if ( $using_temp_table == 'y' )
 	// Where sorting couldn't be done in one query (e.g. 1-per-user method for topic ranks)
 	$sql_limit = 20;
 	$sql = 'SELECT t.topic_title, t.rating_rank_id AS topic_rating, t.topic_id, u.username, u.user_id, u.user_level, f.forum_id, f.forum_name, SUM(z.points) AS points';
-	$sql .= ' FROM ' . $table_prefix . 'rating_temp z, '. TOPICS_TABLE . ' t, ' . USERS_TABLE . ' u, ' . FORUMS_TABLE . ' f';
+	$sql .= ' FROM ' . $prefix . 'rating_temp z, '. TOPICS_TABLE . ' t, ' . USERS_TABLE . ' u, ' . FORUMS_TABLE . ' f';
 	$sql .= ' WHERE z.topic_id = t.topic_id
 			AND t.topic_poster = u.user_id 
 			AND t.forum_id = f.forum_id 
@@ -340,7 +340,7 @@ if ( $using_temp_table == 'y' )
 		message_die(GENERAL_ERROR, "Couldn't obtain temporary rating information", '', __LINE__, __FILE__, $sql); 
 	}
 	
-	$d_sql = 'DELETE FROM ' . $table_prefix . 'rating_temp';
+	$d_sql = 'DELETE FROM ' . $prefix . 'rating_temp';
 	if( !($d_result = $db->sql_query($d_sql)) ) 
 	{ 
 		message_die(GENERAL_ERROR, "Couldn't delete temporary rating information", '', __LINE__, __FILE__, $d_sql); 

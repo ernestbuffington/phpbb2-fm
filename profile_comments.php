@@ -270,7 +270,7 @@ if( $mode == 'delete' )
 // Default page
 //
 $sql = "SELECT uc.*, u.user_id AS poster_id, u.username AS poster_name, u.user_level AS poster_level, time
-	FROM " . $table_prefix . "users_comments uc, " . USERS_TABLE . " u
+	FROM " . $prefix . "users_comments uc, " . USERS_TABLE . " u
 	WHERE uc.user_id = $user_id
 		AND u.user_id = uc.poster_id
 	ORDER BY time DESC

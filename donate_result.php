@@ -216,7 +216,7 @@ else
 				}
 				
 				$sql = "INSERT INTO " . ACCT_HIST_TABLE . " (user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-					VALUES (" . $user_id . ", 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'Donation from " . str_replace("\'", "''", $payer_email) . ", Thank you!', '$table_prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
+					VALUES (" . $user_id . ", 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'Donation from " . str_replace("\'", "''", $payer_email) . ", Thank you!', '$prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
 				if ( !($result = $db->sql_query($sql)) )
 				{
 					//do nothing
@@ -231,7 +231,7 @@ else
 			}
 			
 			$sql = "INSERT INTO " . ACCT_HIST_TABLE . " (user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-				VALUES (" . $user_id . ", 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'for dondation by: " . str_replace("\'", "''", $payer_email) . ".', '$table_prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
+				VALUES (" . $user_id . ", 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'for dondation by: " . str_replace("\'", "''", $payer_email) . ".', '$prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
 			if ( !($result = $db->sql_query($sql)) )
 			{
 				//do nothing
@@ -241,7 +241,7 @@ else
 		{
 			// log for manual investigation
 			$sql = "INSERT INTO " . ACCT_HIST_TABLE . " (user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-				VALUES (ANONYMOUS, 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'for donation by: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . ", INVALID', '$table_prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
+				VALUES (ANONYMOUS, 0, " . ($payment_amount + 0.00) . ", -1, '" . str_replace("\'", "''", $payment_currency) . "', " . time() . ", 'for donation by: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . ", INVALID', '$prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
 			if ( !($result = $db->sql_query($sql)) )
 			{
 				//do nothing

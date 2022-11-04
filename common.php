@@ -516,7 +516,7 @@ define('IS_ROBOT', is_robot());
 //
 if ( file_exists('install') )
 {
-	message_die(GENERAL_MESSAGE, 'Board_disable');
+	//message_die(GENERAL_MESSAGE, 'Board_disable');
 }
 
 ?>

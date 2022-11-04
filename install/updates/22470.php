@@ -8,20 +8,20 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-scema	
 //
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums CHANGE `forum_template` `forum_template` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'forums CHANGE `forum_template` `forum_template` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `forum_toggle` TINYINT(1) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `forum_toggle` TINYINT(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Modify Fully Modded core-schema
 //
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_donors` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_donors` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
 
 // 22470 new installs need this field fixed!
-$sql = 'ALTER TABLE ' . $table_prefix . 'users CHANGE `email_vaildation` `email_validation` TINYINT(1) NOT NULL DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'users CHANGE `email_vaildation` `email_validation` TINYINT(1) NOT NULL DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
 
 
@@ -48,7 +48,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -58,10 +58,10 @@ while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 // Change default values to sync with FullyModded setup
 //
 // Missing from New Install 22470
-$sql = 'UPDATE ' . $table_prefix . 'config SET `config_name` = "message_maxlength" WHERE `config_name` = "message_length"';
+$sql = 'UPDATE ' . $prefix . 'config SET `config_name` = "message_maxlength" WHERE `config_name` = "message_length"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'UPDATE ' . $table_prefix . 'config SET `config_value` = "0" WHERE `config_name` = "viewtopic"';
+$sql = 'UPDATE ' . $prefix . 'config SET `config_value` = "0" WHERE `config_name` = "viewtopic"';
 _sql($sql, $errored, $error_ary);
 
 ?>

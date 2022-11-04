@@ -601,7 +601,7 @@ $template->assign_vars(array(
 	'NEXT_CRON' => $next_cron,
 	'L_PERFORMED_CRON' => $lang['Optimize_Performed_Cron'],
 	'PERFORMED_CRON' => $performed_cron,
-	'L_EMPTY_TABLES' => sprintf($lang['Optimize_Empty_Table'], $table_prefix),
+	'L_EMPTY_TABLES' => sprintf($lang['Optimize_Empty_Table'], $prefix),
 	'L_SHOW_TABLE' => $lang['Optimize_Show_Table'],
 	'S_ENABLE_CRON_YES' => $enable_cron_yes,
 	'S_ENABLE_CRON_NO' => $enable_cron_no,

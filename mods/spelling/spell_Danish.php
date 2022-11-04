@@ -8,7 +8,7 @@
   // --------------------------
   // Table Name
   // --------------------------
-  $DB_TableName = $table_prefix . 'spelling_words';
+  $DB_TableName = $prefix . 'spelling_words';
 
   // Language Text
   $Language_Text = array('Scannet %d ord.    Fandt %d ord der skulle korrigeres.');

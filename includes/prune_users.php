@@ -24,7 +24,7 @@ if (!function_exists('auto_delete_specific_user'))
 {
 	function auto_delete_specific_user($user_id, $username, $user_email, $user_lang)
 	{
-		global $db, $board_config, $phpbb_root_path, $phpEx, $table_prefix;
+		global $db, $board_config, $phpbb_root_path, $phpEx, $prefix;
 		
 		// Update the deletion count
 		$new_total = intval($board_config['admin_auto_delete_total']) + 1;
@@ -264,7 +264,7 @@ if (!function_exists('auto_delete_specific_user'))
 				message_die(GENERAL_ERROR, 'Could not delete user IM prefs', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_ban
+			$sql = "DELETE FROM " . $prefix . "ina_ban
 				WHERE id = $user_id
 					OR username = '" . phpbb_clean_username($username) . "'";
 			if( !$db->sql_query($sql) )
@@ -272,14 +272,14 @@ if (!function_exists('auto_delete_specific_user'))
 				message_die(GENERAL_ERROR, 'Could not delete game ban', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_challenge_tracker
+			$sql = "DELETE FROM " . $prefix . "ina_challenge_tracker
 				WHERE user = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete game challenge count', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_challenge_users
+			$sql = "DELETE FROM " . $prefix . "ina_challenge_users
 				WHERE user_to = $user_id
 					OR user_from = $user_id";
 			if( !$db->sql_query($sql) )
@@ -287,14 +287,14 @@ if (!function_exists('auto_delete_specific_user'))
 				message_die(GENERAL_ERROR, 'Could not delete game challenges', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_favorites
+			$sql = "DELETE FROM " . $prefix . "ina_favorites
 				WHERE user = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete game favorites', '', __LINE__, __FILE__, $sql);
 			}
 			
-			$sql = "DELETE FROM " . $table_prefix . "ina_rating_votes
+			$sql = "DELETE FROM " . $prefix . "ina_rating_votes
 				WHERE player = $user_id";
 			if( !$db->sql_query($sql) )
 			{
@@ -308,21 +308,21 @@ if (!function_exists('auto_delete_specific_user'))
 				message_die(GENERAL_ERROR, 'Could not delete game scores', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_sessions
+			$sql = "DELETE FROM " . $prefix . "ina_sessions
 				WHERE playing_id = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete game sessions', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_top_scores
+			$sql = "DELETE FROM " . $prefix . "ina_top_scores
 				WHERE player = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete game top scores', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "ina_trophy_comments
+			$sql = "DELETE FROM " . $prefix . "ina_trophy_comments
 				WHERE player = $user_id";
 			if( !$db->sql_query($sql) )
 			{
@@ -336,21 +336,21 @@ if (!function_exists('auto_delete_specific_user'))
 				message_die(GENERAL_ERROR, 'Could not delete user Knowledge Base articles', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "links
+			$sql = "DELETE FROM " . $prefix . "links
 				WHERE user_id = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete user links', '', __LINE__, __FILE__, $sql);
 			}
 
-			$sql = "DELETE FROM " . $table_prefix . "link_comments
+			$sql = "DELETE FROM " . $prefix . "link_comments
 				WHERE poster_id = $user_id";
 			if( !$db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, 'Could not delete user link comments', '', __LINE__, __FILE__, $sql);
 			}
 		
-			$sql = "DELETE FROM " . $table_prefix . "link_votes
+			$sql = "DELETE FROM " . $prefix . "link_votes
 				WHERE user_id = $user_id";
 			if( !$db->sql_query($sql) )
 			{

@@ -170,13 +170,13 @@ HEREDOC;
 	
 function avatarvote_get_previous_votings(&$resultingarray)
 {
-	global $db, $table_prefix, $userdata;
+	global $db, $prefix, $userdata;
 
 	$resultingarray = array();
 	if ($userdata['session_logged_in']) // Only get former votings if user is logged in
 	{
 		$sql = "SELECT atop.avatar_filename, atop.avatar_type
-			FROM " . $table_prefix . "avatartoplist atop
+			FROM " . $prefix . "avatartoplist atop
 			WHERE atop.voter_id = " . $userdata['user_id'];
 		if ($result = $db->sql_query($sql))
 		{

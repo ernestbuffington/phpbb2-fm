@@ -48,16 +48,16 @@ define('CHECKBOX', 5);
 define('ICONS_DIR', 'images/upload_icons/');
  
 //tables 
-define('PA_CATEGORY_TABLE', $table_prefix.'pa_cat');
-define('PA_COMMENTS_TABLE', $table_prefix.'pa_comments');
-define('PA_CUSTOM_TABLE', $table_prefix.'pa_custom');
-define('PA_CUSTOM_DATA_TABLE', $table_prefix.'pa_customdata');
-define('PA_DOWNLOAD_INFO_TABLE', $table_prefix.'pa_download_info');
-define('PA_FILES_TABLE', $table_prefix.'pa_files');
-define('PA_LICENSE_TABLE', $table_prefix.'pa_license');
-define('PA_CONFIG_TABLE', $table_prefix.'pa_config');
-define('PA_VOTES_TABLE', $table_prefix.'pa_votes');
-define('PA_AUTH_ACCESS_TABLE', $table_prefix.'pa_auth');
-define('PA_MIRRORS_TABLE', $table_prefix.'pa_mirrors');
+define('PA_CATEGORY_TABLE', $prefix.'pa_cat');
+define('PA_COMMENTS_TABLE', $prefix.'pa_comments');
+define('PA_CUSTOM_TABLE', $prefix.'pa_custom');
+define('PA_CUSTOM_DATA_TABLE', $prefix.'pa_customdata');
+define('PA_DOWNLOAD_INFO_TABLE', $prefix.'pa_download_info');
+define('PA_FILES_TABLE', $prefix.'pa_files');
+define('PA_LICENSE_TABLE', $prefix.'pa_license');
+define('PA_CONFIG_TABLE', $prefix.'pa_config');
+define('PA_VOTES_TABLE', $prefix.'pa_votes');
+define('PA_AUTH_ACCESS_TABLE', $prefix.'pa_auth');
+define('PA_MIRRORS_TABLE', $prefix.'pa_mirrors');
 
 ?>

@@ -532,13 +532,13 @@ class aprvmUtils
 		}
 	}
 
-	function make_drop_box($prefix = 'sort')
+	function make_drop_box($switch = 'sort')
 	{
 		global $sort_types, $order_types, $pmtypes, $lang, $sort, $order, $pmtype, $page_title;
 
-		$rval = '<select name="'.$prefix.'">';
+		$rval = '<select name="'.$switch.'">';
 
-		switch($prefix)
+		switch($switch)
 		{
 			case 'sort':
 			foreach($sort_types as $val)
@@ -700,14 +700,14 @@ class aprvmUtils
 	
 	function doArchiveTable()
 	{
-		global $db, $status_message, $lang, $table_prefix;
+		global $db, $status_message, $lang, $prefix;
 		
 		switch (SQL_LAYER)
 		{
 			case 'mysql':
 			case 'mysql4':
 			{
-				$create[] = "CREATE TABLE `".$table_prefix."privmsgs_archive` (
+				$create[] = "CREATE TABLE `".$prefix."privmsgs_archive` (
 					`privmsgs_id` mediumint( 8 ) unsigned NOT NULL AUTO_INCREMENT ,
 					`privmsgs_type` tinyint( 4 ) NOT NULL default '0',
 					`privmsgs_subject` varchar( 255 ) NOT NULL default '0',
@@ -728,7 +728,7 @@ class aprvmUtils
 			case 'mssql':
 			case 'mssql-odbc':
 			{
-				$create[] = "CREATE TABLE [".$table_prefix."privmsgs_archive] (
+				$create[] = "CREATE TABLE [".$prefix."privmsgs_archive] (
 				[privmsgs_id] [int] IDENTITY (1, 1) NOT NULL ,
 				[privmsgs_type] [smallint] NOT NULL ,
 				[privmsgs_subject] [varchar] (100) NOT NULL ,
@@ -746,10 +746,10 @@ class aprvmUtils
 			}
 			case 'postgres':
 			{
-				$create[] = "CREATE SEQUENCE ".$table_prefix."privmsgs_archive_id_seq start 1 increment 1 maxvalue 2147483647 minvalue 1 cache 1;";
+				$create[] = "CREATE SEQUENCE ".$prefix."privmsgs_archive_id_seq start 1 increment 1 maxvalue 2147483647 minvalue 1 cache 1;";
 
-				$create[] = "CREATE TABLE ".$table_prefix."privmsgs_archive (
-   								privmsgs_id int4 DEFAULT nextval('".$table_prefix."privmsgs_archive_id_seq'::text) NOT NULL,
+				$create[] = "CREATE TABLE ".$prefix."privmsgs_archive (
+   								privmsgs_id int4 DEFAULT nextval('".$prefix."privmsgs_archive_id_seq'::text) NOT NULL,
    								privmsgs_type int2 DEFAULT '0' NOT NULL,
   								privmsgs_subject varchar(255) DEFAULT '0' NOT NULL,
    								privmsgs_from_userid int4 DEFAULT '0' NOT NULL,
@@ -760,10 +760,10 @@ class aprvmUtils
    								privmsgs_enable_html int2 DEFAULT '0' NOT NULL,
    								privmsgs_enable_smilies int2 DEFAULT '1' NOT NULL,
    								privmsgs_attach_sig int2 DEFAULT '1' NOT NULL,
-   								CONSTRAINT ".$table_prefix."privmsgs_archive_pkey PRIMARY KEY (privmsgs_id)
+   								CONSTRAINT ".$prefix."privmsgs_archive_pkey PRIMARY KEY (privmsgs_id)
 								);";
-				$create[] = "CREATE INDEX privmsgs_from_userid_".$table_prefix."privmsgs_archive_index ON ".$table_prefix."privmsgs_archive (privmsgs_from_userid);";
-				$create[] = "CREATE INDEX privmsgs_to_userid_".$table_prefix."privmsgs_archive_index ON ".$table_prefix."privmsgs_archive (privmsgs_to_userid);";
+				$create[] = "CREATE INDEX privmsgs_from_userid_".$prefix."privmsgs_archive_index ON ".$prefix."privmsgs_archive (privmsgs_from_userid);";
+				$create[] = "CREATE INDEX privmsgs_to_userid_".$prefix."privmsgs_archive_index ON ".$prefix."privmsgs_archive (privmsgs_to_userid);";
 				break;
 			}
 		}

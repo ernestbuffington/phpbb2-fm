@@ -132,7 +132,7 @@ if ( $mode == 'download' )
 		"\$dbuname = '$new_dbuser';\n" .
 		"\$dbpasswd = '$new_dbpasswd';\n" .
 		"\n" .
-		"\$table_prefix = '$new_table_prefix';\n" .
+		"\$prefix = '$new_table_prefix';\n" .
 		"\n" .
 		"define('PHPBB_INSTALLED', true);\n" .
 		"\n" .
@@ -760,7 +760,7 @@ switch($mode)
 <?php
 					for($i = 0; $i < count($tables); $i++)
 					{
-						$tablename = $table_prefix . $tables[$i];
+						$tablename = $prefix . $tables[$i];
 						$sql = "REPAIR TABLE $tablename";
 						$result = $db->sql_query($sql);
 						if ( !$result )
@@ -1206,7 +1206,7 @@ switch($mode)
 				$dbuname = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbuser))); ?>';<br />
 				$dbpasswd = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbpasswd))); ?>';<br />
 				<br />
-				$table_prefix = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_table_prefix))); ?>';<br />
+				$prefix = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_table_prefix))); ?>';<br />
 				<br />
 				define('PHPBB_INSTALLED', true);<br />
 				<br />

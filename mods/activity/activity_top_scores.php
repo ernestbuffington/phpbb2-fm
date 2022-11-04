@@ -99,7 +99,7 @@ if ( ($delete_action == "delete_specific_score") && ($userdata['user_level'] == 
 		$player2_n = $userdata['user_id'];
 	}
 				
-	$q1 = "UPDATE ". $table_prefix ."ina_top_scores
+	$q1 = "UPDATE ". $prefix ."ina_top_scores
 		SET player = '". $player2_n ."', score = '". $score2 ."', date = '". time() ."'
 		WHERE game_name = '". $delete_certain_score ."'";
 	$db->sql_query($q1);
@@ -133,7 +133,7 @@ if ( ($delete_action == "delete_all_scores") && ($userdata['user_level'] == ADMI
       
     	$game_name = $games[$x]['game_name'];
       
-      	$q = "UPDATE " . $table_prefix . "ina_top_scores
+      	$q = "UPDATE " . $prefix . "ina_top_scores
         	SET player = " . $userdata['user_id'] . ", score = $score, date = " . time() . "
            	WHERE game_name = '$game_name'";
       	$db->sql_query($q);
@@ -160,13 +160,13 @@ if (!$search)
 
 	#=================================== Trophies Count SQL ===========
 	$q = "SELECT *
-		FROM ". $table_prefix ."ina_top_scores";
+		FROM ". $prefix ."ina_top_scores";
 	$r				= $db->sql_query($q);
 	$trophy_count	= $db->sql_numrows($r);
 			
 	#=================================== Trophies SQL Array ===========
 	$q = "SELECT *
-		FROM ". $table_prefix ."ina_top_scores
+		FROM ". $prefix ."ina_top_scores
 		ORDER BY game_name ASC
 		LIMIT $start, $end";
 	$r				= $db->sql_query($q);

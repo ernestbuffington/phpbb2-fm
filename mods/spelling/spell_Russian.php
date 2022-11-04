@@ -8,7 +8,7 @@
   // --------------------------
   // Table Name
   // --------------------------
-  $DB_TableName = $table_prefix . 'spelling_words';
+  $DB_TableName = $prefix . 'spelling_words';
   $Meta_Language = 'windows-1251';
 
   // Language Text

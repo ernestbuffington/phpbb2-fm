@@ -1879,7 +1879,7 @@ function real_path($url)
 
 function UpdateTrophyStats()
 {
-	global $db, $table_prefix;
+	global $db, $prefix;
 		
 	$q = "UPDATE " . USERS_TABLE . "
 		SET user_trophies = 0
@@ -1887,7 +1887,7 @@ function UpdateTrophyStats()
 	$r = $db->sql_query($q);
 			
 	$q = "SELECT player
-		FROM " . $table_prefix . "ina_top_scores
+		FROM " . $prefix . "ina_top_scores
 		GROUP BY player";
 	$r = $db->sql_query($q);
 	while($row = $db->sql_fetchrow($r))
@@ -1895,7 +1895,7 @@ function UpdateTrophyStats()
 		$who = $row['player'];
 		
 		$q1 = "SELECT COUNT(*) AS trophies
-	    	FROM " . $table_prefix . "ina_top_scores
+	    	FROM " . $prefix . "ina_top_scores
 			WHERE player = '$who'
 			GROUP BY player";
 		$r1	= $db->sql_query($q1);
@@ -1913,7 +1913,7 @@ function UpdateTrophyStats()
 
 function CheckGamesDeletion()
 {
-	global $db, $table_prefix, $board_config, $phpbb_root_path;
+	global $db, $prefix, $board_config, $phpbb_root_path;
 	
 	$q = "SELECT config_value
 		FROM ". CONFIG_TABLE ."
@@ -1938,7 +1938,7 @@ function CheckGamesDeletion()
 			$q = "TRUNCATE " . iNA_SCORES;			
 			$r = $db->sql_query($q);
 
-			$q 	= "TRUNCATE ". $table_prefix ."ina_trophy_comments";			
+			$q 	= "TRUNCATE ". $prefix ."ina_trophy_comments";			
 			$r = $db->sql_query($q);
 
 			$q = "UPDATE ". CONFIG_TABLE ."

@@ -36,7 +36,7 @@ if ($mode == 'add_game')
 	$money_name = $board_config['points_name'];
 	
 	$q2 =  "SELECT *
-		FROM ". $table_prefix ."ina_categories
+		FROM ". $prefix ."ina_categories
 		WHERE cat_id > 0
 		GROUP BY cat_name
 		ORDER BY cat_name ASC"; 
@@ -231,7 +231,7 @@ if ($mode == 'clear_scores')
 		
 function DeleteGame($game_id)
 {
-	global $lang, $db, $table_prefix, $phpEx;
+	global $lang, $db, $prefix, $phpEx;
 	
 	if ($game_id)
 	{
@@ -254,21 +254,21 @@ function DeleteGame($game_id)
 			message_die(GENERAL_ERROR, $lang['no_game_delete'], "", __LINE__, __FILE__, $sql);
 		}	
 		
-		$sql = "DELETE FROM ". $table_prefix ."ina_hall_of_fame
+		$sql = "DELETE FROM ". $prefix ."ina_hall_of_fame
 			WHERE game_id = '$game_id'";
 		if (!$result = $db->sql_query($sql))
 		{
 			message_die(GENERAL_ERROR, 'Error Deleting Hall Of Fame Data.', "", __LINE__, __FILE__, $sql);
 		}	
 		
-		$sql = "DELETE FROM ". $table_prefix ."ina_top_scores
+		$sql = "DELETE FROM ". $prefix ."ina_top_scores
 			WHERE game_name = '$game_name_to_delete'";
 		if (!$result = $db->sql_query($sql))
 		{
 			message_die(GENERAL_ERROR, "Error Deleting Trophy Holder.", "Error", __LINE__, __FILE__, $sql);
 		}
 			
-		$sql = "DELETE FROM ". $table_prefix ."ina_trophy_comments  
+		$sql = "DELETE FROM ". $prefix ."ina_trophy_comments  
 			WHERE game = '$game_name_to_delete'";
 		if (!$result = $db->sql_query($sql))
 		{
@@ -282,21 +282,21 @@ function DeleteGame($game_id)
 			message_die(GENERAL_ERROR, "Error Deleting Scores Data.", "Error", __LINE__, __FILE__, $sql);
 		}
 		
-		$sql = "DELETE FROM ". $table_prefix ."ina_gamble
+		$sql = "DELETE FROM ". $prefix ."ina_gamble
 			WHERE game_id = '$game_id'";
 		if (!$result = $db->sql_query($sql))
 		{
 			message_die(GENERAL_ERROR, "Error Deleting Completed Gambles.", "Error", __LINE__, __FILE__, $sql);
 		}
 			
-		$sql = "DELETE FROM ". $table_prefix ."ina_gamble_in_progress
+		$sql = "DELETE FROM ". $prefix ."ina_gamble_in_progress
 			WHERE game_id = '$game_id'";
 		if (!$result = $db->sql_query($sql))
 		{
 			message_die(GENERAL_ERROR, "Error Deleting Waiting Gambles.", "Error", __LINE__, __FILE__, $sql);		
 		}
 					
-		$sql = "DELETE FROM ". $table_prefix ."ina_rating_votes
+		$sql = "DELETE FROM ". $prefix ."ina_rating_votes
 			WHERE game_id = '$game_id'";
 		if (!$result = $db->sql_query($sql))
 		{

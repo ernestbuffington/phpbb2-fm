@@ -49,10 +49,10 @@ define('ALBUM_CACHE_PATH', 'uploads/album/thumbs/');
 
 
 // Table names
-define('ALBUM_TABLE', $table_prefix.'album');
-define('ALBUM_CAT_TABLE', $table_prefix.'album_cat');
-define('ALBUM_CONFIG_TABLE', $table_prefix.'album_config');
-define('ALBUM_COMMENT_TABLE', $table_prefix.'album_comment');
-define('ALBUM_RATE_TABLE', $table_prefix.'album_rate');
+define('ALBUM_TABLE', $prefix.'album');
+define('ALBUM_CAT_TABLE', $prefix.'album_cat');
+define('ALBUM_CONFIG_TABLE', $prefix.'album_config');
+define('ALBUM_COMMENT_TABLE', $prefix.'album_comment');
+define('ALBUM_RATE_TABLE', $prefix.'album_rate');
 
 ?>

@@ -699,7 +699,7 @@ $config_data = array(
 );
 for ( $i = 0; $i < sizeof($config_data); $i++ )
 {
-	$sql = "DELETE FROM " . $table_prefix . "config WHERE `config_name` = '" . $config_data[$i] . "'";
+	$sql = "DELETE FROM " . $prefix . "config WHERE `config_name` = '" . $config_data[$i] . "'";
 	_sql($sql, $errored, $error_ary);
 }
 

@@ -107,14 +107,14 @@ $total_comments 		= $total_left;
 $total_games_available 	= $games_c;
 		
 $q =  "SELECT COUNT(game_id) AS total_bets_made 
-	FROM ". $table_prefix ."ina_gamble"; 
+	FROM ". $prefix ."ina_gamble"; 
 $r  	= $db->sql_query($q); 
 $row	= $db->sql_fetchrow($r);
 
 $total_bets_made = $row['total_bets_made'];
 		
 $q =  "SELECT SUM(count) AS total_challenges_sent
-	FROM ". $table_prefix ."ina_challenge_users"; 
+	FROM ". $prefix ."ina_challenge_users"; 
 $r  	= $db->sql_query($q); 
 $row	= $db->sql_fetchrow($r);
 

@@ -209,7 +209,7 @@
     $Spell_Config['DB_Password'] = $INFO['sql_pass'];
     $Spell_Config['DB_Database'] = $INFO['sql_database'];;
     $Spell_Config['DB_Host'] = $INFO['sql_host'];;
-    $table_prefix = $INFO['sql_tbl_prefix'];
+    $prefix = $INFO['sql_tbl_prefix'];
     $Spell_Config['DB_MODULE'] = 'Invision';
 
      include 'spell_MySQL.php';
@@ -223,7 +223,7 @@
     $Spell_Config['DB_Password'] = $dbpassword;
     $Spell_Config['DB_Database'] = $dbname;
     $Spell_Config['DB_Host'] = $servername;
-    $table_prefix = @$tableprefix;  // vB 3+
+    $prefix = @$tableprefix;  // vB 3+
     $Spell_Config['DB_MODULE'] = 'vBulletin';
 
      include 'spell_MySQL.php';

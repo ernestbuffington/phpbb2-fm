@@ -28,8 +28,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 include_once($phpbb_root_path . 'config.'.$phpEx);
 
-$table_chatbox_name = $table_prefix . 'chatbox';
-$table_chatbox_session_name = $table_prefix . 'chatbox_session';
+$table_chatbox_name = $prefix . 'chatbox';
+$table_chatbox_session_name = $prefix . 'chatbox_session';
 
 
 function write_msg($nick, $msg)

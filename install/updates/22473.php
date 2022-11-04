@@ -9,82 +9,82 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-scema	
 //
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `index_lasttitle` TINYINT(1) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `index_lasttitle` TINYINT(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `display_pic_alert` TINYINT(1) DEFAULT "0" NOT NULL';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'ALTER TABLE ' . $table_prefix . 'groups ADD COLUMN `group_members_count` TINYINT(1) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `display_pic_alert` TINYINT(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes ADD COLUMN `playersfontcolor` VARCHAR(6) DEFAULT "0099CC"';
+$sql = 'ALTER TABLE ' . $prefix . 'groups ADD COLUMN `group_members_count` TINYINT(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes_name DROP COLUMN `adminfontcolor_name`';
-_sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes_name DROP COLUMN `supermodfontcolor_name`';
-_sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes_name DROP COLUMN `modfontcolor_name`';
+$sql = 'ALTER TABLE ' . $prefix . 'themes ADD COLUMN `playersfontcolor` VARCHAR(6) DEFAULT "0099CC"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_topic_moved_mail` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'themes_name DROP COLUMN `adminfontcolor_name`';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_topic_moved_pm` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'themes_name DROP COLUMN `supermodfontcolor_name`';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_topic_moved_pm_notify` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'themes_name DROP COLUMN `modfontcolor_name`';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `daily_post_count` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL';
+
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_topic_moved_mail` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `daily_post_limit` MEDIUMINT(8) UNSIGNED NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_topic_moved_pm` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `daily_post_period` INT(11) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_topic_moved_pm_notify` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_wordwrap` SMALLINT(3) DEFAULT "80" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `daily_post_count` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_allowsig` TINYINT(1) DEFAULT "1" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `daily_post_limit` MEDIUMINT(8) UNSIGNED NOT NULL';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `daily_post_period` INT(11) DEFAULT "0" NOT NULL';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_wordwrap` SMALLINT(3) DEFAULT "80" NOT NULL';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_allowsig` TINYINT(1) DEFAULT "1" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Modify Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'admin_categories';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'admin_categories';
 _sql($sql, $errored, $error_ary);
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'admin_nav_module';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'admin_nav_module';
 _sql($sql, $errored, $error_ary);
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'admin_notes';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'admin_notes';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'advance_html ADD PRIMARY KEY (`config_name`)'; 
+$sql = 'ALTER TABLE ' . $prefix . 'advance_html ADD PRIMARY KEY (`config_name`)'; 
 _sql($sql, $errored, $error_ary);
 	
-$sql = 'DELETE FROM ' . $table_prefix . 'forums WHERE `forum_id` = "-5"';
+$sql = 'DELETE FROM ' . $prefix . 'forums WHERE `forum_id` = "-5"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'forums WHERE `forum_id` = "-7"';
+$sql = 'DELETE FROM ' . $prefix . 'forums WHERE `forum_id` = "-7"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'forums WHERE `forum_id` = "-42"';
+$sql = 'DELETE FROM ' . $prefix . 'forums WHERE `forum_id` = "-42"';
 _sql($sql, $errored, $error_ary);
-$sql = 'DELETE FROM ' . $table_prefix . 'forums WHERE `forum_id` = "-51"';
+$sql = 'DELETE FROM ' . $prefix . 'forums WHERE `forum_id` = "-51"';
 _sql($sql, $errored, $error_ary);
 
 // 22473 new installs need this 'portal_donors' field fixed!
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_donors` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_donors` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_referrers` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_referrers` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_shoutbox` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_shoutbox` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'pjirc ADD PRIMARY KEY (`pjirc_name`)'; 
+$sql = 'ALTER TABLE ' . $prefix . 'pjirc ADD PRIMARY KEY (`pjirc_name`)'; 
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Create new Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'pages';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'pages';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE '. $table_prefix .'pages (page_id mediumint(5) unsigned auto_increment, page_name varchar(32) NOT NULL, page_parm_name varchar(32) default "", page_parm_value varchar(32) default "", page_key varchar(255) default "", member_views int(11) unsigned default "0", guest_views int(11) unsigned default "0", disable_page tinyint(1) unsigned default "0", auth_level tinyint(2) unsigned default "0", min_post_count mediumint(8) unsigned default "0", max_post_count mediumint(8) unsigned default "0", group_list varchar(255) default "", disabled_message	varchar(255) default "", primary key (page_id), unique key (page_key)) TYPE=MyISAM';
+$sql = 'CREATE TABLE '. $prefix .'pages (page_id mediumint(5) unsigned auto_increment, page_name varchar(32) NOT NULL, page_parm_name varchar(32) default "", page_parm_value varchar(32) default "", page_key varchar(255) default "", member_views int(11) unsigned default "0", guest_views int(11) unsigned default "0", disable_page tinyint(1) unsigned default "0", auth_level tinyint(2) unsigned default "0", min_post_count mediumint(8) unsigned default "0", max_post_count mediumint(8) unsigned default "0", group_list varchar(255) default "", disabled_message	varchar(255) default "", primary key (page_id), unique key (page_key)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
 
@@ -133,7 +133,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -146,66 +146,66 @@ $rconfig_data = array(
 	
 for ( $i = 0; $i < sizeof($rconfig_data); $i++ )
 {
-	$sql = "DELETE FROM " . $table_prefix . "config 
+	$sql = "DELETE FROM " . $prefix . "config 
 		WHERE `config_name` = '" . $rconfig_data[$i] . "'";
 	_sql($sql, $errored, $error_ary);
 }
 
 // Move phpbb_forums_config data to phpbb_config
-$sql = "INSERT INTO " . $table_prefix . "config SELECT * FROM " . $table_prefix . "forums_config";
+$sql = "INSERT INTO " . $prefix . "config SELECT * FROM " . $prefix . "forums_config";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'forums_config';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'forums_config';
 _sql($sql, $errored, $error_ary);
 
 // Move phpbb_news data to phpbb_config
-$sql = "INSERT INTO " . $table_prefix . "config SELECT * FROM " . $table_prefix . "news";
+$sql = "INSERT INTO " . $prefix . "config SELECT * FROM " . $prefix . "news";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'news';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'news';
 _sql($sql, $errored, $error_ary);
 
 // Move phpbb_kb_config data to phpbb_config, and rename all fields with kb_ prefix
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_admin_id' WHERE `config_name` = 'admin_id'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_admin_id' WHERE `config_name` = 'admin_id'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_approve_edit' WHERE `config_name` = 'approve_edit'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_approve_edit' WHERE `config_name` = 'approve_edit'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_approve_new' WHERE `config_name` = 'approve_new'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_approve_new' WHERE `config_name` = 'approve_new'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_allow_anon' WHERE `config_name` = 'allow_anon'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_allow_anon' WHERE `config_name` = 'allow_anon'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_allow_edit' WHERE `config_name` = 'allow_edit'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_allow_edit' WHERE `config_name` = 'allow_edit'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_allow_new' WHERE `config_name` = 'allow_new'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_allow_new' WHERE `config_name` = 'allow_new'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_comments' WHERE `config_name` = 'comments'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_comments' WHERE `config_name` = 'comments'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_del_topic' WHERE `config_name` = 'del_topic'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_del_topic' WHERE `config_name` = 'del_topic'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_forum_id' WHERE `config_name` = 'forum_id'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_forum_id' WHERE `config_name` = 'forum_id'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_notify' WHERE `config_name` = 'notify'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_notify' WHERE `config_name` = 'notify'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_pt_body' WHERE `config_name` = 'pt_body'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_pt_body' WHERE `config_name` = 'pt_body'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "kb_config SET `config_name` = 'kb_show_pt' WHERE `config_name` = 'show_pretext'";
+$sql = "UPDATE " . $prefix . "kb_config SET `config_name` = 'kb_show_pt' WHERE `config_name` = 'show_pretext'";
 _sql($sql, $errored, $error_ary);
 		
-$sql = "INSERT INTO " . $table_prefix . "config SELECT * FROM " . $table_prefix . "kb_config";
+$sql = "INSERT INTO " . $prefix . "config SELECT * FROM " . $prefix . "kb_config";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'kb_config';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'kb_config';
 _sql($sql, $errored, $error_ary);
 
 
@@ -216,17 +216,17 @@ _sql($sql, $errored, $error_ary);
 $advance_html_data = array('announcement_text_draft', 'announcement_text', 'announcement_guest_text', 'admin_notes');
 for ( $i = 0; $i < 4; $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('" . $advance_html_data[$i] . "', '')";
+	$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('" . $advance_html_data[$i] . "', '')";
 	_sql($sql, $errored, $error_ary);
 }
 
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_status', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_status', '0')";
 _sql($sql, $errored, $error_ary);
 
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_access', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_access', '0')";
 _sql($sql, $errored, $error_ary);
 	
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_guest_status', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_guest_status', '0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_pages data
@@ -315,7 +315,7 @@ for ( $row = 0; $row < sizeof($pages_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) 
+		$sql = "INSERT INTO " . $prefix . "pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) 
 		VALUES ('" . $pages_data[$row]['PageName'] . "', '" . $pages_data[$row]['PageKey'] . "', '" . $pages_data[$row]['ParmName'] . "', '" . $pages_data[$row]['ParmValue'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
@@ -325,7 +325,7 @@ for ( $row = 0; $row < sizeof($pages_data); $row++ )
 //
 // Change default values to sync with FullyModded setup
 //
-$sql = "UPDATE " . $table_prefix . "config SET `config_value` = 'cache' WHERE `config_name` = 'newsfeed_cache'";
+$sql = "UPDATE " . $prefix . "config SET `config_value` = 'cache' WHERE `config_name` = 'newsfeed_cache'";
 _sql($sql, $errored, $error_ary);
 
 ?>

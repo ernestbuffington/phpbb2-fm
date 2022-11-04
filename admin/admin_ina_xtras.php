@@ -36,11 +36,11 @@ else
 }
 
 
-global $table_prefix, $board_config;
+global $prefix, $board_config;
 
-define("iNA_TROPHY", $table_prefix .'ina_top_scores');
-define("iNA_GAMES", $table_prefix .'ina_games');
-define("CONFIG_TABLE", $table_prefix .'config');		
+define("iNA_TROPHY", $prefix .'ina_top_scores');
+define("iNA_GAMES", $prefix .'ina_games');
+define("CONFIG_TABLE", $prefix .'config');		
 $link = append_sid("admin_ina_xtras.". $phpEx);
 
 if ($mode == "main" || !$mode)
@@ -265,7 +265,7 @@ if ( $mode == 'check_games')
       		
 if ($mode == 'hof')
 {
-	$q = "TRUNCATE ". $table_prefix ."ina_hall_of_fame";
+	$q = "TRUNCATE ". $prefix ."ina_hall_of_fame";
 	$db->sql_query($q);
 	
 	$q = "SELECT *
@@ -274,7 +274,7 @@ if ($mode == 'hof')
 	$game_info 	= $db->sql_fetchrowset($r);
 	
 	$q = "SELECT *
-		FROM ". $table_prefix ."ina_top_scores";
+		FROM ". $prefix ."ina_top_scores";
 	$r 			= $db->sql_query($q);
 	$score_info = $db->sql_fetchrowset($r);	
 	
@@ -296,7 +296,7 @@ if ($mode == 'hof')
 			
 		if ($hof_g > '0')
 		{
-			$q = "INSERT INTO ". $table_prefix ."ina_hall_of_fame
+			$q = "INSERT INTO ". $prefix ."ina_hall_of_fame
 				VALUES ('". $hof_g ."', '". $hof_u ."', '". $hof_s ."', '". $hof_d ."', '', '', '')";
 			$db->sql_query($q);
 		}
@@ -323,7 +323,7 @@ if($mode == "trophy_count_fix")
 		
 if($mode == "scores_update")
 {
-	$sql = "CREATE TABLE ". $table_prefix ."scores_fixer (`game_name` varchar(255) default NULL, `player` varchar(40) default NULL, `score` FLOAT(10,2) DEFAULT '0' NOT NULL, `date` int(11) default NULL )";
+	$sql = "CREATE TABLE ". $prefix ."scores_fixer (`game_name` varchar(255) default NULL, `player` varchar(40) default NULL, `score` FLOAT(10,2) DEFAULT '0' NOT NULL, `date` int(11) default NULL )";
 	$r = $db->sql_query($sql);
 	
 	$f = 0;
@@ -340,7 +340,7 @@ if($mode == "scores_update")
 		$player 	= $row['player'];
 		$date 		= $row['date'];
 			
-		$q3 = "INSERT INTO ". $table_prefix ."scores_fixer
+		$q3 = "INSERT INTO ". $prefix ."scores_fixer
 			VALUES ('$game_name', '". str_replace("\'", "''", $player) ."', '$score', '$date')";
 		$r3 = $db->sql_query($q3);
 	
@@ -353,7 +353,7 @@ if($mode == "scores_update")
 	$f = 0;
 										
 	$q = "SELECT *
-		FROM ". $table_prefix ."scores_fixer";
+		FROM ". $prefix ."scores_fixer";
 	$r 			= $db->sql_query($q);
 	
 	while($row 	= $db->sql_fetchrow($r))
@@ -370,7 +370,7 @@ if($mode == "scores_update")
 		$f++;			
 	}
 
-	$q = "DROP TABLE ". $table_prefix ."scores_fixer";
+	$q = "DROP TABLE ". $prefix ."scores_fixer";
 	$r = $db->sql_query($q);
 
 	message_die(GENERAL_MESSAGE, $f . $lang['scores_updated'], $lang['success_message']);		
@@ -378,7 +378,7 @@ if($mode == "scores_update")
 	
 if($mode == "del_comments")
 {
-	$q = "TRUNCATE ". $table_prefix ."ina_trophy_comments";
+	$q = "TRUNCATE ". $prefix ."ina_trophy_comments";
 	$r = $db->sql_query($q);
 	
 	message_die(GENERAL_MESSAGE, $lang['all_comments_deleted'], $lang['success_message']);		

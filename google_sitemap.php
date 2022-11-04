@@ -46,7 +46,7 @@ if (isset($fid))
     
     	// Let's send out a URL list of forums
     	$sql = 'SELECT forum_id 
-    		FROM ' . $table_prefix . 'forums 
+    		FROM ' . $prefix . 'forums 
     		WHERE auth_view = 0 
     			AND auth_read = 0
     			AND forum_id > 0';
@@ -64,7 +64,7 @@ if (isset($fid))
   	{
     	// Let's check it's not a restricted forum
     	$sql = 'SELECT forum_id 
-    		FROM ' . $table_prefix . 'forums 
+    		FROM ' . $prefix . 'forums 
     		WHERE auth_view = 0 
     			AND auth_read = 0 
     			AND forum_id = "'.$fid.'"';
@@ -75,7 +75,7 @@ if (isset($fid))
     	{
     		echo '<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">'."\n";
       		$sql = 'SELECT t.*, u.username, u.user_id, u2.username AS user2, u2.user_id AS id2, p.post_username, p2.post_username AS post_username2, p2.post_time 
-      			FROM ' . $table_prefix . 'topics t, ' . $table_prefix . 'users u, ' . $table_prefix . 'posts p, ' . $table_prefix . 'posts p2, ' . $table_prefix . 'users u2 
+      			FROM ' . $prefix . 'topics t, ' . $prefix . 'users u, ' . $prefix . 'posts p, ' . $prefix . 'posts p2, ' . $prefix . 'users u2 
       			WHERE t.forum_id = '.$fid.' 
       				AND t.topic_poster = u.user_id 
       				AND p.post_id = t.topic_first_post_id 
@@ -108,7 +108,7 @@ else
    	
    		// Let's do a loop here and list all the forums!
     	$sql = 'SELECT forum_id 
-    		FROM ' . $table_prefix . 'forums 
+    		FROM ' . $prefix . 'forums 
     		WHERE auth_view = 0 
     			AND auth_read = 0
     			AND forum_id > 0';

@@ -969,13 +969,13 @@ if( isset($HTTP_GET_VARS['perform']) || isset($HTTP_POST_VARS['perform']) )
 
 				if($backup_type != 'data')
 				{
-					echo "\n#\n# TABLE: " . $table_prefix . $table_name . "\n#\n";
-					echo $table_def_function($table_prefix . $table_name, "\n") . "\n";
+					echo "\n#\n# TABLE: " . $prefix . $table_name . "\n#\n";
+					echo $table_def_function($prefix . $table_name, "\n") . "\n";
 				}
 
 				if($backup_type != 'structure')
 				{
-					$table_content_function($table_prefix . $table_name, "output_table_content");
+					$table_content_function($prefix . $table_name, "output_table_content");
 				}
 			}
 			

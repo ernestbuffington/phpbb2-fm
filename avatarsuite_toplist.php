@@ -278,7 +278,7 @@ $there_is_an_avatar_on_this_page_the_user_already_voted_for = FALSE;
 // Get all voters and votings
 //
 $sql = "SELECT atop.avatar_filename, atop.avatar_type, atop.voting, atop.comment, u.*, atop.voter_id
-	FROM " . USERS_TABLE . " u, " . $table_prefix . "avatartoplist atop
+	FROM " . USERS_TABLE . " u, " . $prefix . "avatartoplist atop
 	WHERE u.user_id = atop.voter_id
 		AND atop.avatar_filename != ''";
 if (!$result = $db->sql_query($sql))

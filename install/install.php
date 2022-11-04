@@ -364,7 +364,7 @@ $dbuname = (!empty($HTTP_POST_VARS['dbuser'])) ? $HTTP_POST_VARS['dbuser'] : '';
 $dbpasswd = (!empty($HTTP_POST_VARS['dbpasswd'])) ? $HTTP_POST_VARS['dbpasswd'] : '';
 $dbname = (!empty($HTTP_POST_VARS['dbname'])) ? $HTTP_POST_VARS['dbname'] : '';
 
-$table_prefix = (!empty($HTTP_POST_VARS['prefix'])) ? $HTTP_POST_VARS['prefix'] : '';
+$prefix = (!empty($HTTP_POST_VARS['prefix'])) ? $HTTP_POST_VARS['prefix'] : '';
 
 $admin_name = (!empty($HTTP_POST_VARS['admin_name'])) ? $HTTP_POST_VARS['admin_name'] : '';
 $admin_pass1 = (!empty($HTTP_POST_VARS['admin_pass1'])) ? $HTTP_POST_VARS['admin_pass1'] : '';
@@ -515,7 +515,7 @@ else if (!empty($HTTP_POST_VARS['ftp_file']))
 		{
 			$s_hidden_fields .= '<input type="hidden" name="upgrade" value="1" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbms" value="'.$dmbs.'" />';
-			$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$table_prefix.'" />';
+			$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$prefix.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbhost" value="'.$dbhost.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbname" value="'.$dbname.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuname.'" />';
@@ -770,7 +770,7 @@ if (version_compare(@phpversion(), $required_php_version) < 0)
 					</tr>
 					<tr>
 						<td class="row1"><b><?php echo $lang['Table_Prefix']; ?>:</b></td>
-						<td colspan="3" class="row2"><input type="text" size="15" name="prefix" value="<?php echo (!empty($table_prefix)) ? $table_prefix : "phpbb_"; ?>" /></td>
+						<td colspan="3" class="row2"><input type="text" size="15" name="prefix" value="<?php echo (!empty($prefix)) ? $prefix : "phpbb_"; ?>" /></td>
 					</tr>
 					<tr>
 						<th class="thHead" colspan="4"><?php echo $lang['Admin_config']; ?></th>
@@ -891,7 +891,7 @@ else
 				// kind of feedback to the user as we are working here in order
 				// to let them know we are actually doing something.
 				$sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema));
-				$sql_query = preg_replace('/phpbb_/', $table_prefix, $sql_query);
+				$sql_query = preg_replace('/phpbb_/', $prefix, $sql_query);
 
 				$sql_query = $remove_remarks($sql_query);
 				$sql_query = split_sql_file($sql_query, $delimiter);
@@ -914,7 +914,7 @@ else
 		
 				// Ok tables have been built, let's fill in the basic information
 				$sql_query = @fread(@fopen($dbms_basic, 'r'), @filesize($dbms_basic));
-				$sql_query = preg_replace('/phpbb_/', $table_prefix, $sql_query);
+				$sql_query = preg_replace('/phpbb_/', $prefix, $sql_query);
 
 				$sql_query = $remove_remarks($sql_query);
 				$sql_query = split_sql_file($sql_query, $delimiter_basic);
@@ -958,7 +958,7 @@ else
 
 			while (list($config_name, $config_value) = each($insert_config))
 			{
-				$sql = "INSERT INTO " . $table_prefix . "config (config_name, config_value) 
+				$sql = "INSERT INTO " . $prefix . "config (config_name, config_value) 
 					VALUES ('" . $config_name . "', '" . $config_value . "')";
 				if (!$db->sql_query($sql))
 				{
@@ -982,7 +982,7 @@ else
 
 			while (list($config_name, $config_value) = each($update_config))
 			{
-				$sql = "UPDATE " . $table_prefix . "config 
+				$sql = "UPDATE " . $prefix . "config 
 					SET config_value = '$config_value' 
 					WHERE config_name = '$config_name'";
 				if (!$db->sql_query($sql))
@@ -993,7 +993,7 @@ else
 
 			$admin_pass_md5 = ($confirm && $userdata['user_level'] == ADMIN) ? $admin_pass1 : md5($admin_pass1);
 
-			$sql = "UPDATE " . $table_prefix . "users 
+			$sql = "UPDATE " . $prefix . "users 
 				SET username = '" . str_replace("\'", "''", $admin_name) . "', user_password='" . str_replace("\'", "''", $admin_pass_md5) . "', user_lang = '" . str_replace("\'", "''", $language) . "', user_email='" . str_replace("\'", "''", $board_email) . "'
 				WHERE username = 'Admin'";
 			if (!$db->sql_query($sql))
@@ -1001,14 +1001,14 @@ else
 				$error .= "Could not update admin info :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "users 
+			$sql = "UPDATE " . $prefix . "users 
 				SET user_regdate = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update user_regdate :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "link_config 
+			$sql = "UPDATE " . $prefix . "link_config 
 				SET config_value = 	'http://" . $server_name . "'
 				WHERE config_name = 'site_url'";
 			if (!$db->sql_query($sql))
@@ -1016,56 +1016,56 @@ else
 				$error .= "Could not update link config values :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "links
+			$sql = "UPDATE " . $prefix . "links
 				SET link_time = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update demo links :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "kb_articles
+			$sql = "UPDATE " . $prefix . "kb_articles
 				SET article_date = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update demo kb article :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "posts
+			$sql = "UPDATE " . $prefix . "posts
 				SET post_time = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update demo post :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "topics
+			$sql = "UPDATE " . $prefix . "topics
 				SET topic_time = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update demo topic :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "referral
+			$sql = "UPDATE " . $prefix . "referral
 				SET referral_time = " . time();
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update referral time :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "helpdesk_emails
+			$sql = "UPDATE " . $prefix . "helpdesk_emails
 				SET e_addr = '" . $board_email . "'";
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update helpdesk default email address :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "backup
+			$sql = "UPDATE " . $prefix . "backup
 				SET email = '" . $board_email . "'";
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not update backup default email address :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 			
-			$sql = "UPDATE " . $table_prefix . "backup
+			$sql = "UPDATE " . $prefix . "backup
 				SET last_run = " . time();
 			if (!$db->sql_query($sql))
 			{
@@ -1184,7 +1184,7 @@ else
 			$config_data .= '$dbname = \'' . $dbname . '\';' . "\n";
 			$config_data .= '$dbuname = \'' . $dbuname . '\';' . "\n";
 			$config_data .= '$dbpasswd = \'' . $dbpasswd . '\';' . "\n\n";
-			$config_data .= '$table_prefix = \'' . $table_prefix . '\';' . "\n\n";
+			$config_data .= '$prefix = \'' . $prefix . '\';' . "\n\n";
 			$config_data .= 'define(\'PHPBB_INSTALLED\', true);'."\n\n";	
 			$config_data .= '?' . '>'; // Done this to prevent highlighting editors getting confused!
 
@@ -1226,7 +1226,7 @@ else
 				{
 					$s_hidden_fields .= '<input type="hidden" name="upgrade" value="1" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbms" value="'.$dbms.'" />';
-					$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$table_prefix.'" />';
+					$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$prefix.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbhost" value="'.$dbhost.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbname" value="'.$dbname.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuname.'" />';

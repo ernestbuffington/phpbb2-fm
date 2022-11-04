@@ -35,7 +35,7 @@ else
 }
 
 
-define('INA_CATEGORY', $table_prefix .'ina_categories');		
+define('INA_CATEGORY', $prefix .'ina_categories');		
 $link = append_sid("admin_ina_category.". $phpEx);
 	
 if($mode == "main" || !$mode)

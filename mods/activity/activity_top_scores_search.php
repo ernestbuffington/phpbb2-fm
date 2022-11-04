@@ -175,7 +175,7 @@ if ($search)
 		 	   	  	
 	$i = 0;				
 	$q = "SELECT *
-		FROM ". $table_prefix ."ina_top_scores
+		FROM ". $prefix ."ina_top_scores
 		WHERE player = '". $users_id ."'";
 	$r 			= $db -> sql_query($q);
 

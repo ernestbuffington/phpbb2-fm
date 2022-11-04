@@ -36,14 +36,14 @@ define('STREAM_CAT', 2);
 define('SWF_CAT', 3);
 
 // Tables
-define('ATTACH_CONFIG_TABLE', $table_prefix . 'attachments_config');
-define('EXTENSION_GROUPS_TABLE', $table_prefix . 'extension_groups');
-define('EXTENSIONS_TABLE', $table_prefix . 'extensions');
-define('FORBIDDEN_EXTENSIONS_TABLE', $table_prefix . 'forbidden_extensions');
-define('ATTACHMENTS_DESC_TABLE', $table_prefix . 'attachments_desc');
-define('ATTACHMENTS_TABLE', $table_prefix . 'attachments');
-define('QUOTA_TABLE', $table_prefix . 'attach_quota');
-define('QUOTA_LIMITS_TABLE', $table_prefix . 'quota_limits');
+define('ATTACH_CONFIG_TABLE', $prefix . 'attachments_config');
+define('EXTENSION_GROUPS_TABLE', $prefix . 'extension_groups');
+define('EXTENSIONS_TABLE', $prefix . 'extensions');
+define('FORBIDDEN_EXTENSIONS_TABLE', $prefix . 'forbidden_extensions');
+define('ATTACHMENTS_DESC_TABLE', $prefix . 'attachments_desc');
+define('ATTACHMENTS_TABLE', $prefix . 'attachments');
+define('QUOTA_TABLE', $prefix . 'attach_quota');
+define('QUOTA_LIMITS_TABLE', $prefix . 'quota_limits');
 
 // Pages
 define('PAGE_UACP', -53);

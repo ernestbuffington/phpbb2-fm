@@ -10,21 +10,21 @@ if ( !defined('IN_PHPBB') )
 $advance_html_data = array('announcement_text_draft', 'announcement_text', 'announcement_guest_text', 'admin_notes', 'custom_body', 'custom_body_header', 'custom_footer', 'custom_header');
 for ( $i = 0; $i < 8; $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('" . $advance_html_data[$i] . "', '')";
+	$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('" . $advance_html_data[$i] . "', '')";
 	_sql($sql, $errored, $error_ary);
 }
 
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_status', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_status', '0')";
 _sql($sql, $errored, $error_ary);
 	
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_access', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_access', '0')";
 _sql($sql, $errored, $error_ary);
 	
-$sql = "INSERT INTO " . $table_prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_guest_status', '0')";
+$sql = "INSERT INTO " . $prefix . "advance_html (`config_name`, `config_value`) VALUES ('announcement_guest_status', '0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_album_cat data
-$sql = "INSERT INTO " . $table_prefix . "album_cat (`cat_title`, `cat_desc`, `cat_order`, `cat_view_level`, `cat_upload_level`, `cat_rate_level`, `cat_comment_level`, `cat_edit_level`, `cat_delete_level`, `cat_moderator_groups`, `cat_approval`) VALUES ('Test Category 1', 'This is just a test photo album', '10', '-1', '0', '0', '0', '0', '1', 'NULL', '0')";
+$sql = "INSERT INTO " . $prefix . "album_cat (`cat_title`, `cat_desc`, `cat_order`, `cat_view_level`, `cat_upload_level`, `cat_rate_level`, `cat_comment_level`, `cat_edit_level`, `cat_delete_level`, `cat_moderator_groups`, `cat_approval`) VALUES ('Test Category 1', 'This is just a test photo album', '10', '-1', '0', '0', '0', '0', '1', 'NULL', '0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_album_config data
@@ -80,7 +80,7 @@ $album_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $album_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "album_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "album_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -121,12 +121,12 @@ $attach_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $attach_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "attachments_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "attachments_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 	
 // phpbb_backup data
-$sql = "INSERT INTO " . $table_prefix . "backup (`backup_skill`, `email_true`, `email`, `ftp_true`, `write_backups_true`, `files_to_keep`, `cron_time`, `delay_time`, `backup_type`, `phpbb_only`, `no_search`, `last_run`) VALUES (1, 0, '" . $board_config['board_email'] . "', 0, 1, 7, '0    0    *    *    *', 120, 'full', 1, 0, " . time() . ")";
+$sql = "INSERT INTO " . $prefix . "backup (`backup_skill`, `email_true`, `email`, `ftp_true`, `write_backups_true`, `files_to_keep`, `cron_time`, `delay_time`, `backup_type`, `phpbb_only`, `no_search`, `last_run`) VALUES (1, 0, '" . $board_config['board_email'] . "', 0, 1, 7, '0    0    *    *    *', 120, 'full', 1, 0, " . time() . ")";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_bots data
@@ -148,7 +148,7 @@ for ( $row = 0; $row < sizeof($bots_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "bots (`bot_name`, `bot_agent`, `bot_ip`, `bot_style`) VALUES ('" . $bots_data[$row]['NAME'] . "', '" . $bots_data[$row]['AGENT'] . "', '" . $bots_data[$row]['IP'] . "', '" . $board_config['default_style'] . "')";
+		$sql = "INSERT INTO " . $prefix . "bots (`bot_name`, `bot_agent`, `bot_ip`, `bot_style`) VALUES ('" . $bots_data[$row]['NAME'] . "', '" . $bots_data[$row]['AGENT'] . "', '" . $bots_data[$row]['IP'] . "', '" . $board_config['default_style'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -780,7 +780,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -820,7 +820,7 @@ for ( $row = 0; $row < sizeof($config_nav_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '1', '" . $config_nav_data[$row]['Url'] . "', '" . $id . "0', '" . $config_nav_data[$row]['Value'] . "')";
+		$sql = "INSERT INTO " . $prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '1', '" . $config_nav_data[$row]['Url'] . "', '" . $id . "0', '" . $config_nav_data[$row]['Value'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 	$id++;
@@ -830,7 +830,7 @@ for ( $row = 0; $row < sizeof($config_nav_data); $row++ )
 $digests_config_data = array( 'activity_threshold' => 90, 'allow_daily' => 1, 'allow_direct_run' => 0, 'allow_exclude' => 0, 'allow_hours1' => 0, 'allow_hours2' => 0, 'allow_hours4' => 0, 'allow_hours6' => 0, 'allow_hours8' => 0, 'allow_hours12' => 0, 'allow_monthly' => 0, 'allow_urgent' => 0, 'allow_weekly' => 1, 'auto_subscribe' => 0, 'auto_subscribe_group' => 0, 'check_user_activity' => 0, 'default_format' => 1, 'default_frequency' => 24, 'default_new_only' => 1, 'default_send_on_no_messages' => 0, 'default_show_mine' => 0, 'default_show_text' => 1, 'default_text_length_type' => 1, 'digest_date_format' => 'D d-M-Y \a\t H:i:s', 'digest_disable_group' => 1, 'digest_disable_user' => 1, 'digest_logging' => 0, 'digest_subject' => '', 'digest_theme' => 1, 'digest_version' => '1.3.4', 'direct_password' => '', 'home_page' => 'index', 'log_days' => 8, 'monthly_day' => 28, 'new_sign_up' => 0, 'override_theme' => 1, 'pm_notify' => 0, 'pm_display' => 0, 'run_urgent_only' => 1, 'run_time' => 18, 'short_text_length' => 150, 'show_forum_description' => 0, 'show_ip' => 0, 'show_stats' => 1, 'supress_cron_output' => 0, 'test_mode' => 1, 'theme_type' => 0, 'urgent_run_required' => 1, 'use_system_time' => 1, 'weekly_day' => 0 );
 while ( list ( $config_name, $config_value ) = each ( $digests_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "digests_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "digests_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -848,7 +848,7 @@ for ( $row = 0; $row < sizeof($extension_groups_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "extension_groups (`group_name`, `cat_id`, `allow_group`, `download_mode`, `max_filesize`) VALUES ('" . $extension_groups_data[$row]['Name'] . "', '" . $extension_groups_data[$row]['Cat'] . "', '" . $extension_groups_data[$row]['Group'] . "', '" . $extension_groups_data[$row]['Mode'] . "', '0')";
+		$sql = "INSERT INTO " . $prefix . "extension_groups (`group_name`, `cat_id`, `allow_group`, `download_mode`, `max_filesize`) VALUES ('" . $extension_groups_data[$row]['Name'] . "', '" . $extension_groups_data[$row]['Cat'] . "', '" . $extension_groups_data[$row]['Group'] . "', '" . $extension_groups_data[$row]['Mode'] . "', '0')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -857,7 +857,7 @@ for ( $row = 0; $row < sizeof($extension_groups_data); $row++ )
 $extensions_data = array('gif' => 1, 'png' => 1, 'jpeg' => 1, 'jpg' => 1, 'tif' => 1, 'tga' => 1, 'gtar' => 2, 'gz' => 2, 'tar' => 2, 'zip' => 2, 'rar' => 2, 'ace' => 2, '7z' => 2, 'txt' => 3, 'c' => 3, 'h' => 3, 'cpp' => 3, 'hpp' => 3, 'diz' => 3, 'xls' => 4, 'doc' => 4, 'dot' => 4, 'pdf' => 4, 'ai' => 4, 'ps' => 4, 'ppt' => 4, 'rm' => 5, 'wma' => 6, 'swf' => 7);
 while ( list ( $extension, $group_id ) = each ( $extensions_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "extensions (`group_id`, `extension`) VALUES ('" . $group_id . "', '" . $extension. "')";
+	$sql = "INSERT INTO " . $prefix . "extensions (`group_id`, `extension`) VALUES ('" . $group_id . "', '" . $extension. "')";
 	_sql($sql, $errored, $error_ary);
 }
 	
@@ -866,7 +866,7 @@ $id = 1;
 $forbidden_extensions_data = array('php', 'php3', 'php4', 'phtml', 'pl', 'asp', 'cgi');
 for ( $i = 0; $i < sizeof($forbidden_extensions_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "forbidden_extensions (`ext_id`, `extension`) VALUES ('" . $id . "', '" . $forbidden_extensions_data[$i] . "')";
+	$sql = "INSERT INTO " . $prefix . "forbidden_extensions (`ext_id`, `extension`) VALUES ('" . $id . "', '" . $forbidden_extensions_data[$i] . "')";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
@@ -1072,13 +1072,13 @@ $flags_data = array(
 );
 while ( list ( $flag_name, $flag_image ) = each ( $flags_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "flags (`flag_name`, `flag_image`) VALUES ('" . $flag_name . "', '" . $flag_image . "')";
+	$sql = "INSERT INTO " . $prefix . "flags (`flag_name`, `flag_image`) VALUES ('" . $flag_name . "', '" . $flag_image . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
 // Add group_order to existing groups
 $sql = "SELECT `group_id`
-	FROM " . $table_prefix. "groups
+	FROM " . $prefix. "groups
 	WHERE `group_single_user` = 0
 	ORDER BY group_id";
 $result = _sql($sql, $errored, $error_ary, '');
@@ -1090,7 +1090,7 @@ for($i = 0; $i < $total_groups; $i++)
 {
 	$group_id = $groups[$i]['group_id'];
 
-	$sql = "UPDATE " . $table_prefix . "groups
+	$sql = "UPDATE " . $prefix . "groups
 		SET `group_rank_order` = " . ($i + 1) . " 
 		WHERE `group_id` = " . $group_id;
 	_sql($sql, $errored, $error_ary);
@@ -1101,7 +1101,7 @@ $db->sql_freeresult($result);
 $gbook_config_data = array( 'version' => '2.2.0', 'enable_guestbook' => 0, 'maxlenght_posts' => 500, 'hide_posts' => 0, 'smilies_column' => 6, 'smilies_row' => 3, 'no_only_smilies' => 1, 'no_only_quote' => 1, 'word_wrap' => 1, 'contatore' => 0, 'word_wrap_length' => 32, 'session_posting' => 60, 'password' => 12345, 'permit_mod' => 0 );
 while ( list ( $config_name, $config_value ) = each ( $gbook_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "guestbook_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "guestbook_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
 
@@ -1110,7 +1110,7 @@ $id = 1;
 $helpdesk_emails_data = array($board_config['board_email'], $board_config['board_email']);
 for ( $i = 0; $i < sizeof($helpdesk_emails_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "helpdesk_emails (`e_id`, `e_addr`) VALUES ('" . $id. "', '" . $helpdesk_emails_data[$i] . "')";
+	$sql = "INSERT INTO " . $prefix . "helpdesk_emails (`e_id`, `e_addr`) VALUES ('" . $id. "', '" . $helpdesk_emails_data[$i] . "')";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
@@ -1120,7 +1120,7 @@ $id = 1;
 $helpdesk_importance_data = array('Not Important', 'Urgent');
 for ( $i = 0; $i < sizeof($helpdesk_importance_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "helpdesk_importance (`value`, `data`) VALUES ('" . $id . "', '" . $helpdesk_importance_data[$i] . "')";
+	$sql = "INSERT INTO " . $prefix . "helpdesk_importance (`value`, `data`) VALUES ('" . $id . "', '" . $helpdesk_importance_data[$i] . "')";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
@@ -1130,7 +1130,7 @@ $id = 1;
 $helpdesk_msgs_data = array('Forum Issues', 'E-mail Board Owner');
 for ( $i = 0; $i < sizeof($helpdesk_msgs_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "helpdesk_msgs (`e_id`, `e_msg`) VALUES ('" . $id . "', '" . $helpdesk_msgs_data[$i] . "')";
+	$sql = "INSERT INTO " . $prefix . "helpdesk_msgs (`e_id`, `e_msg`) VALUES ('" . $id . "', '" . $helpdesk_msgs_data[$i] . "')";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
@@ -1140,7 +1140,7 @@ $id = 1;
 $helpdesk_reply_data = array('None', 'E-mail Me', 'Skype Me', 'Private message', 'Yahoo Messenger', 'MSN Messenger', 'AOL Messenger', 'ICQ Message', 'Xfire Messenger');
 for ( $i = 0; $i < sizeof($helpdesk_reply_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "helpdesk_reply (`value`, `data`) VALUES ('" . $id . "', '" . $helpdesk_reply_data[$i] . "')";
+	$sql = "INSERT INTO " . $prefix . "helpdesk_reply (`value`, `data`) VALUES ('" . $id . "', '" . $helpdesk_reply_data[$i] . "')";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
@@ -1193,32 +1193,32 @@ $im_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $im_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "im_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "im_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
 // phpbb_im_prefs data
-$sql = "INSERT INTO " . $table_prefix . "im_prefs (`user_id`) VALUES ('0')";
+$sql = "INSERT INTO " . $prefix . "im_prefs (`user_id`) VALUES ('0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_ina_data data
-$sql = "INSERT INTO " . $table_prefix . "ina_data (`version`) VALUES ('v2.0.0')";
+$sql = "INSERT INTO " . $prefix . "ina_data (`version`) VALUES ('v2.0.0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_inline_ads data
-$sql = 'INSERT INTO ' . $table_prefix . 'inline_ads (`ad_code`, `ad_name`) VALUES ("Your banner code goes here", "Default")';
+$sql = 'INSERT INTO ' . $prefix . 'inline_ads (`ad_code`, `ad_name`) VALUES ("Your banner code goes here", "Default")';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_kb_articles data
-$sql = "INSERT INTO " . $table_prefix . "kb_articles (`article_category_id`, `article_title`, `article_description`, `article_date`, `article_author_id`, `article_body`, `article_type`, `approved`, `topic_id`, `views`) VALUES ('1', 'Test Article', 'This is an example article in your KB', '" . time() . "', '2', 'This is an example article in your Knowledge Base installation. You may delete this article, this type even this category if you like since everything seems to be working! Please enjoy the new Knowledge Base features!', '1', '1', '1', '0')";
+$sql = "INSERT INTO " . $prefix . "kb_articles (`article_category_id`, `article_title`, `article_description`, `article_date`, `article_author_id`, `article_body`, `article_type`, `approved`, `topic_id`, `views`) VALUES ('1', 'Test Article', 'This is an example article in your KB', '" . time() . "', '2', 'This is an example article in your Knowledge Base installation. You may delete this article, this type even this category if you like since everything seems to be working! Please enjoy the new Knowledge Base features!', '1', '1', '1', '0')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_kb_categories data
-$sql = "INSERT INTO " . $table_prefix . "kb_categories (`category_id`, `category_name`, `category_details`, `number_articles`, `parent`, `cat_order`) VALUES ('1', 'Test Category 1', 'This is just a test knowledge base category', '1', '0', '10')";
+$sql = "INSERT INTO " . $prefix . "kb_categories (`category_id`, `category_name`, `category_details`, `number_articles`, `parent`, `cat_order`) VALUES ('1', 'Test Category 1', 'This is just a test knowledge base category', '1', '0', '10')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_kb_types data
-$sql = "INSERT INTO " . $table_prefix . "kb_types (`id`, `type`) VALUES ('1', 'Test Type 1')";
+$sql = "INSERT INTO " . $prefix . "kb_types (`id`, `type`) VALUES ('1', 'Test Type 1')";
 _sql($sql, $errored, $error_ary);
 	
 // phpbb_lexicon data
@@ -1230,13 +1230,13 @@ for ( $row = 0; $row < sizeof($lexicon_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "lexicon (`keyword`, `explanation`, `bbcode_uid`, `cat`) VALUES ('" . $lexicon_data[$row]['Keyword'] . "', '" . $lexicon_data[$row]['Explanation'] . "', '" . $lexicon_data[$row]['Bbcode_uid'] . "', '" . $lexicon_data[$row]['Cat'] . "')";
+		$sql = "INSERT INTO " . $prefix . "lexicon (`keyword`, `explanation`, `bbcode_uid`, `cat`) VALUES ('" . $lexicon_data[$row]['Keyword'] . "', '" . $lexicon_data[$row]['Explanation'] . "', '" . $lexicon_data[$row]['Bbcode_uid'] . "', '" . $lexicon_data[$row]['Cat'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
 		
 // phpbb_lexicon_cat data
-$sql = 'INSERT INTO ' . $table_prefix . 'lexicon_cat (`cat_titel`) VALUES ("default")';
+$sql = 'INSERT INTO ' . $prefix . 'lexicon_cat (`cat_titel`) VALUES ("default")';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_link_config data
@@ -1270,7 +1270,7 @@ $link_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $link_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "link_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "link_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -1283,7 +1283,7 @@ for ( $row = 0; $row < sizeof($links_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "links (`link_name`, `link_longdesc`, `link_catid`, `link_url`, `link_logo_src`, `link_time`, `link_approved`, `link_hits`, `user_id`) VALUES ('" . $links_data[$row]['Title'] . "', '" . $links_data[$row]['Desc'] . "', 4, '" . $links_data[$row]['Url']. "', '" . $links_data[$row]['Logo'] . "', '" . time() . "', '1', '0', '2')";
+		$sql = "INSERT INTO " . $prefix . "links (`link_name`, `link_longdesc`, `link_catid`, `link_url`, `link_logo_src`, `link_time`, `link_approved`, `link_hits`, `user_id`) VALUES ('" . $links_data[$row]['Title'] . "', '" . $links_data[$row]['Desc'] . "', 4, '" . $links_data[$row]['Url']. "', '" . $links_data[$row]['Logo'] . "', '" . time() . "', '1', '0', '2')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -1293,16 +1293,16 @@ $id = 1;
 $link_cat_data = array('Arts', 'Business', 'Children and Teens', 'Computers', 'Games', 'Health', 'Home', 'Music', 'News', 'Recreation', 'Reference', 'Science', 'Shopping', 'Society', 'Sports', 'Travel', 'Unsorted');
 for ( $i = 0; $i < sizeof($link_cat_data); $i++ )
 {
-	$sql = "INSERT INTO " . $table_prefix . "link_categories (`cat_name`, `cat_order`, `cat_parent`) VALUES ('" . $link_cat_data[$i] . "', '" . $id . "', 0)";
+	$sql = "INSERT INTO " . $prefix . "link_categories (`cat_name`, `cat_order`, `cat_parent`) VALUES ('" . $link_cat_data[$i] . "', '" . $id . "', 0)";
 	_sql($sql, $errored, $error_ary);
 	$id++;
 }
 
-$sql = "UPDATE " . $table_prefix . "link_categories SET `cat_links` = '2' WHERE `cat_name` = 'Computers'";
+$sql = "UPDATE " . $prefix . "link_categories SET `cat_links` = '2' WHERE `cat_name` = 'Computers'";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_medal_cat data
-$sql = "INSERT INTO " . $table_prefix . "medal_cat (`cat_title`, `cat_order`) VALUES ('Default', '10')";
+$sql = "INSERT INTO " . $prefix . "medal_cat (`cat_title`, `cat_order`) VALUES ('Default', '10')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_meeting_config data
@@ -1316,15 +1316,15 @@ $meeting_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $meeting_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "meeting_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "meeting_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 	
 // phpbb_optimize_db data
-$sql = "INSERT INTO " . $table_prefix . "optimize_db (`cron_enable`, `cron_every`, `cron_next`, `cron_count`) VALUES ('0', '86400', '0', '0')";
+$sql = "INSERT INTO " . $prefix . "optimize_db (`cron_enable`, `cron_every`, `cron_next`, `cron_count`) VALUES ('0', '86400', '0', '0')";
 _sql($sql, $errored, $error_ary);
 	
-$sql = "UPDATE " . $table_prefix . "optimize_db SET `cron_enable` = '0'";
+$sql = "UPDATE " . $prefix . "optimize_db SET `cron_enable` = '0'";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_pa_config data
@@ -1364,7 +1364,7 @@ $pa_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $pa_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "pa_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "pa_config (`config_name`, `config_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -1455,7 +1455,7 @@ for ( $row = 0; $row < sizeof($pages_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) VALUES ('" . $pages_data[$row]['PageName'] . "', '" . $pages_data[$row]['PageKey'] . "', '" . $pages_data[$row]['ParmName'] . "', '" . $pages_data[$row]['ParmValue'] . "')";
+		$sql = "INSERT INTO " . $prefix . "pages (`page_name`, `page_key`, `page_parm_name`, `page_parm_value`) VALUES ('" . $pages_data[$row]['PageName'] . "', '" . $pages_data[$row]['PageKey'] . "', '" . $pages_data[$row]['ParmName'] . "', '" . $pages_data[$row]['ParmValue'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -1531,12 +1531,12 @@ $pjirc_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $pjirc_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "pjirc (`pjirc_name`, `pjirc_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
+	$sql = "INSERT INTO " . $prefix . "pjirc (`pjirc_name`, `pjirc_value`) VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
 // phpbb_portal data
-$sql = "INSERT INTO " . $table_prefix . "portal (`portal_use_url`, `portal_forum`, `portal_list_limit`, `portal_navbar_name`, `portal_navbar`) VALUES ('0', '1', '3', 'Portal Page', '1')";
+$sql = "INSERT INTO " . $prefix . "portal (`portal_use_url`, `portal_forum`, `portal_list_limit`, `portal_navbar_name`, `portal_navbar`) VALUES ('0', '1', '3', 'Portal Page', '1')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_quota_limits data
@@ -1547,7 +1547,7 @@ $quota_limits_data = array(
 );
 while ( list ( $quota_desc, $quota_limit) = each ( $quota_limits_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "quota_limits (`quota_desc`, `quota_limit`) VALUES ('" . $quota_desc. "', '" . $quota_limits . "')";
+	$sql = "INSERT INTO " . $prefix . "quota_limits (`quota_desc`, `quota_limit`) VALUES ('" . $quota_desc. "', '" . $quota_limits . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
@@ -1571,7 +1571,7 @@ for ( $row = 0; $row < sizeof($rating_config_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "rating_config (`label`, `num_value`, `config_id`, `input_type`, `list_order`) VALUES ('" . $rating_config_data[$row]['Label'] . "', '" . $rating_config_data[$row]['Num'] . "', '" . $rating_config_data[$row]['ID'] . "', '" . $rating_config_data[$row]['Type'] . "', '" . $rating_config_data[$row]['Order'] . "')";
+		$sql = "INSERT INTO " . $prefix . "rating_config (`label`, `num_value`, `config_id`, `input_type`, `list_order`) VALUES ('" . $rating_config_data[$row]['Label'] . "', '" . $rating_config_data[$row]['Num'] . "', '" . $rating_config_data[$row]['ID'] . "', '" . $rating_config_data[$row]['Type'] . "', '" . $rating_config_data[$row]['Order'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -1586,7 +1586,7 @@ for ( $row = 0; $row < sizeof($rating_option_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "rating_option (`points`, `label`, `weighting`, `user_type`) VALUES ('" . $rating_option_data[$row]['Points'] . "', '" . $rating_option_data[$row]['Label'] . "', '" . $rating_option_data[$row]['Weight'] . "', '" . $rating_option_data[$row]['Type'] . "')";
+		$sql = "INSERT INTO " . $prefix . "rating_option (`points`, `label`, `weighting`, `user_type`) VALUES ('" . $rating_option_data[$row]['Points'] . "', '" . $rating_option_data[$row]['Label'] . "', '" . $rating_option_data[$row]['Weight'] . "', '" . $rating_option_data[$row]['Type'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
@@ -1608,21 +1608,21 @@ for ( $row = 0; $row < sizeof($rating_rank_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "rating_rank (`type`, `average_threshold`, `sum_threshold`, `label`, `icon`, `user_rank`) VALUES ('" . $rating_rank_data[$row]['Type'] . "', '" . $rating_rank_data[$row]['AVG'] . "', '" . $rating_rank_data[$row]['SUM'] . "', '" . $rating_rank_data[$row]['Label'] . "', '" . $rating_rank_data[$row]['Icon'] . "', '0')";
+		$sql = "INSERT INTO " . $prefix . "rating_rank (`type`, `average_threshold`, `sum_threshold`, `label`, `icon`, `user_rank`) VALUES ('" . $rating_rank_data[$row]['Type'] . "', '" . $rating_rank_data[$row]['AVG'] . "', '" . $rating_rank_data[$row]['SUM'] . "', '" . $rating_rank_data[$row]['Label'] . "', '" . $rating_rank_data[$row]['Icon'] . "', '0')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
 
 // phpbb_referral data
-$sql = "INSERT INTO " . $table_prefix . "referral (`referral_id`, `ruid`, `nuid`, `referral_time`) VALUES ('1', '2', '2', '" . time() . "')";
+$sql = "INSERT INTO " . $prefix . "referral (`referral_id`, `ruid`, `nuid`, `referral_time`) VALUES ('1', '2', '2', '" . time() . "')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_smilies_cat data
-$sql = "INSERT INTO " . $table_prefix . "smilies_cat (`cat_id`, `cat_name`, `description`, `cat_order`, `cat_perms`, `cat_forum`, `cat_special`, `smilies_popup`) VALUES ('1', 'phpBB', 'The default phpBB2 Smilies', '1', '10', '1 999', '-2', '410|300|8|1|0|0')";
+$sql = "INSERT INTO " . $prefix . "smilies_cat (`cat_id`, `cat_name`, `description`, `cat_order`, `cat_perms`, `cat_forum`, `cat_special`, `smilies_popup`) VALUES ('1', 'phpBB', 'The default phpBB2 Smilies', '1', '10', '1 999', '-2', '410|300|8|1|0|0')";
 _sql($sql, $errored, $error_ary);
 
 // Add existing smilies to default category
-$sql = "SELECT * FROM " . $table_prefix . "smilies 
+$sql = "SELECT * FROM " . $prefix . "smilies 
 	ORDER BY `smilies_id`";
 $result = _sql($sql, $errored, $error_ary, '');
 
@@ -1633,7 +1633,7 @@ for($i = 0; $i < $total_smilies; $i++)
 {
 	$smilies_id = $smilies[$i]['smilies_id'];
 
-	$sql = "UPDATE " . $table_prefix . "smilies 
+	$sql = "UPDATE " . $prefix . "smilies 
 		SET `cat_id` = 1, `smilies_order` = " . ($i + 1) . " 
 		WHERE `smilies_id` = " . $smilies_id;
 	_sql($sql, $errored, $error_ary);
@@ -1641,11 +1641,11 @@ for($i = 0; $i < $total_smilies; $i++)
 $db->sql_freeresult($result);
 
 // phpbb_stats_smilies_info data
-$sql = "INSERT INTO " . $table_prefix . "stats_smilies_info (`last_post_id`, `last_update_time`, `update_time`) VALUES ('0', '0', '10080')";
+$sql = "INSERT INTO " . $prefix . "stats_smilies_info (`last_post_id`, `last_update_time`, `update_time`) VALUES ('0', '0', '10080')";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_themes data
-$sql = "INSERT INTO " . $table_prefix . "themes (`themes_id`, `template_name`, `style_name`, `head_stylesheet`, `body_background`, `body_bgcolor`, `body_text`, `body_link`, `body_vlink`, `body_alink`, `body_hlink`, `tr_color1`, `tr_color2`, `tr_color3`, `tr_class1`, `tr_class2`, `tr_class3`, `th_color1`, `th_color2`, `th_color3`, `th_class1`, `th_class2`, `th_class3`, `td_color1`, `td_color2`, `td_color3`, `td_class1`, `td_class2`, `td_class3`, `fontface1`, `fontface2`, `fontface3`, `fontsize1`, `fontsize2`, `fontsize3`, `fontcolor1`, `fontcolor2`, `fontcolor3`, `fontcolor4`, `adminfontcolor`, `supermodfontcolor`, `modfontcolor`, `playersfontcolor`, `botfontcolor`, `hr_color1`, `hr_color2`, `hr_color3`, `hr_color4`, `hr_color5`, `hr_color6`, `hr_color7`, `hr_color8`, `hr_color9`, `jb_color1`, `jb_color2`, `jb_color3`, `adminbold`, `supermodbold`, `modbold`) VALUES (1, 'subSilver', 'subSilver', 'subSilver.css', 'background: url(templates/subSilver/images/background.gif) repeat-x;', 'FFFFFF', '323D4F', '006699', '5493B4', '', 'DD6900', 'F0F0F0', 'E0E4E8', 'D0D0D8', '', '', '', '98AAB1', '006699', 'FFFFFF', 'cellpic1.gif', 'cellpic3.gif', 'cellpic2.jpg', 'FAFAFA', 'FFFFFF', '', 'row1', 'row2', '', 'Verdana, Helvetica, Arial, sans-serif', 'Trebuchet MS', 'Courier, \'Courier New\', sans-serif', 10, 11, 12, '444444', '006600', 'FFA34F', 'FFA34F', 'FFA34F', '737353', '006600', '0099CC', '9E8DA7', 'E8F3FC', 'D5E8F9', 'B7D9F6', 'FCECE8', 'F9DDD5', 'FACCBF', 'E9FAEA', 'D5F9D6', 'B2EEB4', '006EBB', 'FF6428', '329600', 1, 1, 1)";
+$sql = "INSERT INTO " . $prefix . "themes (`themes_id`, `template_name`, `style_name`, `head_stylesheet`, `body_background`, `body_bgcolor`, `body_text`, `body_link`, `body_vlink`, `body_alink`, `body_hlink`, `tr_color1`, `tr_color2`, `tr_color3`, `tr_class1`, `tr_class2`, `tr_class3`, `th_color1`, `th_color2`, `th_color3`, `th_class1`, `th_class2`, `th_class3`, `td_color1`, `td_color2`, `td_color3`, `td_class1`, `td_class2`, `td_class3`, `fontface1`, `fontface2`, `fontface3`, `fontsize1`, `fontsize2`, `fontsize3`, `fontcolor1`, `fontcolor2`, `fontcolor3`, `fontcolor4`, `adminfontcolor`, `supermodfontcolor`, `modfontcolor`, `playersfontcolor`, `botfontcolor`, `hr_color1`, `hr_color2`, `hr_color3`, `hr_color4`, `hr_color5`, `hr_color6`, `hr_color7`, `hr_color8`, `hr_color9`, `jb_color1`, `jb_color2`, `jb_color3`, `adminbold`, `supermodbold`, `modbold`) VALUES (1, 'subSilver', 'subSilver', 'subSilver.css', 'background: url(templates/subSilver/images/background.gif) repeat-x;', 'FFFFFF', '323D4F', '006699', '5493B4', '', 'DD6900', 'F0F0F0', 'E0E4E8', 'D0D0D8', '', '', '', '98AAB1', '006699', 'FFFFFF', 'cellpic1.gif', 'cellpic3.gif', 'cellpic2.jpg', 'FAFAFA', 'FFFFFF', '', 'row1', 'row2', '', 'Verdana, Helvetica, Arial, sans-serif', 'Trebuchet MS', 'Courier, \'Courier New\', sans-serif', 10, 11, 12, '444444', '006600', 'FFA34F', 'FFA34F', 'FFA34F', '737353', '006600', '0099CC', '9E8DA7', 'E8F3FC', 'D5E8F9', 'B7D9F6', 'FCECE8', 'F9DDD5', 'FACCBF', 'E9FAEA', 'D5F9D6', 'B2EEB4', '006EBB', 'FF6428', '329600', 1, 1, 1)";
 _sql($sql, $errored, $error_ary);
 
 // phpbb_xdata_fields data
@@ -1673,14 +1673,14 @@ for ( $row = 0; $row < sizeof($xdata_fields_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "xdata_fields (`field_id`, `field_name`, `field_type`, `field_order`, `code_name`, `display_register`) VALUES ('" . $id . "', '" . $xdata_fields_data[$row]['Name'] . "', 'special', '" . $id . "', '" . $xdata_fields_data[$row]['Code'] . "', '2')";
+		$sql = "INSERT INTO " . $prefix . "xdata_fields (`field_id`, `field_name`, `field_type`, `field_order`, `code_name`, `display_register`) VALUES ('" . $id . "', '" . $xdata_fields_data[$row]['Name'] . "', 'special', '" . $id . "', '" . $xdata_fields_data[$row]['Code'] . "', '2')";
 		_sql($sql, $errored, $error_ary);
 	}
 	$id++;
 }
 
 // Update users avatars
-$sql = "UPDATE " . $table_prefix . "posts p, " . $table_prefix . "users u 
+$sql = "UPDATE " . $prefix . "posts p, " . $prefix . "users u 
 	SET p.user_avatar = u.user_avatar, p.user_avatar_type = u.user_avatar_type 
 	WHERE p.poster_id = u.user_id 
 		AND u.user_avatar != '' 

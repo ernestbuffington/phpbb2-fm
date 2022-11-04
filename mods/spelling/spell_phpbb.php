@@ -92,7 +92,7 @@ else
 // Required for Nuke
 if ($Spell_Config['PHPBB_NUKE'] == true) 
 {
-	$table_prefix = @$user_prefix . '_';
+	$prefix = @$user_prefix . '_';
     $dbms = strtolower($dbtype);
 }
 
@@ -101,7 +101,7 @@ if ($Spell_Config['PHPBB_Load_Smilies']) Create_PHPBB_Smiles();
 function Create_PHPBB_Smiles()
 {
 	global $Spell_Config;
-    global $db, $table_prefix, $dbms;
+    global $db, $prefix, $dbms;
 
     // Php Nuke Specific code.
     $nuke_prefix = '';
@@ -109,11 +109,11 @@ function Create_PHPBB_Smiles()
 
     if ($dbms == 'mssql' || $dbms == 'mssql-odbc') 
     {
-    	$Query = 'SELECT code FROM'.$table_prefix.$nuke_prefix.'smilies ORDER BY {fn LENGTH(code)} desc';
+    	$Query = 'SELECT code FROM'.$prefix.$nuke_prefix.'smilies ORDER BY {fn LENGTH(code)} desc';
     } 
     else 
     {
-    	$Query = 'SELECT code FROM '.$table_prefix.$nuke_prefix.'smilies ORDER BY length(code) desc';
+    	$Query = 'SELECT code FROM '.$prefix.$nuke_prefix.'smilies ORDER BY length(code) desc';
     }
     if( !($Query_Result = $db->sql_query($Query)) ) 
     {

@@ -15,7 +15,7 @@ if ( !defined('IN_PHPBB') )
 	exit;
 }
 
-global $table_prefix, $phpEx, $board_config;
+global $prefix, $phpEx, $board_config;
  
  // start bpm mod by Duvelske (http://www.vitrax.vze.com)
 function bookies_send_pm($user_to_id, $bookies_subject, $message, $send_email, $from_id)

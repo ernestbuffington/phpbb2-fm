@@ -550,7 +550,7 @@ else
 		}
 	
 		$sql = "INSERT INTO " . ACCT_HIST_TABLE . "(user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-			VALUES (" . $user_id . ", 0, " . ($mc_gross + 0.00) . ", -1, '" . str_replace("\'", "''", $mc_currency) . "', " . time() . ", 'pay from: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . " (" . str_replace("\'", "''", $txn_type) . ")', '" . $table_prefix . "', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
+			VALUES (" . $user_id . ", 0, " . ($mc_gross + 0.00) . ", -1, '" . str_replace("\'", "''", $mc_currency) . "', " . time() . ", 'pay from: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . " (" . str_replace("\'", "''", $txn_type) . ")', '" . $prefix . "', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
 		if ( !($result = $db->sql_query($sql)) )
 		{
 			//do nothing
@@ -560,7 +560,7 @@ else
 		{
 			// log for manual investigation
 			$sql = "INSERT INTO " . ACCT_HIST_TABLE . "(user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-				VALUES (0, 0, " . str_replace("\'", "''", $mc_gross) . ", 1, '" . str_replace("\'", "''", $mc_currency) . "', " . time() . ", 'pay from: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . ", INVALID (" . str_replace("\'", "''", $txn_type) . ")', '$table_prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
+				VALUES (0, 0, " . str_replace("\'", "''", $mc_gross) . ", 1, '" . str_replace("\'", "''", $mc_currency) . "', " . time() . ", 'pay from: " . str_replace("\'", "''", $payer_email) . " to: " . str_replace("\'", "''", $receiver_email) . ", INVALID (" . str_replace("\'", "''", $txn_type) . ")', '$prefix', '" . str_replace("\'", "''", $payment_status) . "', '" . str_replace("\'", "''", $txn_id) . "')";
 			if ( !($result = $db->sql_query($sql)) )
 			{
 				//do nothing

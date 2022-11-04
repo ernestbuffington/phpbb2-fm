@@ -35,7 +35,7 @@ else
 	$mode = '';
 }
 					
-define("iNA_GAMES", $table_prefix .'ina_games');	
+define("iNA_GAMES", $prefix .'ina_games');	
 $link = append_sid("admin_ina_bulk_add.". $phpEx);
 	
 if($mode == "main" || !$mode)

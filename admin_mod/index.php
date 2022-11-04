@@ -190,9 +190,9 @@ if ( preg_match("/^mysql/", SQL_LAYER) )
 				{
 					if ( $tabledata_ary[$i]['Type'] != "MRG_MyISAM" )
 					{
-						if ( $table_prefix != "" )
+						if ( $prefix != "" )
 						{
-							if ( strstr($tabledata_ary[$i]['Name'], $table_prefix) )
+							if ( strstr($tabledata_ary[$i]['Name'], $prefix) )
 							{
 								$counter++;
 								$dbsize += $tabledata_ary[$i]['Data_length'] + $tabledata_ary[$i]['Index_length'];

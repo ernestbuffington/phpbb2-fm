@@ -4088,7 +4088,7 @@ switch($mode_id)
 
 				for($i = 0; $i < count($tables); $i++)
 				{
-					$tablename = $table_prefix . $tables[$i];
+					$tablename = $prefix . $tables[$i];
 					$sql = "CHECK TABLE $tablename";
 					$result = $db->sql_query($sql);
 					if ( !$result )
@@ -4139,7 +4139,7 @@ switch($mode_id)
 
 				for($i = 0; $i < count($tables); $i++)
 				{
-					$tablename = $table_prefix . $tables[$i];
+					$tablename = $prefix . $tables[$i];
 					$sql = "REPAIR TABLE $tablename";
 					$result = $db->sql_query($sql);
 					if ( !$result )
@@ -4191,7 +4191,7 @@ switch($mode_id)
 
 				for($i = 0; $i < count($tables); $i++)
 				{
-					$tablename = $table_prefix . $tables[$i];
+					$tablename = $prefix . $tables[$i];
 					$sql = "OPTIMIZE TABLE $tablename";
 					$result = $db->sql_query($sql);
 					if ( !$result )

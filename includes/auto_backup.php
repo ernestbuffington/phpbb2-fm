@@ -651,9 +651,9 @@ $result = $db->sql_query($sql);
 while ($row = $db->sql_fetchrow($result))
 {
 	$current_table = $row[$field]; 
-	$current_prefix = substr($current_table, 0, strlen($table_prefix));
+	$current_prefix = substr($current_table, 0, strlen($prefix));
 	
-	if ($phpbb_only && $current_prefix != $table_prefix)
+	if ($phpbb_only && $current_prefix != $prefix)
 	{
 		continue;
 	}

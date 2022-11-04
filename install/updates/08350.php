@@ -9,9 +9,9 @@ if ( !defined('IN_PHPBB') )
 //
 // Create new Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'config_nav';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'config_nav';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'config_nav (`navlink_id` MEDIUMINT(8) UNSIGNED NOT NULL auto_increment, `img` VARCHAR(100) DEFAULT "" NOT NULL, `alt` VARCHAR(100) DEFAULT "" NOT NULL, `url` VARCHAR(255) DEFAULT "" NOT NULL, `nav_order` MEDIUMINT(8) UNSIGNED DEFAULT "1" NOT NULL, `value` TINYINT(1) DEFAULT "0" NOT NULL, PRIMARY KEY (navlink_id))';
+$sql = 'CREATE TABLE ' . $prefix . 'config_nav (`navlink_id` MEDIUMINT(8) UNSIGNED NOT NULL auto_increment, `img` VARCHAR(100) DEFAULT "" NOT NULL, `alt` VARCHAR(100) DEFAULT "" NOT NULL, `url` VARCHAR(255) DEFAULT "" NOT NULL, `nav_order` MEDIUMINT(8) UNSIGNED DEFAULT "1" NOT NULL, `value` TINYINT(1) DEFAULT "0" NOT NULL, PRIMARY KEY (navlink_id))';
 _sql($sql, $errored, $error_ary);
 
 
@@ -46,7 +46,7 @@ for ( $row = 0; $row < sizeof($config_nav_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "config_nav (`img`, `alt`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '" . $config_nav_data[$row]['Url'] . "', '" . $id . "0', '" . $config_nav_data[$row]['Value'] . "')";
+		$sql = "INSERT INTO " . $prefix . "config_nav (`img`, `alt`, `url`, `nav_order`, `value`) VALUES ('" . $config_nav_data[$row]['Img'] . "', '" . $config_nav_data[$row]['Alt'] . "', '" . $config_nav_data[$row]['Url'] . "', '" . $id . "0', '" . $config_nav_data[$row]['Value'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 	$id++;

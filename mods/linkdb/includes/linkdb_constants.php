@@ -30,13 +30,13 @@ define('SELECT_MULTIPLE', 4);
 define('CHECKBOX', 5);
 
 // Tables
-define('LINKS_TABLE', $table_prefix.'links');
-define('LINK_CATEGORIES_TABLE', $table_prefix.'link_categories');
-define('LINK_CONFIG_TABLE', $table_prefix.'link_config');
-define('LINK_VOTES_TABLE', $table_prefix.'link_votes');
-define('LINK_COMMENTS_TABLE', $table_prefix.'link_comments');
-define('LINK_CUSTOM_TABLE', $table_prefix.'link_custom');
-define('LINK_CUSTOM_DATA_TABLE', $table_prefix.'link_customdata');
+define('LINKS_TABLE', $prefix.'links');
+define('LINK_CATEGORIES_TABLE', $prefix.'link_categories');
+define('LINK_CONFIG_TABLE', $prefix.'link_config');
+define('LINK_VOTES_TABLE', $prefix.'link_votes');
+define('LINK_COMMENTS_TABLE', $prefix.'link_comments');
+define('LINK_CUSTOM_TABLE', $prefix.'link_custom');
+define('LINK_CUSTOM_DATA_TABLE', $prefix.'link_customdata');
 
 // Language and Templates path
 define('LINKDB_LANG_PATH', "");

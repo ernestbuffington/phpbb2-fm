@@ -18,12 +18,12 @@ define('PRILL_PATH', $phpbb_root_path . 'mods/prillian/');
 define('PRILL_URL', $phpbb_root_path . 'imclient.' . $phpEx);
 
 // Table names
-define('IM_PREFS_TABLE', $table_prefix.'im_prefs');
-define('IM_CONFIG_TABLE', $table_prefix.'im_config');
-define('IM_SITES_TABLE', $table_prefix.'im_sites');
-define('IM_SESSIONS_TABLE', $table_prefix.'im_sessions');
+define('IM_PREFS_TABLE', $prefix.'im_prefs');
+define('IM_CONFIG_TABLE', $prefix.'im_config');
+define('IM_SITES_TABLE', $prefix.'im_sites');
+define('IM_SESSIONS_TABLE', $prefix.'im_sessions');
 // This isn't used yet - it's for a future version's chat box and shout box
-// define('IM_ROOMS_TABLE', $table_prefix.'im_rooms');
+// define('IM_ROOMS_TABLE', $prefix.'im_rooms');
 
 // Page number for session handling
 define('PAGE_PRILLIAN', -8051);

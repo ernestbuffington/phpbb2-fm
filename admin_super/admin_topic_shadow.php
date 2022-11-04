@@ -78,13 +78,13 @@ $status_message = '';
 /****************************************************************************
 /** Functions
 /***************************************************************************/
-function topic_shadow_make_drop_box($prefix = 'mode')
+function topic_shadow_make_drop_box($switch = 'mode')
 {
 	global $mode_types, $lang, $mode, $order_types, $order;
 	
-	$rval = '<select name="'.$prefix.'">';
+	$rval = '<select name="'.$switch.'">';
 	
-	switch($prefix)
+	switch($switch)
 	{
 		case 'mode':
 		{

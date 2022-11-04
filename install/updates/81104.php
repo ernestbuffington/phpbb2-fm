@@ -8,7 +8,7 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-schema	
 //
-$sql = 'INSERT INTO ' . $table_prefix . 'config (`config_name`, `config_value`) VALUES ("privmsg_self", "1")';
+$sql = 'INSERT INTO ' . $prefix . 'config (`config_name`, `config_value`) VALUES ("privmsg_self", "1")';
 _sql($sql, $errored, $error_ary);
 
 ?>

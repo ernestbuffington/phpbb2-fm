@@ -21,13 +21,13 @@ define('CONTACT_URL', $phpbb_root_path . 'contact.' . $phpEx);
 define('PAGE_CONTACT', -8050);
 
 // Table names
-define('CONTACT_TABLE', $table_prefix.'im_buddy_list');
+define('CONTACT_TABLE', $prefix.'im_buddy_list');
 
 // Alternate table names, for possible integration of Prillian
 // with other buddy/ignore hacks
-define('BUDDY_TABLE', $table_prefix.'im_buddy_list');
-define('IGNORE_TABLE', $table_prefix.'im_buddy_list');
-define('DISALLOW_TABLE', $table_prefix.'im_buddy_list');
+define('BUDDY_TABLE', $prefix.'im_buddy_list');
+define('IGNORE_TABLE', $prefix.'im_buddy_list');
+define('DISALLOW_TABLE', $prefix.'im_buddy_list');
 
 
 // Allows users to set themselves as buddies. This is mainly used only

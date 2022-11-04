@@ -9,64 +9,64 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-scema	
 //
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `forum_template` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `forum_template` MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `stop_bumping` TINYINT(1) DEFAULT "0" NOT NULL';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'ALTER TABLE ' . $table_prefix . 'smilies CHANGE `smilies_order` `smilies_order` SMALLINT(5) DEFAULT "0" NOT NULL';
-_sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'smilies ADD COLUMN `cat_id` SMALLINT(5) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `stop_bumping` TINYINT(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes ADD COLUMN `adminbold` TINYINT(1) DEFAULT "1" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'smilies CHANGE `smilies_order` `smilies_order` SMALLINT(5) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes ADD COLUMN `supermodbold` TINYINT(1) DEFAULT "1" NOT NULL';
-_sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes ADD COLUMN `modbold` TINYINT(1) DEFAULT "1" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'smilies ADD COLUMN `cat_id` SMALLINT(5) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'user_group ADD COLUMN `group_moderator` TINYINT(1) NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'themes ADD COLUMN `adminbold` TINYINT(1) DEFAULT "1" NOT NULL';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'themes ADD COLUMN `supermodbold` TINYINT(1) DEFAULT "1" NOT NULL';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'themes ADD COLUMN `modbold` TINYINT(1) DEFAULT "1" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_jobs` INT(11) NOT NULL DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'user_group ADD COLUMN `group_moderator` TINYINT(1) NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_notify_pm_text` tinyint(1) DEFAULT "0" NOT NULL';
+
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_jobs` INT(11) NOT NULL DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_ftr` SMALLINT(1) NOT NULL DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_notify_pm_text` tinyint(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `user_ftr_time` INT(11) NOT NULL DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_ftr` SMALLINT(1) NOT NULL DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'users ADD COLUMN `email_validation` tinyint(1) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `user_ftr_time` INT(11) NOT NULL DEFAULT "0"';
+_sql($sql, $errored, $error_ary);
+$sql = 'ALTER TABLE ' . $prefix . 'users ADD COLUMN `email_validation` tinyint(1) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Create new Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'guestbook';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'guestbook';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'guestbook (`id` mediumint(8) unsigned NOT NULL auto_increment, `user_id` mediumint(8) NOT NULL default "0", `nick` varchar(25) NOT NULL default "", `data_ora` int(11) NOT NULL default "0", `email` varchar(255) default NULL, `sito` varchar(100) default NULL, `comento` text, `bbcode_uid` varchar(10) default NULL, `ipi` varchar(8) NOT NULL default "", `agent` varchar(255) NOT NULL default "", `hide` tinyint(1) default "0", PRIMARY KEY (`id`)) TYPE=MyISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'guestbook_config';
-_sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'guestbook_config (`config_name` varchar(255) NOT NULL default "", `config_value` varchar(255) NOT NULL default "", PRIMARY KEY (`config_name`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'guestbook (`id` mediumint(8) unsigned NOT NULL auto_increment, `user_id` mediumint(8) NOT NULL default "0", `nick` varchar(25) NOT NULL default "", `data_ora` int(11) NOT NULL default "0", `email` varchar(255) default NULL, `sito` varchar(100) default NULL, `comento` text, `bbcode_uid` varchar(10) default NULL, `ipi` varchar(8) NOT NULL default "", `agent` varchar(255) NOT NULL default "", `hide` tinyint(1) default "0", PRIMARY KEY (`id`)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'jobs';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'guestbook_config';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'jobs (`id` mediumint(8) NOT NULL auto_increment, `name` varchar(32) NOT NULL default "", `pay` mediumint(8) default "100", `type` varchar(32) default "public", `requires` text, `payouttime` mediumint(8) default "500000", `positions` mediumint(8) NOT NULL default "0", PRIMARY KEY (`id`), KEY `name` (`name`)) TYPE=MyISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'jobs_employed';
-_sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'jobs_employed (`id` mediumint(8) NOT NULL auto_increment, `user_id` mediumint(8) NOT NULL, `job_name` varchar(32) NOT NULL default "", `job_pay` mediumint(8) NOT NULL, `job_length` mediumint(8) NOT NULL, `last_paid` mediumint(8) NOT NULL, `job_started` mediumint(8) NOT NULL, PRIMARY KEY (`id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'guestbook_config (`config_name` varchar(255) NOT NULL default "", `config_value` varchar(255) NOT NULL default "", PRIMARY KEY (`config_name`)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'smilies_cat';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'jobs';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'smilies_cat (`cat_id` smallint(3) unsigned NOT NULL auto_increment, `cat_name` varchar(50) NOT NULL default "", `description` varchar(100) NOT NULL default "", `cat_order` smallint(3) NOT NULL default "0", `cat_perms` tinyint(2) NOT NULL default "10", `cat_group` varchar(255) default NULL, `cat_forum` mediumtext NOT NULL, `cat_special` tinyint(1) NOT NULL default "-2", `cat_open` tinyint(1) NOT NULL default "1", `cat_icon_url` varchar(100) default NULL, `smilies_popup` varchar(20) NOT NULL default "", PRIMARY KEY (`cat_id`))';
+$sql = 'CREATE TABLE ' . $prefix . 'jobs (`id` mediumint(8) NOT NULL auto_increment, `name` varchar(32) NOT NULL default "", `pay` mediumint(8) default "100", `type` varchar(32) default "public", `requires` text, `payouttime` mediumint(8) default "500000", `positions` mediumint(8) NOT NULL default "0", PRIMARY KEY (`id`), KEY `name` (`name`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'jobs_employed';
+_sql($sql, $errored, $error_ary);
+$sql = 'CREATE TABLE ' . $prefix . 'jobs_employed (`id` mediumint(8) NOT NULL auto_increment, `user_id` mediumint(8) NOT NULL, `job_name` varchar(32) NOT NULL default "", `job_pay` mediumint(8) NOT NULL, `job_length` mediumint(8) NOT NULL, `last_paid` mediumint(8) NOT NULL, `job_started` mediumint(8) NOT NULL, PRIMARY KEY (`id`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'smilies_cat';
+_sql($sql, $errored, $error_ary);
+$sql = 'CREATE TABLE ' . $prefix . 'smilies_cat (`cat_id` smallint(3) unsigned NOT NULL auto_increment, `cat_name` varchar(50) NOT NULL default "", `description` varchar(100) NOT NULL default "", `cat_order` smallint(3) NOT NULL default "0", `cat_perms` tinyint(2) NOT NULL default "10", `cat_group` varchar(255) default NULL, `cat_forum` mediumtext NOT NULL, `cat_special` tinyint(1) NOT NULL default "-2", `cat_open` tinyint(1) NOT NULL default "1", `cat_icon_url` varchar(100) default NULL, `smilies_popup` varchar(20) NOT NULL default "", PRIMARY KEY (`cat_id`))';
 _sql($sql, $errored, $error_ary);
 
 
@@ -74,12 +74,12 @@ _sql($sql, $errored, $error_ary);
 // Modify Fully Modded core-schema
 //
 // Preivious FM updaters need this column type added!
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `index_posts` TINYINT(1) DEFAULT "1" NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `index_posts` TINYINT(1) DEFAULT "1" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_char_limit` MEDIUMINT(8) NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_char_limit` MEDIUMINT(8) NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_latest_scrolling` TINYINT(1) NOT NULL DEFAULT "0"';					
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_latest_scrolling` TINYINT(1) NOT NULL DEFAULT "0"';					
 _sql($sql, $errored, $error_ary);
 
 
@@ -141,7 +141,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -159,13 +159,13 @@ $rconfig_data = array(
 );
 for ( $i = 0; $i < sizeof($rconfig_data); $i++ )
 {
-	$sql = "DELETE FROM " . $table_prefix . "config 
+	$sql = "DELETE FROM " . $prefix . "config 
 		WHERE `config_name` = '" . $rconfig_data[$i] . "'";
 	_sql($sql, $errored, $error_ary);
 }
 
 // phpbb_forums data
-$sql = 'INSERT IGNORE INTO ' . $table_prefix . 'forums (`forum_id`, `cat_id`, `forum_name`, `forum_desc`, `forum_status`, `auth_view`) 
+$sql = 'INSERT IGNORE INTO ' . $prefix . 'forums (`forum_id`, `cat_id`, `forum_name`, `forum_desc`, `forum_status`, `auth_view`) 
 	VALUES ("-5", "0", "* VIEWPROFILE PERMISSIONS", "Viewprofile Control", "1", "1")';
 _sql($sql, $errored, $error_ary);
 
@@ -174,7 +174,7 @@ _sql($sql, $errored, $error_ary);
 // Modify Fully Modded core-data
 //
 // phpbb_config_nav data
-$sql = "INSERT INTO " . $table_prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) 
+$sql = "INSERT INTO " . $prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) 
 	VALUES ('icon_mini_forums.gif', 'Guestbook', 1, 'guestbook.php', 1000, 0)";
 _sql($sql, $errored, $error_ary);
 
@@ -186,7 +186,7 @@ $forum_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $forum_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "forums_config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "forums_config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -210,7 +210,7 @@ $gbook_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $gbook_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "guestbook_config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "guestbook_config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -219,18 +219,18 @@ while ( list ( $config_name, $config_value ) = each ( $gbook_config_data ) )
 //
 // Change default values to sync with FullyModded setup
 //
-$sql = 'UPDATE ' . $table_prefix . 'config 
+$sql = 'UPDATE ' . $prefix . 'config 
 	SET `config_name` = "message_maxlength" 
 	WHERE `config_name` = "message_length"';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_smilies_cat data
-$sql = "INSERT INTO " . $table_prefix . "smilies_cat (`cat_id`, `cat_name`, `description`, `cat_order`, `cat_perms`, `cat_forum`, `cat_special`, `smilies_popup`) 
+$sql = "INSERT INTO " . $prefix . "smilies_cat (`cat_id`, `cat_name`, `description`, `cat_order`, `cat_perms`, `cat_forum`, `cat_special`, `smilies_popup`) 
 	VALUES ('1', 'phpBB', 'The default phpBB2 Smilies', '1', '10', '1 999', '-2', '410|300|8|1|0|0')";
 _sql($sql, $errored, $error_ary);
 
 // Update users avatars
-$sql = "UPDATE " . $table_prefix . "posts p, " . $table_prefix . "users u 
+$sql = "UPDATE " . $prefix . "posts p, " . $prefix . "users u 
 	SET p.user_avatar = u.user_avatar, p.user_avatar_type = u.user_avatar_type 
 	WHERE p.poster_id = u.user_id 
 		AND u.user_avatar != '' 
@@ -241,7 +241,7 @@ _sql($sql, $errored, $error_ary);
 //
 // Add existing smilies to default category
 //
-$sql = "SELECT * FROM " . $table_prefix . "smilies 
+$sql = "SELECT * FROM " . $prefix . "smilies 
 	ORDER BY `smilies_id`";
 $result = _sql($sql, $errored, $error_ary, '');
 
@@ -252,7 +252,7 @@ for($i = 0; $i < $total_smilies; $i++)
 {
 	$smilies_id = $smilies[$i]['smilies_id'];
 
-	$sql = "UPDATE " . $table_prefix . "smilies 
+	$sql = "UPDATE " . $prefix . "smilies 
 		SET `cat_id` = 1, `smilies_order` = " . ($i + 1) . " 
 		WHERE `smilies_id` = " . $smilies_id;
 	_sql($sql, $errored, $error_ary);

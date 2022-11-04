@@ -18,7 +18,7 @@ set_magic_quotes_runtime(0);
 
 include_once($phpbb_root_path . 'config.'.$phpEx);
 
-$table_chatbox_session_name = $table_prefix . 'chatbox_session';
+$table_chatbox_session_name = $prefix . 'chatbox_session';
 
 // Kill Ghosts
 $sql = "DELETE FROM " . $table_chatbox_session_name . " 

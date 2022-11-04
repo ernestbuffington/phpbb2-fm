@@ -887,7 +887,7 @@ if( ( $total_categories = sizeof($category_rows) ) )
 			if( !file_exists($phpbb_root_path . 'language/lang_' . $language . '/lang_linkdb.'.$phpEx) ) { $language = 'english'; } include($phpbb_root_path . 'language/lang_' . $language . '/lang_linkdb.' . $phpEx);
 	
 			$sql = "SELECT *
-				FROM " . $table_prefix . "link_config";
+				FROM " . $prefix . "link_config";
 			if(!$result = $db->sql_query($sql))
 			{
 				message_die(GENERAL_ERROR, 'Could not query link configuration', '', __LINE__, __FILE__, $sql);
@@ -908,7 +908,7 @@ if( ( $total_categories = sizeof($category_rows) ) )
 			$db->sql_freeresult($result);
 		
 			$sql = "SELECT link_id, link_name, link_logo_src
-				FROM " . $table_prefix . "links
+				FROM " . $prefix . "links
 				WHERE link_approved = 1 
 					AND link_logo_src <> ''
 				ORDER BY RAND()";

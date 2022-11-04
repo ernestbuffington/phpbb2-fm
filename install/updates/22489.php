@@ -8,22 +8,22 @@ if ( !defined('IN_PHPBB') )
 //
 // Modify phpBB core-schema
 //
-$sql = 'ALTER TABLE '. $table_prefix .'groups ADD COLUMN `group_rank_order` MEDIUMINT(8) default "0" NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'groups ADD COLUMN `group_rank_order` MEDIUMINT(8) default "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'groups ADD COLUMN `group_validate` TINYINT(1) default "1" NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'groups ADD COLUMN `group_validate` TINYINT(1) default "1" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'ranks ADD COLUMN `rank_group` MEDIUMINT(8) NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'ranks ADD COLUMN `rank_group` MEDIUMINT(8) NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'sessions ADD COLUMN `is_robot` VARCHAR(255) DEFAULT "0" NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'sessions ADD COLUMN `is_robot` VARCHAR(255) DEFAULT "0" NOT NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE ' . $table_prefix . 'themes ADD COLUMN `botfontcolor` VARCHAR(6) DEFAULT "9E8DA7"';
+$sql = 'ALTER TABLE ' . $prefix . 'themes ADD COLUMN `botfontcolor` VARCHAR(6) DEFAULT "9E8DA7"';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'users ADD COLUMN `user_lastpassword` VARCHAR(32) NULL';
+$sql = 'ALTER TABLE '. $prefix .'users ADD COLUMN `user_lastpassword` VARCHAR(32) NULL';
 _sql($sql, $errored, $error_ary);
-$sql = 'ALTER TABLE '. $table_prefix .'users ADD COLUMN `user_lastpassword_time` INT(11) NULL';
+$sql = 'ALTER TABLE '. $prefix .'users ADD COLUMN `user_lastpassword_time` INT(11) NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'config WHERE `config_name` = "enable_custom_post_color"';
+$sql = 'DELETE FROM ' . $prefix . 'config WHERE `config_name` = "enable_custom_post_color"';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_config data
@@ -59,7 +59,7 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }	
@@ -68,49 +68,49 @@ while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 //
 // Create new Fully Modded core-schema
 //
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'bots';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'bots';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'bots (`bot_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `bot_name` varchar(255) DEFAULT "" NOT NULL, `bot_agent` varchar(255) DEFAULT "" NOT NULL, `last_visit` varchar(255) NOT NULL, `bot_visits` mediumint(8) NOT NULL, `bot_pages` mediumint(8) NOT NULL, `pending_agent` text NOT NULL, `pending_ip` text NOT NULL, `bot_ip` text NOT NULL, `bot_style` mediumint(8) NOT NULL, PRIMARY KEY (`bot_id`)) TYPE=MyISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'bots_archive';
-_sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'bots_archive (`bot_id` mediumint(8) NOT NULL auto_increment, `bot_name` VARCHAR(255), `bot_time` int(11) NOT NULL default "0", `bot_url` varchar(255) NOT NULL default "", PRIMARY KEY (`bot_id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'bots (`bot_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `bot_name` varchar(255) DEFAULT "" NOT NULL, `bot_agent` varchar(255) DEFAULT "" NOT NULL, `last_visit` varchar(255) NOT NULL, `bot_visits` mediumint(8) NOT NULL, `bot_pages` mediumint(8) NOT NULL, `pending_agent` text NOT NULL, `pending_ip` text NOT NULL, `bot_ip` text NOT NULL, `bot_style` mediumint(8) NOT NULL, PRIMARY KEY (`bot_id`)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'ip';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'bots_archive';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE '. $table_prefix .'ip (`id` mediumint(8) NOT NULL auto_increment, `ip` VARCHAR(200) DEFAULT "0" NOT NULL, `host` VARCHAR(200) DEFAULT "0" NOT NULL, `date` INT(11) DEFAULT "0" NOT NULL, `username` VARCHAR(200) DEFAULT "0" NOT NULL, `referrer` VARCHAR(200) DEFAULT "0" NOT NULL, `forum` VARCHAR(200) DEFAULT "0" NOT NULL, `browser` VARCHAR(200) DEFAULT "0" NOT NULL, KEY `username` (`username`), PRIMARY KEY (`id`)) TYPE=MYISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'medal';
-_sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'medal (`medal_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `cat_id` mediumint(8) UNSIGNED NOT NULL default "1", `medal_name` varchar(40) NOT NULL, `medal_description` varchar(255) NOT NULL, `medal_image` varchar(40) NULL, PRIMARY KEY (`medal_id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'bots_archive (`bot_id` mediumint(8) NOT NULL auto_increment, `bot_name` VARCHAR(255), `bot_time` int(11) NOT NULL default "0", `bot_url` varchar(255) NOT NULL default "", PRIMARY KEY (`bot_id`)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'medal_cat';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'ip';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'medal_cat (`cat_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `cat_title` varchar(100) NOT NULL, `cat_order` mediumint(8) UNSIGNED NOT NULL default "0", PRIMARY KEY (`cat_id`), KEY `cat_order` (`cat_order`)) TYPE=MyISAM';
-_sql($sql, $errored, $error_ary);
-
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'medal_mod';
-_sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'medal_mod (`mod_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `medal_id` mediumint(8) UNSIGNED NOT NULL, `user_id` mediumint(8) UNSIGNED NOT NULL, PRIMARY KEY (`mod_id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE '. $prefix .'ip (`id` mediumint(8) NOT NULL auto_increment, `ip` VARCHAR(200) DEFAULT "0" NOT NULL, `host` VARCHAR(200) DEFAULT "0" NOT NULL, `date` INT(11) DEFAULT "0" NOT NULL, `username` VARCHAR(200) DEFAULT "0" NOT NULL, `referrer` VARCHAR(200) DEFAULT "0" NOT NULL, `forum` VARCHAR(200) DEFAULT "0" NOT NULL, `browser` VARCHAR(200) DEFAULT "0" NOT NULL, KEY `username` (`username`), PRIMARY KEY (`id`)) TYPE=MYISAM';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS ' . $table_prefix . 'medal_user';
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'medal';
 _sql($sql, $errored, $error_ary);
-$sql = 'CREATE TABLE ' . $table_prefix . 'medal_user (`issue_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `medal_id` mediumint(8) UNSIGNED NOT NULL, `user_id` mediumint(8) UNSIGNED NOT NULL, `issue_reason` varchar(255) NOT NULL, `issue_time` int(11) NOT NULL, PRIMARY KEY (`issue_id`)) TYPE=MyISAM';
+$sql = 'CREATE TABLE ' . $prefix . 'medal (`medal_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `cat_id` mediumint(8) UNSIGNED NOT NULL default "1", `medal_name` varchar(40) NOT NULL, `medal_description` varchar(255) NOT NULL, `medal_image` varchar(40) NULL, PRIMARY KEY (`medal_id`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'medal_cat';
+_sql($sql, $errored, $error_ary);
+$sql = 'CREATE TABLE ' . $prefix . 'medal_cat (`cat_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `cat_title` varchar(100) NOT NULL, `cat_order` mediumint(8) UNSIGNED NOT NULL default "0", PRIMARY KEY (`cat_id`), KEY `cat_order` (`cat_order`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'medal_mod';
+_sql($sql, $errored, $error_ary);
+$sql = 'CREATE TABLE ' . $prefix . 'medal_mod (`mod_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `medal_id` mediumint(8) UNSIGNED NOT NULL, `user_id` mediumint(8) UNSIGNED NOT NULL, PRIMARY KEY (`mod_id`)) TYPE=MyISAM';
+_sql($sql, $errored, $error_ary);
+
+$sql = 'DROP TABLE IF EXISTS ' . $prefix . 'medal_user';
+_sql($sql, $errored, $error_ary);
+$sql = 'CREATE TABLE ' . $prefix . 'medal_user (`issue_id` mediumint(8) UNSIGNED NOT NULL auto_increment, `medal_id` mediumint(8) UNSIGNED NOT NULL, `user_id` mediumint(8) UNSIGNED NOT NULL, `issue_reason` varchar(255) NOT NULL, `issue_time` int(11) NOT NULL, PRIMARY KEY (`issue_id`)) TYPE=MyISAM';
 _sql($sql, $errored, $error_ary);
 	
 //
 // Modify Fully Modded core-data
 //
 // phpbb_config_nav data
-$sql = "INSERT INTO " . $table_prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('icon_medals.gif', 'Medals', '1', 'medals.php', '1000', '0')";
+$sql = "INSERT INTO " . $prefix . "config_nav (`img`, `alt`, `use_lang`, `url`, `nav_order`, `value`) VALUES ('icon_medals.gif', 'Medals', '1', 'medals.php', '1000', '0')";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'config_nav WHERE `url` = "search.php"';
+$sql = 'DELETE FROM ' . $prefix . 'config_nav WHERE `url` = "search.php"';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_bots data
@@ -132,38 +132,38 @@ for ( $row = 0; $row < sizeof($bots_data); $row++ )
 {
 	for ( $column = 0; $column < 1; $column++ )
 	{
-		$sql = "INSERT INTO " . $table_prefix . "bots (`bot_name`, `bot_agent`, `bot_ip`, `bot_style`) VALUES ('" . $bots_data[$row]['NAME'] . "', '" . $bots_data[$row]['AGENT'] . "', '" . $bots_data[$row]['IP'] . "', '" . $board_config['default_style'] . "')";
+		$sql = "INSERT INTO " . $prefix . "bots (`bot_name`, `bot_agent`, `bot_ip`, `bot_style`) VALUES ('" . $bots_data[$row]['NAME'] . "', '" . $bots_data[$row]['AGENT'] . "', '" . $bots_data[$row]['IP'] . "', '" . $board_config['default_style'] . "')";
 		_sql($sql, $errored, $error_ary);
 	}
 }
 
 // phpbb_medal_cat data
-$sql = "INSERT INTO " . $table_prefix . "medal_cat (`cat_title`, `cat_order`) VALUES ('Default', '10')";
+$sql = "INSERT INTO " . $prefix . "medal_cat (`cat_title`, `cat_order`) VALUES ('Default', '10')";
 _sql($sql, $errored, $error_ary);
 
 // Move phpbb_stats_config data to phpbb_config, and rename all fields with stat_ prefix
-$sql = "UPDATE " . $table_prefix . "stats_config SET `config_name` = 'stat_install_date' WHERE `config_name` = 'install_date'";
+$sql = "UPDATE " . $prefix . "stats_config SET `config_name` = 'stat_install_date' WHERE `config_name` = 'install_date'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "stats_config SET `config_name` = 'stat_page_views' WHERE `config_name` = 'page_views'";
+$sql = "UPDATE " . $prefix . "stats_config SET `config_name` = 'stat_page_views' WHERE `config_name` = 'page_views'";
 _sql($sql, $errored, $error_ary);
 
-$sql = "UPDATE " . $table_prefix . "stats_config SET `config_name` = 'stat_return_limit' WHERE `config_name` = 'return_limit'";
+$sql = "UPDATE " . $prefix . "stats_config SET `config_name` = 'stat_return_limit' WHERE `config_name` = 'return_limit'";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'stats_config WHERE `config_name` = "version"';
+$sql = 'DELETE FROM ' . $prefix . 'stats_config WHERE `config_name` = "version"';
 _sql($sql, $errored, $error_ary);
 			
-$sql = "INSERT INTO " . $table_prefix . "config SELECT * FROM " . $table_prefix . "stats_config";
+$sql = "INSERT INTO " . $prefix . "config SELECT * FROM " . $prefix . "stats_config";
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DROP TABLE IF EXISTS '. $table_prefix .'stats_config';
+$sql = 'DROP TABLE IF EXISTS '. $prefix .'stats_config';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE '. $table_prefix .'modules MODIFY COLUMN `short_name` VARCHAR(100) DEFAULT NULL';
+$sql = 'ALTER TABLE '. $prefix .'modules MODIFY COLUMN `short_name` VARCHAR(100) DEFAULT NULL';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'ALTER TABLE '. $table_prefix .'module_info MODIFY COLUMN `extra_info` LONGTEXT DEFAULT "" NOT NULL';
+$sql = 'ALTER TABLE '. $prefix .'module_info MODIFY COLUMN `extra_info` LONGTEXT DEFAULT "" NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_stats_config data
@@ -173,7 +173,7 @@ $stats_config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $stats_config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }		
@@ -182,24 +182,24 @@ while ( list ( $config_name, $config_value ) = each ( $stats_config_data ) )
 //
 // Change default values to sync with FullyModded setup
 //
-$sql = 'UPDATE ' . $table_prefix . 'album_config 
+$sql = 'UPDATE ' . $prefix . 'album_config 
 	SET `config_value` = ".0.56a" 
 	WHERE `config_name` = "album_version"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'TRUNCATE TABLE ' . $table_prefix . 'forums_descrip';
+$sql = 'TRUNCATE TABLE ' . $prefix . 'forums_descrip';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'TRUNCATE TABLE ' . $table_prefix . 'banner_stats';
+$sql = 'TRUNCATE TABLE ' . $prefix . 'banner_stats';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'pages WHERE `page_name` = "pointscp.php"';
+$sql = 'DELETE FROM ' . $prefix . 'pages WHERE `page_name` = "pointscp.php"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'DELETE FROM ' . $table_prefix . 'pages WHERE `page_name` = "modcp.php"';
+$sql = 'DELETE FROM ' . $prefix . 'pages WHERE `page_name` = "modcp.php"';
 _sql($sql, $errored, $error_ary);
 
-$sql = 'INSERT INTO ' . $table_prefix . 'pages (`page_name`, `page_key`) VALUES ("medals.php", "medals.php")';
+$sql = 'INSERT INTO ' . $prefix . 'pages (`page_name`, `page_key`) VALUES ("medals.php", "medals.php")';
 _sql($sql, $errored, $error_ary);
 
 
@@ -207,7 +207,7 @@ _sql($sql, $errored, $error_ary);
 // Add group_order to existing groups
 //
 $sql = "SELECT `group_id`
-	FROM " . $table_prefix. "groups
+	FROM " . $prefix. "groups
 	WHERE `group_single_user` = 0
 	ORDER BY group_id";
 $result = _sql($sql, $errored, $error_ary, '');
@@ -219,7 +219,7 @@ for($i = 0; $i < $total_groups; $i++)
 {
 	$group_id = $groups[$i]['group_id'];
 
-	$sql = "UPDATE " . $table_prefix . "groups
+	$sql = "UPDATE " . $prefix . "groups
 		SET `group_rank_order` = " . ($i + 1) . " 
 		WHERE `group_id` = " . $group_id;
 	_sql($sql, $errored, $error_ary);

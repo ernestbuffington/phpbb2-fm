@@ -986,7 +986,7 @@ function getmicrotime()
 //
 function get_table_statistic()
 {
-	global $db, $table_prefix;
+	global $db, $prefix;
 	global $tables;
 
 	$stat['all']['count'] = 0;
@@ -1010,7 +1010,7 @@ function get_table_statistic()
 		$stat['all']['count']++;
 		$stat['all']['records'] += intval($row['Rows']);
 		$stat['all']['size'] += intval($row['Data_length']) + intval($row['Index_length']);
-		if ( $table_prefix == substr($row['Name'], 0, strlen($table_prefix)) )
+		if ( $prefix == substr($row['Name'], 0, strlen($prefix)) )
 		{
 			$stat['advanced']['count']++;
 			$stat['advanced']['records'] += intval($row['Rows']);
@@ -1018,7 +1018,7 @@ function get_table_statistic()
 		}
 		for ($i = 0; $i < count($tables); $i++)
 		{
-			if ($table_prefix . $tables[$i] == $row['Name'])
+			if ($prefix . $tables[$i] == $row['Name'])
 			{
 				$stat['core']['count']++;
 				$stat['core']['records'] += intval($row['Rows']);

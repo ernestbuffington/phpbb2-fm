@@ -26,23 +26,23 @@ $config_data = array(
 );
 while ( list ( $config_name, $config_value ) = each ( $config_data ) )
 {
-	$sql = "INSERT INTO " . $table_prefix . "config (`config_name`, `config_value`) 
+	$sql = "INSERT INTO " . $prefix . "config (`config_name`, `config_value`) 
 		VALUES ('" . $config_name . "', '" . $config_value . "')";
 	_sql($sql, $errored, $error_ary);
 }
 
-$sql = 'ALTER TABLE ' . $table_prefix . 'forums ADD COLUMN `forum_subject_check` TINYINT(1) DEFAULT "0"';
+$sql = 'ALTER TABLE ' . $prefix . 'forums ADD COLUMN `forum_subject_check` TINYINT(1) DEFAULT "0"';
 _sql($sql, $errored, $error_ary);
 
 
 //
 // Modify Fully Modded core-data
 // phpbb_portal
-$sql = 'ALTER TABLE ' . $table_prefix . 'portal ADD COLUMN `portal_latest_exclude_forums` VARCHAR(100) NOT NULL';
+$sql = 'ALTER TABLE ' . $prefix . 'portal ADD COLUMN `portal_latest_exclude_forums` VARCHAR(100) NOT NULL';
 _sql($sql, $errored, $error_ary);
 
 // phpbb_album_config data
-$sql = 'INSERT INTO ' . $table_prefix . 'album_config (`config_name`, `config_value`) VALUES ("slidepics_per_page", "0")';
+$sql = 'INSERT INTO ' . $prefix . 'album_config (`config_name`, `config_value`) VALUES ("slidepics_per_page", "0")';
 _sql($sql, $errored, $error_ary);
  
 ?>

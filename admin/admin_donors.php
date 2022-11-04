@@ -179,7 +179,7 @@ if( isset($HTTP_POST_VARS['submit']) )
 	}
 
 	$sql = "INSERT INTO " . ACCT_HIST_TABLE . " (user_id, lw_post_id, lw_money, lw_plus_minus, MNY_CURRENCY, lw_date, comment, lw_site, status, txn_id) 
-		VALUES (" . $user_id . ", 0, " . ($lw_money + 0.00) . ", -1, '" . str_replace("\'", "''", $board_config['paypal_currency_code']) . "', " . $user_donate_date . ", 'Donation from " . str_replace("\'", "''", $donor_pay_acct) . ", Thank you.', '" . $table_prefix . "', 'Completed', '" . str_replace("\'", "''", $txn_id) . "')";
+		VALUES (" . $user_id . ", 0, " . ($lw_money + 0.00) . ", -1, '" . str_replace("\'", "''", $board_config['paypal_currency_code']) . "', " . $user_donate_date . ", 'Donation from " . str_replace("\'", "''", $donor_pay_acct) . ", Thank you.', '" . $prefix . "', 'Completed', '" . str_replace("\'", "''", $txn_id) . "')";
 	if ( !($result = $db->sql_query($sql)) )
 	{
 		message_die(GENERAL_ERROR, 'Could not insert donor information.', '', __LINE__, __FILE__, $sql);
