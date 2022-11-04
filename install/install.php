@@ -360,7 +360,7 @@ $upgrade = 0;
 $dbms = 'mysql';
 
 $dbhost = (!empty($HTTP_POST_VARS['dbhost'])) ? $HTTP_POST_VARS['dbhost'] : 'localhost';
-$dbuser = (!empty($HTTP_POST_VARS['dbuser'])) ? $HTTP_POST_VARS['dbuser'] : '';
+$dbuname = (!empty($HTTP_POST_VARS['dbuser'])) ? $HTTP_POST_VARS['dbuser'] : '';
 $dbpasswd = (!empty($HTTP_POST_VARS['dbpasswd'])) ? $HTTP_POST_VARS['dbpasswd'] : '';
 $dbname = (!empty($HTTP_POST_VARS['dbname'])) ? $HTTP_POST_VARS['dbname'] : '';
 
@@ -518,7 +518,7 @@ else if (!empty($HTTP_POST_VARS['ftp_file']))
 			$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$table_prefix.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbhost" value="'.$dbhost.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbname" value="'.$dbname.'" />';
-			$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuser.'" />';
+			$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuname.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="dbpasswd" value="'.$dbpasswd.'" />';
 			$s_hidden_fields .= '<input type="hidden" name="install_step" value="1" />';
 			$s_hidden_fields .= '<input type="hidden" name="admin_pass1" value="1" />';
@@ -762,7 +762,7 @@ if (version_compare(@phpversion(), $required_php_version) < 0)
 					</tr>
 					<tr>
 						<td class="row1"><b><?php echo $lang['DB_Username']; ?>:</b></td>
-						<td colspan="3" class="row2"><input type="text" size="25" name="dbuser" value="<?php echo ($dbuser != '') ? $dbuser : ''; ?>" /></td>
+						<td colspan="3" class="row2"><input type="text" size="25" name="dbuser" value="<?php echo ($dbuname != '') ? $dbuname : ''; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="row1"><b><?php echo $lang['DB_Password']; ?>:</b></td>
@@ -1182,7 +1182,7 @@ else
 			$config_data .= '$dbms = \'' . $dbms . '\';' . "\n\n";
 			$config_data .= '$dbhost = \'' . $dbhost . '\';' . "\n";
 			$config_data .= '$dbname = \'' . $dbname . '\';' . "\n";
-			$config_data .= '$dbuser = \'' . $dbuser . '\';' . "\n";
+			$config_data .= '$dbuname = \'' . $dbuname . '\';' . "\n";
 			$config_data .= '$dbpasswd = \'' . $dbpasswd . '\';' . "\n\n";
 			$config_data .= '$table_prefix = \'' . $table_prefix . '\';' . "\n\n";
 			$config_data .= 'define(\'PHPBB_INSTALLED\', true);'."\n\n";	
@@ -1229,7 +1229,7 @@ else
 					$s_hidden_fields .= '<input type="hidden" name="prefix" value="'.$table_prefix.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbhost" value="'.$dbhost.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbname" value="'.$dbname.'" />';
-					$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuser.'" />';
+					$s_hidden_fields .= '<input type="hidden" name="dbuser" value="'.$dbuname.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="dbpasswd" value="'.$dbpasswd.'" />';
 					$s_hidden_fields .= '<input type="hidden" name="install_step" value="1" />';
 					$s_hidden_fields .= '<input type="hidden" name="admin_pass1" value="1" />';

@@ -29,7 +29,7 @@ for ($i=$startlog;$i<=$endlog;$i++)
 	$alllogfiles .= ' '.str_replace(str_repeat('$',$number),sprintf("%0".$number."d",$i),$binlogpath);
 	}
 
-$command = "mysqlbinlog  --force-read --database=$dbname -h $dbhost -u $dbuser -p".$dbpasswd.$alllogfiles." ".$daysago." | zip > ".dirname(__FILE__).'/'.$filename.($suppressoutput ? ' 2> '.dirname(__FILE__).'/busqlerror.log &' : '');
+$command = "mysqlbinlog  --force-read --database=$dbname -h $dbhost -u $dbuname -p".$dbpasswd.$alllogfiles." ".$daysago." | zip > ".dirname(__FILE__).'/'.$filename.($suppressoutput ? ' 2> '.dirname(__FILE__).'/busqlerror.log &' : '');
 // if "|zip" doesn't work for you then try "|gzip"
 // More mysqlbinlog commands at http://dev.mysql.com/doc/mysql/en/mysqlbinlog.html
 

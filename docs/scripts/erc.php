@@ -129,7 +129,7 @@ if ( $mode == 'download' )
 		"\n" .
 		"\$dbhost = '$new_dbhost';\n" .
 		"\$dbname = '$new_dbname';\n" .
-		"\$dbuser = '$new_dbuser';\n" .
+		"\$dbuname = '$new_dbuser';\n" .
 		"\$dbpasswd = '$new_dbpasswd';\n" .
 		"\n" .
 		"\$table_prefix = '$new_table_prefix';\n" .
@@ -1203,7 +1203,7 @@ switch($mode)
 				<br />
 				$dbhost = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbhost))); ?>';<br />
 				$dbname = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbname))); ?>';<br />
-				$dbuser = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbuser))); ?>';<br />
+				$dbuname = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbuser))); ?>';<br />
 				$dbpasswd = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_dbpasswd))); ?>';<br />
 				<br />
 				$table_prefix = '<?php echo htmlspecialchars(str_replace("'", "\\'", str_replace("\\", "\\\\", $new_table_prefix))); ?>';<br />

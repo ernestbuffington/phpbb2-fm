@@ -1439,7 +1439,7 @@ function style_select($default_style, $select_name = "style", $dirname = "templa
 
 function check_authorisation($die = TRUE)
 {
-	global $db, $lang, $dbuser, $dbpasswd, $option, $HTTP_POST_VARS;
+	global $db, $lang, $dbuname, $dbpasswd, $option, $HTTP_POST_VARS;
 
 	$auth_method = ( isset($HTTP_POST_VARS['auth_method']) ) ? htmlspecialchars($HTTP_POST_VARS['auth_method']) : '';
 	$board_user = isset($HTTP_POST_VARS['board_user']) ? trim(htmlspecialchars($HTTP_POST_VARS['board_user'])) : '';
@@ -1482,7 +1482,7 @@ function check_authorisation($die = TRUE)
 			$db->sql_freeresult($result);
 			break;
 		case 'db':
-			if ($db_user == $dbuser && $db_password == $dbpasswd)
+			if ($db_user == $dbuname && $db_password == $dbpasswd)
 			{
 				$allow_access = TRUE;
 			}

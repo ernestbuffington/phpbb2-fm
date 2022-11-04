@@ -9,7 +9,7 @@ $dbms = 'mysql';
 
 $dbhost = 'localhost'; // Enter your database host, 'localhost' in most cases
 $dbname = 'database'; // Enter your database name
-$dbuser = 'username'; // Enter your database username
+$dbuname = 'username'; // Enter your database username
 $dbpasswd = 'password'; // Enter your database password
 
 $table_prefix = 'phpbb_'; // Enter your database table prefix
